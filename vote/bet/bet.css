@@ -1,4 +1,4 @@
-:root{color-scheme:dark;--gold:#f0cc70;--gold-dark:#9b721d;--grid:#d2d3d7;--purple:#7545af;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+:root{color-scheme:dark;--gold:#f0cc70;--gold-dark:#9b721d;--grid:#d2d3d7;--purple:#eb6363;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
 *{box-sizing:border-box}html{background:#030405}body{margin:0;color:#f7f8fa;background:linear-gradient(180deg,#050607,#020304)}button,input{font:inherit}
 .delca-bar{width:min(100%,760px);height:53px;margin:0 auto;padding:3px 10px 2px;display:flex;align-items:center;justify-content:space-between;gap:8px;overflow:hidden;color:#fff;background:radial-gradient(ellipse at 16% 48%,rgba(40,167,225,.42) 0%,rgba(40,167,225,.18) 34%,rgba(40,167,225,0) 68%),linear-gradient(180deg,#181a1c 0%,#090b0d 100%);border-top:0;border-bottom:1px solid #51411D;box-shadow:0 4px 13px rgba(0,0,0,.20)}
 .delca-balance{min-width:0;display:flex;flex-direction:column;justify-content:center;line-height:1.15}.delca-balance span{color:#c7cbd2;font-size:10px;font-weight:850}.delca-balance strong{margin-top:2px;color:#fff;font-size:15px;font-weight:1000;font-variant-numeric:tabular-nums}.delca-balance small{font-size:10px}
@@ -814,7 +814,7 @@
   width:16px;
   height:16px;
   border-radius:4px;
-  background:#7545af;
+  background:#eb6363;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.28);
 }
 .bet-race-tab-icon::before{
@@ -829,7 +829,7 @@
   display:block;
   margin-top:3px;
   padding-top:3px;
-  border-top:3px solid #7545af;
+  border-top:3px solid #eb6363;
   font-size:13px;
   font-weight:900;
   line-height:1;

@@ -11,9 +11,8 @@
   window.GAMBOO_VENUE_ORDER = VENUE_ORDER;
   window.GAMBOO_VENUE_GRADES = VENUE_GRADES;
 
-  // 投票系ページでは、全レース中止の江戸川をレース選択に表示しない。
-  const DISPLAY_RACES = RACES.filter((race) => !(race.sport === "boat" && race.venue === "江戸川"));
-  const sportPreferences = window.GAMBOO_SPORT_PREFERENCES;
+  // GambooBETのレース選択はオートレースのみを表示する。
+  const DISPLAY_RACES = RACES.filter((race) => race.sport === "auto");
   const raceTimeValue = (time) => {
     const [hour, minute] = String(time || "").split(":").map(Number);
     return Number.isFinite(hour) && Number.isFinite(minute)
@@ -21,12 +20,7 @@
       : Number.MAX_SAFE_INTEGER;
   };
   const enabledDisplayRaces = () => {
-    const enabledSports = sportPreferences?.read?.();
-    const races = Array.isArray(enabledSports)
-      ? DISPLAY_RACES.filter((race) => enabledSports.includes(race.sport))
-      : [...DISPLAY_RACES];
-
-    return races
+    return DISPLAY_RACES
       .map((race, index) => ({ race, index }))
       .sort((left, right) => raceTimeValue(left.race.time) - raceTimeValue(right.race.time) || left.index - right.index)
       .map(({ race }) => race);
@@ -120,7 +114,6 @@
       if (this.dataset.ready === "true") return;
       this.dataset.ready = "true";
       const displayedRaces = enabledDisplayRaces();
-      this.dataset.sportPreferenceSignature = sportPreferences?.read?.().join(",") || "";
       const storedRaceSelection = window.GAMBOO_VOTE_RACE_STATE?.read?.();
       const requestedActiveKey = storedRaceSelection?.key || this.getAttribute("active-key") || DEFAULT_ACTIVE;
       const activeKey = displayedRaces.some((race) => keyOf(race) === requestedActiveKey)
@@ -170,11 +163,6 @@
       };
 
       const restorePage = () => {
-        const signature = sportPreferences?.read?.().join(",") || "";
-        if (signature !== this.dataset.sportPreferenceSignature) {
-          window.location.reload();
-          return;
-        }
         restoreSelection();
       };
       requestAnimationFrame(() => requestAnimationFrame(restoreSelection));

@@ -236,7 +236,7 @@ button,select{font:inherit}
   padding-right:5px;
   text-align:right;
 }
-.odds-matrix-corner{color:#fff;background:#7545af;font-size:clamp(8px,2.35vw,11px);font-weight:1000;line-height:1.15;white-space:normal}
+.odds-matrix-corner{color:#321113;background:#eb6363;font-size:clamp(8px,2.35vw,11px);font-weight:1000;line-height:1.15;white-space:normal}
 .odds-matrix-head,.odds-matrix-row-head{background:#f0f1f3}
 .odds-matrix-cell.is-invalid{color:transparent;background:#f3f4f5}
 .odds-matrix-cell.is-low{background:#fff6ce;font-weight:1000}
@@ -339,7 +339,7 @@ button,select{font:inherit}
 
 .odds-single-list{width:100%;display:grid;background:var(--odds-grid);grid-template-columns:38px minmax(0,1fr) 82px}
 .odds-single-cell{min-height:40px;margin:0 1px 1px 0;padding:4px 7px;display:flex;align-items:center;background:#fff;font-size:13px;font-weight:850}
-.odds-single-head{min-height:30px;justify-content:center;color:#fff;background:#7545af;font-size:12px;font-weight:1000}
+.odds-single-head{min-height:30px;justify-content:center;color:#321113;background:#eb6363;font-size:12px;font-weight:1000}
 .odds-single-name{justify-content:flex-start}
 .odds-single-odds{justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums}
 .odds-single-note{grid-column:1/-1;padding:13px;color:#606974;background:#f7f8f9;font-size:12px;font-weight:850;text-align:center;line-height:1.55}

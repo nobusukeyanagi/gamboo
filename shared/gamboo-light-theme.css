@@ -1,0 +1,347 @@
+:root{
+  color-scheme:light;
+  --gamboo-page:#fff;
+  --gamboo-page-soft:#fffaf0;
+  --gamboo-surface:#fff;
+  --gamboo-surface-soft:#fff8e2;
+  --gamboo-ink:#241d11;
+  --gamboo-muted:#6f675a;
+  --gamboo-gold:#d5ab43;
+  --gamboo-gold-deep:#8c6415;
+  --gamboo-gold-soft:#f7e7ad;
+  --gamboo-line:#e4dac2;
+  --gamboo-auto:#eb6363;
+  --gamboo-auto-ink:#321113;
+  --gamboo-standard-frame-color:var(--gamboo-gold);
+  --race-button-border:var(--gamboo-gold-deep);
+  --race-button-active:#fff2bd;
+  --race-button-pressed:#f5dda0;
+  --race-sport-auto:var(--gamboo-auto);
+  --auto-purple:var(--gamboo-auto);
+  --purple:var(--gamboo-auto);
+  --odds-outer-frame:var(--gamboo-gold);
+}
+
+html,
+body{
+  color:var(--gamboo-ink)!important;
+  background:var(--gamboo-page)!important;
+}
+
+.gamboo-content-shell,
+.gamboo-content-sizer,
+.gamboo-content-stage,
+.content-shell,
+.confirm-gold-shell,
+.confirm-gold-shell .gamboo-content-sizer,
+.confirm-gold-shell .gamboo-content-stage{
+  background:
+    radial-gradient(circle at 92% 1%,rgba(213,171,67,.10),transparent 24%),
+    linear-gradient(180deg,#fff 0%,#fffdf8 52%,#fff 100%)!important;
+}
+
+/* The desktop canvas is intentionally fluid: no centered 760px column. */
+gamboo-race-switch,
+gamboo-race-info,
+.delca-bar,
+.racecard-detail-menu,
+.odds-type-menu,
+.bet-type-menu,
+.result-replay-menu,
+.result-replay-panel,
+.vote-racecard,
+.odds-page,
+.bet-page,
+.confirm-page,
+.inquiry-page,
+.vote-results-page{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Race selector */
+.race-switch-wrap{
+  color:var(--gamboo-ink)!important;
+  background:linear-gradient(180deg,#fffefb 0%,#fff4cf 100%)!important;
+  border-bottom-color:var(--gamboo-gold)!important;
+  box-shadow:0 4px 12px rgba(104,76,16,.13)!important;
+}
+.race-tab{
+  --sport-color:var(--gamboo-auto)!important;
+  color:var(--gamboo-ink)!important;
+  border-color:#d9c99f!important;
+  background:#fff!important;
+  box-shadow:0 2px 6px rgba(73,51,9,.12)!important;
+}
+.race-tab.active,
+.race-tab[aria-current="true"]{
+  color:#221806!important;
+  border-color:var(--gamboo-gold-deep)!important;
+  background:linear-gradient(180deg,#fff9dc 0%,#f4dda0 100%)!important;
+  box-shadow:0 3px 9px rgba(112,78,12,.18)!important;
+}
+.race-tab-icon,
+.race-tab-icon.auto,
+.bet-race-tab-icon{
+  background:var(--gamboo-auto)!important;
+}
+.race-tab>span,
+.bet-race-tab>span{
+  border-top-color:var(--gamboo-auto)!important;
+}
+
+/* Shared race information */
+.shared-race-info{
+  color:var(--gamboo-ink)!important;
+  border-color:var(--gamboo-gold)!important;
+  background:linear-gradient(135deg,#fff 0%,#fff8e1 66%,#f7e6ae 100%)!important;
+  box-shadow:0 7px 20px rgba(92,65,11,.14)!important;
+}
+.shared-race-info::after{border-color:rgba(181,132,25,.16)!important}
+.race-info-filter-toggle,
+.race-info-title,
+.race-info-status,
+.race-info-final,
+.race-info-time,
+.race-info-time time{
+  color:var(--gamboo-ink)!important;
+}
+.race-info-filter-toggle.is-active{color:var(--gamboo-gold-deep)!important}
+.race-info-date{color:var(--gamboo-muted)!important}
+.race-info-time-label{
+  color:var(--gamboo-ink)!important;
+  border-color:#c8a449!important;
+  background:rgba(255,255,255,.78)!important;
+}
+.race-live-button{
+  color:#4b3509!important;
+  border-color:#c59a32!important;
+  background:#fffdf6!important;
+  box-shadow:0 2px 7px rgba(92,65,11,.13)!important;
+}
+.race-live-button span{color:var(--gamboo-gold-deep)!important}
+.race-live-button.active{
+  color:#211706!important;
+  border-color:var(--gamboo-gold-deep)!important;
+  background:linear-gradient(180deg,#f8e7a8,#d6aa42)!important;
+}
+.race-live-button.active span{color:#211706!important}
+.race-info-icon.auto{background:var(--gamboo-auto)!important}
+
+/* Gold-and-white navigation below race information */
+.racecard-detail-tab,
+.odds-type-tab,
+.bet-type-tab,
+.result-replay-tab{
+  color:#4a350d!important;
+  border-color:var(--gamboo-gold)!important;
+  background:linear-gradient(180deg,#fff 0%,#fff8e2 100%)!important;
+}
+.racecard-detail-tab.active,
+.racecard-detail-tab[aria-current="page"],
+.odds-type-tab.active,
+.odds-type-tab[aria-pressed="true"],
+.bet-type-tab.active,
+.bet-type-tab[aria-pressed="true"],
+.result-replay-tab.active,
+.result-replay-tab[aria-pressed="true"]{
+  color:#211706!important;
+  border-color:var(--gamboo-gold-deep)!important;
+  background:linear-gradient(180deg,#f9eab5 0%,#d9ae47 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.72)!important;
+}
+
+/* Delca balance */
+.delca-bar,
+.delca-bar.is-race-list-open{
+  color:var(--gamboo-ink)!important;
+  background:linear-gradient(180deg,#fffef8 0%,#ffefbd 100%)!important;
+  border-bottom-color:var(--gamboo-gold)!important;
+  box-shadow:0 4px 12px rgba(104,76,16,.13)!important;
+}
+.delca-balance span{color:#74684d!important}
+.delca-balance strong{color:var(--gamboo-ink)!important}
+.delca-actions button{
+  color:#261b08!important;
+  border-color:#aa7c1d!important;
+  background:linear-gradient(180deg,#ffeeba 0%,#d7ab40 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 2px 6px rgba(91,62,8,.15)!important;
+}
+
+/* Cards, frames and page-level labels */
+.section,
+.odds-section,
+.odds-popular-viewport,
+.bet-table-section,
+.confirm-summary,
+.wager-card,
+.inquiry-summary,
+.inquiry-wager-card,
+.result-card,
+.race-outlook-card,
+.race-review-card,
+.prediction-summary,
+.prediction-ticket-panel{
+  border-color:var(--gamboo-gold)!important;
+  background:var(--gamboo-surface)!important;
+  box-shadow:0 3px 10px rgba(93,65,10,.09)!important;
+}
+.race-outlook-heading,
+.result-section-heading,
+.race-review-heading,
+.odds-meta-row,
+.selection-meta-row,
+.receipt-number,
+.receipt-number span{
+  color:#3f300f!important;
+}
+.odds-meta-row,
+.selection-meta-row{padding-inline:2px}
+
+/* Auto-race headers use the requested sport color with dark accessible text. */
+.race-table th,
+.race-table th:first-child,
+.bet-table th,
+.selection-heading,
+.odds-matrix-corner,
+.odds-single-head,
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th{
+  color:var(--gamboo-auto-ink)!important;
+  background:var(--gamboo-auto)!important;
+}
+.race-table th,
+.bet-table th,
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th{
+  border-color:rgba(101,29,33,.28)!important;
+}
+.table-scroll{scrollbar-color:var(--gamboo-auto) #f4efe4!important}
+.racecard-term-overlay{
+  border-color:var(--gamboo-auto)!important;
+  background:#fff!important;
+}
+.racecard-term-title{color:#a73238!important}
+.racecard-term-close{
+  color:#311113!important;
+  border-color:#bd444a!important;
+  background:linear-gradient(180deg,#f48787,#eb6363)!important;
+}
+
+/* Prediction panels */
+.prediction-summary,
+.prediction-ticket-panel{
+  background:linear-gradient(180deg,#fffdf7 0%,#fff5d5 100%)!important;
+}
+.prediction-summary-row,
+.prediction-summary-label,
+.prediction-forecast-label,
+.prediction-wager-label,
+.prediction-ticket-topline,
+.prediction-wager-title,
+.prediction-confidence-label{
+  color:var(--gamboo-ink)!important;
+}
+.prediction-bets-row,
+.prediction-separator,
+.prediction-ticket .prediction-separator{color:#756b58!important}
+.prediction-confidence-filled,
+.prediction-forecast-arrow{color:#a87309!important}
+.prediction-confidence-empty{
+  color:#c9c0ad!important;
+  -webkit-text-stroke:.28px #9f9684!important;
+  text-shadow:none!important;
+}
+.prediction-ticket{
+  color:var(--gamboo-ink)!important;
+  border-color:#caa84e!important;
+  background:#fff!important;
+  box-shadow:0 2px 6px rgba(91,62,8,.10)!important;
+}
+.prediction-ticket.is-selected,
+.prediction-ticket[aria-pressed="true"]{
+  color:#211706!important;
+  background:linear-gradient(180deg,#f8e7a8,#d6aa42)!important;
+}
+
+/* Odds navigation, detail toggles and secondary actions */
+.odds-popular-nav{
+  color:#5a3d05!important;
+  border-color:#c69a32!important;
+  background:linear-gradient(180deg,#fffdf4,#f2d98d)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.72)!important;
+}
+.odds-popular-nav:active{
+  color:#2d1d03!important;
+  background:linear-gradient(180deg,#f8e8b8,#d6aa42)!important;
+}
+.odds-popular-nav:disabled{
+  color:#9a8d71!important;
+  border-color:#ddd2b8!important;
+  background:#f4f0e8!important;
+}
+.column-actions button,
+.expand-button,
+.inquiry-expand-button{
+  color:#3e2b08!important;
+  border:1px solid #c8a449!important;
+  background:linear-gradient(180deg,#fffdf6,#f5e2a6)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important;
+}
+.column-actions button:last-child{
+  color:#625b4d!important;
+  border-color:#d9d1c1!important;
+  background:#fff!important;
+}
+
+/* Confirmation is now part of the same white canvas. */
+.confirm-summary,
+.wager-card,
+.inquiry-summary,
+.inquiry-wager-card{
+  box-shadow:0 3px 10px rgba(93,65,10,.10),inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+.confirm-page,
+.inquiry-page{color:var(--gamboo-ink)!important}
+
+/* Wide tables grow with desktop viewports; mobile keeps horizontal scrolling. */
+.race-table{
+  width:100%!important;
+  min-width:1434px;
+}
+.prediction-table{min-width:1246px!important}
+.recent-detail-table{min-width:2734px!important}
+.matchups-table{min-width:1372px!important}
+.comment-table{min-width:0!important}
+
+@media(min-width:900px){
+  .race-switch{padding-inline:12px}
+  .race-switch .race-tab{flex:1 0 80px;max-width:120px}
+  .shared-race-info{margin-inline:12px;padding:15px 18px 14px}
+  .race-info-video{margin-inline:-18px;margin-bottom:-14px}
+  .racecard-detail-menu,
+  .odds-type-menu,
+  .bet-type-menu,
+  .result-replay-menu{padding-inline:12px!important}
+  .section,
+  .prediction-summary,
+  .prediction-ticket-panel,
+  .race-outlook-section,
+  .odds-section{margin-left:12px;margin-right:12px}
+  .bet-page,
+  .confirm-page,
+  .inquiry-page,
+  .vote-results-page{padding-left:12px;padding-right:12px}
+  .result-replay-panel{padding-left:12px;padding-right:12px}
+}
+
+@media(max-width:430px){
+  .shared-race-info{box-shadow:0 4px 12px rgba(92,65,11,.12)!important}
+  .race-outlook-heading,
+  .result-section-heading,
+  .race-review-heading{color:#3f300f!important}
+}

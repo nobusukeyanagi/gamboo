@@ -16,10 +16,10 @@ gamboo-category-menu{
   height:var(--category-menu-total-h);
   padding-top:var(--category-menu-safe-top);
   background:
-    linear-gradient(110deg,rgba(213,171,67,.12),transparent 28%,transparent 72%,rgba(213,171,67,.10)),
-    linear-gradient(135deg,#050505,#1b1b1b 56%,#070707);
-  border-bottom:1px solid #51411D;
-  box-shadow:0 5px 18px rgba(0,0,0,.28);
+    linear-gradient(110deg,rgba(213,171,67,.16),transparent 28%,transparent 72%,rgba(213,171,67,.13)),
+    linear-gradient(180deg,#fffef9 0%,#fff2c5 100%);
+  border-bottom:1px solid #d5ab43;
+  box-shadow:0 4px 14px rgba(98,69,12,.15);
   touch-action:none;
   overscroll-behavior:none;
 }
@@ -29,14 +29,13 @@ gamboo-category-menu{
 
 /* Shared content background (ONAIR does not load this stylesheet) */
 html,body{
-  background:#050505!important;
+  background:#fff!important;
 }
 .gamboo-content-shell,
 .gamboo-content-sizer,
 .gamboo-content-stage,
 .content-shell{
   background:
-    radial-gradient(circle at 92% 4%,rgba(215,172,68,.11),transparent 25%),
-    radial-gradient(circle at 5% 41%,rgba(31,79,93,.10),transparent 28%),
-    linear-gradient(180deg,#050505 0,#0a0a0b 48%,#050505 100%)!important;
+    radial-gradient(circle at 92% 4%,rgba(213,171,67,.10),transparent 25%),
+    linear-gradient(180deg,#fff 0,#fffdf8 48%,#fff 100%)!important;
 }
