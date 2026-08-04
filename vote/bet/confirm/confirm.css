@@ -1,0 +1,868 @@
+:root{
+  color-scheme:light;
+  --confirm-gold:#d5ab43;
+  --confirm-gold-deep:#9b6d16;
+  --confirm-ink:#17191d;
+  --confirm-muted:#6d7480;
+  --confirm-line:#dfe2e6;
+  --confirm-green:#008b74;
+  --confirm-red:#bf2130;
+}
+
+html,body{
+  background:#bc8b25!important;
+}
+
+.confirm-gold-shell{
+  background:
+    radial-gradient(circle at 92% 3%,rgba(255,251,220,.56),transparent 24%),
+    radial-gradient(circle at 5% 33%,rgba(255,236,164,.34),transparent 31%),
+    linear-gradient(145deg,#f0d47e 0%,#d6aa41 45%,#b87d1b 100%)!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+}
+.confirm-gold-shell .gamboo-content-sizer,
+.confirm-gold-shell .gamboo-content-stage{
+  background:transparent!important;
+}
+
+.confirm-page{
+  width:min(100%,760px);
+  margin:0 auto;
+  padding:10px 8px 118px;
+  color:var(--confirm-ink);
+}
+
+.confirm-summary{
+  padding:11px 13px;
+  border:1px solid rgba(83,56,12,.34);
+  border-radius:12px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 5px 15px rgba(78,48,5,.20),inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.summary-line{
+  min-height:25px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  color:#535a64;
+  font-size:14px;
+  font-weight:750;
+  font-variant-numeric:tabular-nums;
+}
+
+.summary-line strong{
+  color:var(--confirm-ink);
+  font-size:14px;
+  font-weight:1000;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.confirm-summary .summary-line{min-height:31px}
+.confirm-summary .summary-line strong{font-size:22px;line-height:1.15}
+.summary-line .is-positive,
+.confirm-summary .summary-line strong.is-positive,
+.wager-summary .summary-line strong.is-positive{color:var(--confirm-green)!important}
+.summary-line .is-negative,
+.confirm-summary .summary-line strong.is-negative,
+.wager-summary .summary-line strong.is-negative{color:var(--confirm-red)!important}
+
+.wager-groups{margin-top:10px}
+
+.wager-card{
+  overflow:hidden;
+  border:1px solid rgba(71,48,8,.50);
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(69,43,4,.22),inset 0 1px 0 rgba(255,255,255,.75);
+}
+
+.wager-card + .wager-card{margin-top:10px}
+
+.wager-head{
+  min-height:52px;
+  padding:7px 8px 6px 12px;
+  display:grid;
+  grid-template-columns:auto auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+  border-bottom:2px solid #4d5055;
+  background:linear-gradient(180deg,#fff,#fafafa);
+}
+
+.wager-title,
+.wager-count{
+  font-size:17px;
+  font-weight:1000;
+  white-space:nowrap;
+}
+
+.wager-unit{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:3px;
+  color:#3e434a;
+  font-size:13px;
+  font-weight:750;
+  white-space:nowrap;
+}
+
+.wager-unit input{
+  width:46px;
+  height:40px;
+  padding:0 3px;
+  border:1px solid #d2d5da;
+  border-radius:10px;
+  color:#343941;
+  background:#f1f2f5;
+  font-size:15px;
+  font-weight:800;
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.06);
+}
+
+.wager-delete{
+  width:40px;
+  height:40px;
+  padding:0;
+  border:2px solid #bbc0c8;
+  border-radius:10px;
+  color:#69717b;
+  background:#fff;
+  font-size:13px;
+  font-weight:1000;
+}
+
+.position-table{background:#fff}
+
+.position-row{
+  min-height:36px;
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  align-items:center;
+  border-bottom:1px solid #63666b;
+}
+
+.position-label{
+  padding-left:14px;
+  color:#5f6670;
+  font-size:13px;
+  font-weight:800;
+}
+
+.position-cars{
+  min-height:35px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:2px;
+  padding:4px 8px;
+}
+
+.confirm-car{
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
+  margin:0 1px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,0,0,.30);
+  border-radius:5px;
+  font-size:15px;
+  font-weight:1000;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 1px 2px rgba(0,0,0,.14);
+}
+.confirm-car.car-1{color:#111;background:#fff;border-color:#8f949a}
+.confirm-car.car-2{color:#fff;background:#202226;border-color:#050506}
+.confirm-car.car-3{color:#fff;background:#d4232b;border-color:#9b1118}
+.confirm-car.car-4{color:#fff;background:#2468c7;border-color:#174c98}
+.confirm-car.car-5{color:#171108;background:#f0cf24;border-color:#b69b14}
+.confirm-car.car-6{color:#fff;background:#2e9a4b;border-color:#1e7135}
+.confirm-car.car-7{color:#fff;background:#e47b22;border-color:#aa5514}
+.confirm-car.car-8{color:#fff;background:#e85b9e;border-color:#aa3970}
+
+.excluded-note{
+  min-height:32px;
+  padding:7px 14px;
+  border-bottom:1px solid var(--confirm-line);
+  color:#8a5b0c;
+  background:#fff9e8;
+  font-size:13px;
+  font-weight:900;
+}
+
+.wager-summary{
+  padding:9px 13px 8px;
+  background:#fff;
+}
+
+.wager-summary .summary-line{min-height:23px}
+.wager-summary .summary-line:first-child{
+  padding-bottom:3px;
+  margin-bottom:2px;
+  color:#343941;
+  font-size:15px;
+}
+.wager-summary .summary-line:first-child strong{font-size:17px}
+.wager-summary .summary-line:not(:first-child){color:#787f89;font-size:13px}
+.wager-summary .summary-line:not(:first-child) strong{color:#727984;font-size:13px;font-weight:750}
+
+.expand-button{
+  width:calc(100% - 24px);
+  height:42px;
+  margin:2px 12px 10px;
+  border:0;
+  border-radius:22px;
+  color:#fff;
+  background:#282a2e;
+  font-size:14px;
+  font-weight:1000;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.expand-button::after{
+  content:"⌄";
+  float:right;
+  margin-right:8px;
+  font-size:22px;
+  line-height:.65;
+  transition:transform .18s ease;
+}
+.expand-button[aria-expanded="true"]::after{transform:rotate(180deg)}
+
+.wager-details{
+  border-top:1px solid #d9dce1;
+  background:#fff;
+}
+.wager-details[hidden]{display:none}
+
+.detail-row{
+  min-height:64px;
+  padding:4px 9px 4px 12px;
+  display:grid;
+  grid-template-columns:minmax(84px,1fr) minmax(86px,1fr) auto;
+  align-items:center;
+  gap:8px;
+  border-bottom:1px solid #e6e8eb;
+  font-variant-numeric:tabular-nums;
+}
+.detail-row:last-child{border-bottom:0}
+
+.detail-combo{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:2px;
+}
+.detail-combo .confirm-car{
+  width:24px;
+  height:24px;
+  flex-basis:24px;
+  font-size:15px;
+}
+.detail-odds{
+  width:100%;
+  margin-top:3px;
+  color:#30343a;
+  font-size:14px;
+  font-weight:1000;
+  white-space:nowrap;
+}
+
+.detail-value{text-align:right}
+.detail-return{color:#383d44;font-size:14px;font-weight:750;white-space:nowrap}
+.detail-profit{margin-top:2px;color:#727984;font-size:14px;font-weight:850;white-space:nowrap}
+.detail-profit .is-positive{color:var(--confirm-green)}
+.detail-profit .is-negative{color:var(--confirm-red)}
+.profit-unit{
+  margin-left:2px;
+  color:#111!important;
+  font:inherit;
+}
+
+.point-stepper{
+  display:grid;
+  grid-template-columns:38px auto 38px;
+  align-items:center;
+  gap:5px;
+}
+.point-stepper button{
+  width:38px;
+  height:38px;
+  padding:0;
+  border:2px solid #c2c6ce;
+  border-radius:10px;
+  color:#737b86;
+  background:#fff;
+  font-size:22px;
+  font-weight:400;
+  line-height:1;
+}
+.detail-unit{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  color:#4f5660;
+  font-size:13px;
+  font-weight:750;
+  white-space:nowrap;
+}
+.point-stepper input{
+  width:42px;
+  height:40px;
+  padding:0 2px;
+  border:1px solid #d3d6db;
+  border-radius:10px;
+  color:#4f5660;
+  background:#f1f2f5;
+  font-size:15px;
+  text-align:center;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.05);
+}
+
+.confirm-back-link{
+  width:max-content;
+  margin:16px auto 0;
+  display:block;
+  padding:8px 12px;
+  border-radius:8px;
+  color:#4d3508;
+  background:rgba(255,255,255,.64);
+  font-size:14px;
+  font-weight:1000;
+  text-align:center;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.detail-row.is-zero .detail-value{color:#8a9098}
+.detail-row.is-zero .detail-return{color:#8a9098}
+
+.vote-submit-float{
+  position:fixed;
+  z-index:9002;
+  left:50%;
+  bottom:calc(var(--visual-bottom,0px) + env(safe-area-inset-bottom,0px) + 3px);
+  width:calc((100vw - 8px) / 5 + 8px);
+  height:53px;
+  transform:translateX(-50%);
+  overflow:hidden;
+  border:1px solid #8c671f;
+  border-radius:17px;
+  color:#241b0d;
+  background:linear-gradient(180deg,#f8e8b8 0%,#e2c477 30%,#c59b43 68%,#a97825 100%);
+  font-size:17px;
+  font-weight:1000;
+  letter-spacing:.03em;
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.94),
+    inset 0 -1px 0 rgba(90,56,8,.30),
+    0 4px 13px rgba(64,39,4,.42),
+    0 0 0 1px rgba(255,239,191,.46),
+    0 0 15px rgba(255,218,117,.56),
+    0 0 30px rgba(218,166,55,.30);
+  animation:voteConfirmGlow 2.4s ease-in-out infinite;
+  touch-action:manipulation;
+}
+.vote-submit-float > span:last-child{position:relative;z-index:2}
+.vote-submit-shine{
+  position:absolute;
+  top:-75%;
+  left:-55%;
+  width:24%;
+  height:250%;
+  transform:rotate(24deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.82),transparent);
+  filter:blur(.2px);
+  animation:voteConfirmSweep 3.1s ease-in-out infinite;
+}
+@keyframes voteConfirmSweep{
+  0%,58%{left:-55%;opacity:0}
+  66%{opacity:.8}
+  86%{left:130%;opacity:.35}
+  100%{left:130%;opacity:0}
+}
+@keyframes voteConfirmGlow{
+  0%,100%{
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.94),inset 0 -1px 0 rgba(90,56,8,.30),0 4px 13px rgba(64,39,4,.42),0 0 0 1px rgba(255,239,191,.46),0 0 13px rgba(255,218,117,.48),0 0 25px rgba(218,166,55,.24);
+  }
+  50%{
+    box-shadow:inset 0 1px 0 rgba(255,255,255,1),inset 0 -1px 0 rgba(90,56,8,.24),0 5px 15px rgba(64,39,4,.46),0 0 0 2px rgba(255,243,207,.58),0 0 23px rgba(255,224,139,.78),0 0 42px rgba(218,166,55,.40);
+  }
+}
+.vote-submit-float.is-submitting,
+.vote-submit-float:disabled{
+  cursor:wait;
+  filter:brightness(1.08);
+}
+
+@media(max-width:430px){
+  .confirm-page{padding-inline:7px}
+  .confirm-summary{padding:9px 11px}
+  .summary-line{font-size:13px}
+  .confirm-summary .summary-line strong{font-size:22px}
+  .wager-head{grid-template-columns:auto auto minmax(0,1fr) auto;gap:8px;padding-left:10px}
+  .wager-title,.wager-count{font-size:16px}
+  .wager-unit{font-size:12px}
+  .wager-unit input{width:43px;height:38px}
+  .wager-delete{width:38px;height:38px}
+  .position-row{grid-template-columns:56px minmax(0,1fr)}
+  .position-label{padding-left:12px;font-size:12px}
+  .confirm-car{width:24px;height:24px;font-size:15px}
+  .detail-row{grid-template-columns:minmax(76px,1fr) minmax(76px,1fr) auto;padding-inline:8px;gap:5px}
+  .detail-combo .confirm-car{width:22px;height:22px;flex-basis:22px;font-size:14px}
+  .detail-odds,.detail-return,.detail-profit{font-size:13px}
+  .point-stepper{grid-template-columns:34px auto 34px;gap:4px}
+  .point-stepper button{width:34px;height:34px;font-size:20px;border-radius:9px}
+  .detail-unit{gap:2px;font-size:12px}
+  .point-stepper input{width:38px;height:37px;font-size:14px}
+  .vote-submit-float{font-size:16px}
+}
+
+@media(max-width:380px){
+  .wager-head{gap:6px}
+  .wager-title,.wager-count{font-size:15px}
+  .wager-unit{font-size:11px}
+  .wager-unit input{width:38px}
+  .detail-row{grid-template-columns:minmax(68px,1fr) minmax(68px,1fr) auto;padding-left:7px;padding-right:6px}
+  .point-stepper{grid-template-columns:31px auto 31px;gap:3px}
+  .point-stepper button{width:31px;height:31px}
+  .point-stepper input{width:35px;height:34px}
+  .detail-unit{font-size:11px}
+  .vote-submit-float{width:calc((100vw - 8px) / 5 + 4px)}
+}
+
+@media(display-mode:standalone){
+  .vote-submit-float{height:49px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .vote-submit-float,.vote-submit-shine{animation:none}
+}
+
+
+/* v3: summary hierarchy, fixed detail chevrons, and stable confirmation layout. */
+.confirm-summary .summary-line:first-child,
+.confirm-summary .summary-line:first-child strong{
+  font-size:22px;
+  line-height:1.15;
+}
+.confirm-summary .summary-line:nth-child(n+2),
+.confirm-summary .summary-line:nth-child(n+2) strong{
+  font-size:17px;
+  line-height:1.2;
+}
+.expand-button{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 48px;
+}
+.expand-button::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  right:20px;
+  width:9px;
+  height:9px;
+  margin-top:-6px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg);
+  transform-origin:center;
+  transition:none;
+}
+.expand-button[aria-expanded="true"]::after{transform:rotate(225deg)}
+@media(max-width:430px){
+  .confirm-summary .summary-line:first-child,
+  .confirm-summary .summary-line:first-child strong{font-size:22px}
+  .confirm-summary .summary-line:nth-child(n+2),
+  .confirm-summary .summary-line:nth-child(n+2) strong{font-size:17px}
+}
+
+/* v8: match the return link to the shared race venue/number typography while retaining its existing color. */
+.confirm-back-link{
+  font-size:22px;
+}
+
+/* v9: show wager-appropriate separators between car badges in expanded bet details. */
+.detail-combination-separator{
+  display:inline-block;
+  flex:0 0 17px;
+  min-width:17px;
+  color:#66707c;
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:430px){
+  .detail-combination-separator{flex-basis:13px;min-width:13px;font-size:12px}
+}
+
+/* v10: use the same point controls before and after detail expansion. */
+.wager-head{
+  grid-template-columns:auto auto minmax(0,1fr);
+}
+.wager-unit{
+  gap:7px;
+}
+.wager-unit .group-point-stepper{
+  flex:0 0 auto;
+}
+.wager-unit .point-stepper input{
+  width:42px;
+  height:40px;
+  padding:0 2px;
+  border:1px solid #d3d6db;
+  border-radius:10px;
+  color:#4f5660;
+  background:#f1f2f5;
+  font-size:15px;
+  font-weight:400;
+  text-align:center;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.05);
+}
+.point-stepper button:disabled{
+  cursor:default;
+  opacity:.38;
+}
+@media(max-width:430px){
+  .wager-head{grid-template-columns:auto auto minmax(0,1fr)}
+  .wager-unit{gap:5px}
+  .wager-unit .point-stepper input{width:38px;height:37px;font-size:14px}
+}
+@media(max-width:380px){
+  .wager-unit{gap:4px}
+  .wager-unit .point-stepper input{width:35px;height:34px}
+}
+
+/* v11: tighten wager separators so the car badges read as one compact combination. */
+.detail-combo{gap:0}
+.detail-combination-separator{
+  flex-basis:7px;
+  min-width:7px;
+  font-size:12px;
+  letter-spacing:-.08em;
+}
+@media(max-width:430px){
+  .detail-combination-separator{flex-basis:6px;min-width:6px;font-size:11px}
+}
+
+/* v12: use exactly 1px of horizontal spacing on each side of combination separators. */
+.detail-combo{gap:0}
+.detail-combination-separator{
+  flex:0 0 auto;
+  min-width:0;
+  margin:0 1px;
+  font-size:12px;
+  letter-spacing:0;
+}
+@media(max-width:430px){
+  .detail-combination-separator{flex-basis:auto;min-width:0;margin:0 1px;font-size:11px}
+}
+
+
+/* v13: give ordered and unordered separators the same fixed slot width. */
+.detail-combination-separator{
+  box-sizing:content-box;
+  flex:0 0 7px;
+  width:7px;
+  min-width:7px;
+  margin:0 1px;
+  text-align:center;
+}
+@media(max-width:430px){
+  .detail-combination-separator{
+    flex-basis:7px;
+    width:7px;
+    min-width:7px;
+    margin:0 1px;
+  }
+}
+
+/* v14: keep detail combinations aligned regardless of separator glyph width. */
+.detail-combo{gap:0}
+.detail-combination-separator{
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 9px;
+  width:9px;
+  min-width:9px;
+  margin:0;
+  padding:0 1px;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:430px){
+  .detail-combination-separator{flex-basis:9px;width:9px;min-width:9px;margin:0;padding-inline:1px}
+}
+
+
+/* v15: use a trash icon only for the pre-detail wager-group removal control. */
+.point-stepper .group-trash-button{
+  color:#6b737e;
+}
+.point-stepper .group-trash-button svg{
+  width:19px;
+  height:19px;
+  display:block;
+  margin:auto;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
+}
+.point-stepper .group-trash-button:active{
+  color:#9b1f27;
+  background:#fff1f2;
+  border-color:#d6a8ac;
+}
+
+
+/* v16: strengthen the confirmation glow and hand off the accepted state to inquiry. */
+
+
+/* v17: use a text remove control and place "各" immediately after the minus/remove button. */
+.wager-unit{gap:0}
+.wager-unit .group-point-stepper{
+  grid-template-columns:38px auto auto 38px;
+  gap:5px;
+}
+.point-stepper-each{
+  color:#3e434a;
+  font-size:13px;
+  font-weight:750;
+  line-height:1;
+  white-space:nowrap;
+}
+.point-stepper .group-remove-button{
+  color:#737b86;
+  font-size:14px;
+  font-weight:1000;
+}
+.point-stepper .group-remove-button:active{
+  color:#9b1f27;
+  background:#fff1f2;
+  border-color:#d6a8ac;
+}
+@media(max-width:430px){
+  .wager-unit .group-point-stepper{grid-template-columns:34px auto auto 34px;gap:4px}
+  .point-stepper-each{font-size:12px}
+  .point-stepper .group-remove-button{font-size:13px}
+}
+@media(max-width:380px){
+  .wager-unit .group-point-stepper{grid-template-columns:31px auto auto 31px;gap:3px}
+  .point-stepper-each{font-size:11px}
+}
+
+
+/* v18: color detailed odds by threshold. */
+.detail-odds .confirm-odds-low{color:#d70018!important}
+.detail-odds .confirm-odds-high{color:#0068b7!important}
+.detail-odds-range{color:inherit}
+
+.position-row-odds-vote{
+  grid-template-columns:1fr;
+}
+.position-odds-vote{
+  display:flex;
+  align-items:center;
+  min-height:35px;
+  padding:4px 14px;
+  color:#343941;
+  font-size:13px;
+  font-weight:900;
+}
+@media(max-width:430px){
+  .position-odds-vote{padding-inline:12px;font-size:12px}
+}
+
+/* v21: require PIN approval before accepting a confirmed vote. */
+body.pin-approval-open{
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+.pin-approval-overlay{
+  position:fixed;
+  z-index:12000;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:20px 14px calc(20px + env(safe-area-inset-bottom,0px));
+  background:rgba(0,0,0,.64);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+.pin-approval-overlay[hidden]{display:none}
+.pin-approval-dialog{
+  position:relative;
+  width:min(100%,430px);
+  min-height:260px;
+  padding:56px 24px 28px;
+  border:1px solid rgba(71,48,8,.58);
+  border-radius:16px;
+  color:var(--confirm-ink);
+  background:#fff;
+  box-shadow:0 18px 48px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.92);
+}
+.pin-approval-dialog::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:7px;
+  border-radius:15px 15px 0 0;
+  background:linear-gradient(90deg,#a97825,#e5ca7d,#a97825);
+}
+.pin-approval-back{
+  position:absolute;
+  top:17px;
+  right:16px;
+  min-width:76px;
+  height:36px;
+  padding:0 12px;
+  border:1px solid #b7bcc4;
+  border-radius:9px;
+  color:#555d68;
+  background:#fff;
+  font-size:13px;
+  font-weight:1000;
+  line-height:1;
+}
+.pin-approval-title{
+  margin:0;
+  color:#2d3137;
+  font-size:21px;
+  font-weight:1000;
+  line-height:1.35;
+  text-align:center;
+}
+.pin-approval-body{
+  width:min(100%,290px);
+  margin:22px auto 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.pin-approval-field{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  color:#4f5660;
+  font-size:13px;
+  font-weight:900;
+}
+.pin-approval-field input{
+  width:min(100%,220px);
+  height:50px;
+  padding:0 16px;
+  border:2px solid #b7bcc4;
+  border-radius:11px;
+  color:#202328;
+  background:#f5f6f8;
+  font-size:24px;
+  font-weight:1000;
+  letter-spacing:.28em;
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+  outline:none;
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.07);
+}
+.pin-approval-field input:focus{
+  border-color:#b88728;
+  background:#fffdf7;
+  box-shadow:0 0 0 3px rgba(213,171,67,.22),inset 0 1px 3px rgba(0,0,0,.05);
+}
+.pin-approval-note{
+  margin:9px 0 18px;
+  color:#747b85;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.5;
+  text-align:center;
+}
+.pin-approval-submit{
+  width:min(100%,240px);
+  height:50px;
+  border:1px solid #8c671f;
+  border-radius:13px;
+  color:#241b0d;
+  background:linear-gradient(180deg,#f8e8b8 0%,#e2c477 30%,#c59b43 68%,#a97825 100%);
+  font-size:16px;
+  font-weight:1000;
+  letter-spacing:.02em;
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 4px 12px rgba(85,53,5,.25);
+}
+.pin-approval-submit:disabled{
+  cursor:not-allowed;
+  color:#8c9096;
+  border-color:#c7c9cd;
+  background:#e2e3e6;
+  text-shadow:none;
+  box-shadow:none;
+}
+.pin-approval-submit.is-submitting{
+  cursor:wait;
+  filter:brightness(1.05);
+}
+@media(max-width:430px){
+  .pin-approval-overlay{padding-inline:12px}
+  .pin-approval-dialog{min-height:248px;padding:53px 18px 24px}
+  .pin-approval-title{font-size:20px}
+  .pin-approval-back{top:15px;right:13px;min-width:72px;height:34px;font-size:12px}
+  .pin-approval-body{margin-top:19px}
+  .pin-approval-field input{height:48px;font-size:22px}
+  .pin-approval-submit{height:48px;font-size:15px}
+}
+
+
+
+/* v22: simplify PIN approval copy and match the back control to the wager +/- buttons. */
+.pin-approval-back{
+  min-width:76px;
+  height:38px;
+  padding:0 12px;
+  border:2px solid #c2c6ce;
+  border-radius:10px;
+  color:#737b86;
+  background:#fff;
+  font-size:13px;
+  font-weight:1000;
+  line-height:1;
+  box-shadow:none;
+}
+.pin-approval-back:active{
+  color:#555d68;
+  background:#f1f2f5;
+  border-color:#aeb3bc;
+}
+.pin-approval-body{margin-top:22px}
+.pin-approval-field{margin-bottom:18px}
+@media(max-width:430px){
+  .pin-approval-back{min-width:72px;height:34px;border-radius:9px;font-size:12px}
+  .pin-approval-body{margin-top:19px}
+  .pin-approval-field{margin-bottom:16px}
+}
+
+
+/* v23: match the PIN-dialog back label size to the approval action. */
+.pin-approval-back{font-size:16px}
+@media(max-width:430px){.pin-approval-back{font-size:15px}}

@@ -1,0 +1,316 @@
+/* Near-10 race detail: car/rider geometry and cell padding match basic information. */
+.recent10-page .section{margin-top:10px}
+.recent-detail-table{width:3154px}
+.recent-detail-table col.col-car{width:38px}
+.recent-detail-table col.col-rider{width:116px}
+.recent-detail-table col.col-race-result{width:300px}
+.recent-detail-table th,.recent-detail-table td{padding:2px 5px}
+.recent-detail-table th:first-child,.recent-detail-table td:first-child{padding:0}
+.recent-detail-table .rider-name{padding:2px 7px}
+.recent-detail-result{
+  height:44px!important;
+  padding:2px 5px!important;
+  text-align:left!important;
+  vertical-align:middle!important;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+/* The finish badge spans both rows. All information stays on exactly two unwrapped rows. */
+.recent-race-card{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr);
+  grid-template-rows:16px 16px;
+  column-gap:.35em;
+  row-gap:3px;
+  align-content:center;
+  width:100%;
+  min-width:0;
+  height:35px;
+  overflow:hidden;
+  color:#15171a;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.recent-finish-badge{
+  grid-column:1;
+  grid-row:1 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  align-self:stretch;
+  width:28px;
+  min-height:35px;
+  color:#050505;
+  background:#d9dde2;
+  border-radius:6px;
+  font-size:16px;
+  font-weight:1000;
+  line-height:1;
+}
+.recent-finish-badge.is-nonnumeric{font-size:10px;letter-spacing:-.04em}
+.recent-race-top{
+  grid-column:2;
+  grid-row:1;
+  display:flex;
+  align-items:center;
+  gap:.35em;
+  min-width:0;
+  height:16px;
+  overflow:visible;
+  white-space:nowrap;
+}
+.recent-race-date,.recent-race-venue,.recent-race-grade,.recent-race-name,.recent-race-track{
+  display:inline-block;
+  flex:0 0 auto;
+  min-width:0;
+  color:#15171a;
+  font-size:13px;
+  font-weight:700;
+  line-height:16px;
+  white-space:nowrap;
+}
+.recent-race-grade{font-weight:850;text-align:center}
+.recent-race-track{color:#66707c;font-weight:700}
+.recent-race-bottom{
+  grid-column:2;
+  grid-row:2;
+  display:flex;
+  align-items:center;
+  gap:.35em;
+  min-width:0;
+  height:16px;
+  overflow:visible;
+  white-space:nowrap;
+}
+.recent-race-metric{
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:baseline;
+  min-width:0;
+  color:#15171a;
+  font-size:13px;
+  font-weight:700;
+  line-height:16px;
+  white-space:nowrap;
+}
+.recent-race-metric-label{
+  margin-right:.35em;
+  color:#66707c;
+  font-size:13px;
+  font-weight:700;
+}
+.recent-race-metric-value{color:#15171a;font-size:13px;font-weight:700}
+
+@media(max-width:430px){
+  .recent-detail-result{height:42px!important}
+  .recent-race-card{height:35px}
+}
+
+/* Medal palette: 1st gold, 2nd blue-tinted silver, 3rd subdued bronze, all others gray. */
+.recent-finish-badge.finish-1{background:#f6de8d!important}
+.recent-finish-badge.finish-2{background:#d9e6ee!important}
+.recent-finish-badge.finish-3{background:#e3c6a3!important}
+.recent-finish-badge.finish-other{background:#d9dde2!important;color:#34383d!important}
+
+/* Race time, trial time and ST are colored only when ranked in the top three of that race. */
+.recent-race-metric[data-rank]{padding:1px 2px;border-radius:0!important;box-shadow:none!important;background-clip:border-box!important}
+.recent-race-metric[data-rank="1"],.recent-race-metric[data-rank="1"]>*{background:#f6de8d!important}
+.recent-race-metric[data-rank="2"],.recent-race-metric[data-rank="2"]>*{background:#d9e6ee!important}
+.recent-race-metric[data-rank="3"],.recent-race-metric[data-rank="3"]>*{background:#e3c6a3!important}
+
+/* v2: finalized near-10 detail typography, finish square and aligned metric columns. */
+.recent-race-card{
+  grid-template-columns:32px minmax(0,1fr);
+  column-gap:.35em;
+}
+.recent-finish-badge{
+  width:32px;
+  height:32px;
+  min-height:32px;
+  align-self:center;
+  border-radius:6px;
+}
+.recent-finish-badge.is-nonnumeric{
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:-.08em;
+  line-height:1;
+}
+
+/* The whole first line uses normal-weight black text. */
+.recent-race-top,
+.recent-race-date,
+.recent-race-venue,
+.recent-race-grade,
+.recent-race-name,
+.recent-race-track{
+  color:#15171a!important;
+  font-weight:400!important;
+}
+
+/* Fixed columns keep 競・試・ST・H aligned in every race cell. */
+.recent-race-bottom{
+  display:grid;
+  grid-template-columns:68px 60px 42px 32px;
+  column-gap:.35em;
+  align-items:center;
+}
+.recent-race-bottom .recent-race-metric{
+  width:100%;
+  min-width:0;
+  justify-content:flex-start;
+  box-sizing:border-box;
+  padding:1px 2px;
+}
+.recent-race-bottom .recent-race-metric:nth-child(1),
+.recent-race-bottom .recent-race-metric:nth-child(2){
+  display:grid;
+  grid-template-columns:1em minmax(0,1fr);
+  column-gap:.35em;
+  align-items:baseline;
+}
+.recent-race-bottom .recent-race-metric:nth-child(3),
+.recent-race-bottom .recent-race-metric:nth-child(4){
+  display:flex;
+  align-items:baseline;
+}
+.recent-race-metric-label{margin-right:0!important}
+
+
+/* v6: compact two-line result layout. */
+.recent-race-top,
+.recent-race-date,
+.recent-race-venue,
+.recent-race-grade,
+.recent-race-name,
+.recent-race-track{
+  font-weight:700!important;
+}
+.recent-race-bottom{
+  display:flex!important;
+  align-items:center;
+  justify-content:flex-start;
+  gap:.5em!important;
+}
+.recent-race-bottom .recent-race-metric,
+.recent-race-bottom .recent-race-metric:nth-child(1),
+.recent-race-bottom .recent-race-metric:nth-child(2),
+.recent-race-bottom .recent-race-metric:nth-child(3),
+.recent-race-bottom .recent-race-metric:nth-child(4){
+  display:inline-flex!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  grid-template-columns:none!important;
+  column-gap:0!important;
+  align-items:baseline;
+  justify-content:flex-start;
+  padding:0!important;
+}
+.recent-race-bottom .recent-race-metric[data-rank]{
+  padding:1px 2px!important;
+}
+.recent-race-metric-label{
+  margin:0!important;
+  padding:0!important;
+}
+.recent-race-metric-value{
+  margin:0!important;
+  padding:0!important;
+}
+
+
+/* v7: align 競・試・ST・H starts while keeping labels joined to values. */
+.recent-race-bottom{
+  display:grid!important;
+  grid-template-columns:64px 54px 40px 28px!important;
+  column-gap:.35em!important;
+  align-items:center!important;
+  justify-content:start!important;
+}
+.recent-race-bottom .recent-race-metric,
+.recent-race-bottom .recent-race-metric:nth-child(1),
+.recent-race-bottom .recent-race-metric:nth-child(2),
+.recent-race-bottom .recent-race-metric:nth-child(3),
+.recent-race-bottom .recent-race-metric:nth-child(4){
+  display:inline-flex!important;
+  width:max-content!important;
+  min-width:0!important;
+  justify-self:start!important;
+  align-items:baseline!important;
+  gap:0!important;
+  padding:0!important;
+}
+.recent-race-bottom .recent-race-metric[data-rank]{
+  padding:1px 2px!important;
+}
+.recent-race-bottom .recent-race-metric-label,
+.recent-race-bottom .recent-race-metric-value{
+  margin:0!important;
+  padding:0!important;
+}
+.recent-race-metric-label-st,
+.recent-race-metric-label-h{
+  color:#66707c!important;
+}
+
+/* v8: compact equal-width race columns; H20 ends just before the standard right padding. */
+.recent-detail-table{width:2534px}
+.recent-detail-table col.col-race-result{width:238px}
+.recent-race-bottom{
+  grid-template-columns:62px 53px 40px 29px!important;
+  column-gap:2px!important;
+}
+
+/* v9: minimal width increase so the longest first-line item remains fully visible. */
+.recent-detail-table{width:2614px}
+.recent-detail-table col.col-race-result{width:246px}
+
+
+/* v10: abbreviated race types and verified field-size / entry-number display. */
+.recent-detail-table{width:3154px}
+.recent-detail-table col.col-race-result{width:300px}
+.recent-race-top{gap:.28em}
+.recent-race-field-size{
+  display:inline-block;
+  flex:0 0 auto;
+  color:#15171a;
+  font-size:13px;
+  font-weight:700;
+  line-height:16px;
+  white-space:nowrap;
+}
+.recent-race-entry.entry-no{
+  width:16px;
+  height:16px;
+  min-width:16px;
+  display:inline-flex;
+  flex:0 0 16px;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  border:1px solid rgba(0,0,0,.30);
+  border-radius:4px;
+  font-size:11px;
+  font-weight:1000;
+  line-height:1;
+  vertical-align:middle;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 1px 2px rgba(0,0,0,.14);
+}
+.recent-race-entry.entry-1{color:#111;background:#fff;border-color:#8f949a}
+.recent-race-entry.entry-2{color:#fff;background:#202226;border-color:#050506}
+.recent-race-entry.entry-3{color:#fff;background:#d4232b;border-color:#9b1118}
+.recent-race-entry.entry-4{color:#fff;background:#2468c7;border-color:#174c98}
+.recent-race-entry.entry-5{color:#171108;background:#f0cf24;border-color:#b69b14}
+.recent-race-entry.entry-6{color:#fff;background:#2e9a4b;border-color:#1e7135}
+.recent-race-entry.entry-7{color:#fff;background:#e47b22;border-color:#aa5514}
+.recent-race-entry.entry-8{color:#fff;background:#e85b9e;border-color:#aa3970}
+
+
+/* v11: equal minimum-fit race columns after field-size and entry-number additions. */
+.recent-detail-table{width:2734px}
+.recent-detail-table col.col-race-result{width:258px}

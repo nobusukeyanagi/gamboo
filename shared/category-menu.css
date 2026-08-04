@@ -1,0 +1,42 @@
+:root{
+  --category-menu-h:42px;
+  --category-menu-safe-top:env(safe-area-inset-top,0px);
+  --category-menu-total-h:calc(var(--category-menu-h) + var(--category-menu-safe-top));
+  --header-total-h:var(--category-menu-total-h);
+  --visual-top:0px;
+}
+gamboo-category-menu{
+  position:fixed;
+  left:0;
+  right:0;
+  top:var(--visual-top,0px);
+  z-index:10000;
+  display:block;
+  width:100%;
+  height:var(--category-menu-total-h);
+  padding-top:var(--category-menu-safe-top);
+  background:
+    linear-gradient(110deg,rgba(213,171,67,.12),transparent 28%,transparent 72%,rgba(213,171,67,.10)),
+    linear-gradient(135deg,#050505,#1b1b1b 56%,#070707);
+  border-bottom:1px solid #51411D;
+  box-shadow:0 5px 18px rgba(0,0,0,.28);
+  touch-action:none;
+  overscroll-behavior:none;
+}
+@media(max-width:430px){:root{--category-menu-h:40px}}
+@media print{gamboo-category-menu{display:none!important}}
+
+
+/* Shared content background (ONAIR does not load this stylesheet) */
+html,body{
+  background:#050505!important;
+}
+.gamboo-content-shell,
+.gamboo-content-sizer,
+.gamboo-content-stage,
+.content-shell{
+  background:
+    radial-gradient(circle at 92% 4%,rgba(215,172,68,.11),transparent 25%),
+    radial-gradient(circle at 5% 41%,rgba(31,79,93,.10),transparent 28%),
+    linear-gradient(180deg,#050505 0,#0a0a0b 48%,#050505 100%)!important;
+}

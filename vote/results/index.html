@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" name="viewport"/>
+<meta content="#090909" name="theme-color"/>
+
+
+
+
+<title>結果 | GambooBET Demo</title>
+<link href="../../shared/category-menu.css?v=60" rel="stylesheet"/>
+<link href="../../shared/page-shell.css?v=20" rel="stylesheet"/>
+<link href="../race-switch.css?v=69" rel="stylesheet"/>
+<link href="../race-info.css?v=63" rel="stylesheet"/>
+<link href="../../shared/race-button-style.css?v=6" rel="stylesheet"/>
+<link href="results.css?v=21" rel="stylesheet"/>
+<script src="../../shared/sport-preferences.js?v=2"></script><script defer="" src="../race-info.js?v=65"></script>
+<script defer="" src="../live-state.js?v=1"></script>
+<script defer="" src="../../shared/category-menu.js?v=57"></script>
+<script defer="" src="../../shared/fixed-layout.js?v=23"></script>
+
+<script defer="" src="../race-switch.js?v=71"></script>
+<script defer="" src="results.js?v=6"></script>
+</head>
+<body>
+<gamboo-category-menu active="results"></gamboo-category-menu>
+<div class="gamboo-content-shell" data-gamboo-pinch-shell="">
+<div class="gamboo-content-sizer" data-gamboo-pinch-sizer="">
+<div class="gamboo-content-stage" data-gamboo-pinch-stage="">
+<gamboo-race-switch active-key="浜松-12R-16:45"></gamboo-race-switch>
+<gamboo-race-info></gamboo-race-info>
+<nav aria-label="リプレイメニュー" class="result-replay-menu">
+<button aria-pressed="false" class="result-replay-tab" data-replay-title="レースリプレイ" data-replay-url="https://autorace.jp/race_info/Ondemand/asx/hamamatsu/2026-02-23_12" type="button">レースリプレイ</button>
+<button aria-pressed="false" class="result-replay-tab" data-replay-title="試走リプレイ" data-replay-url="https://autorace.jp/race_info/Ondemand/asx/hamamatsu/2026-02-23_12/1" type="button">試走リプレイ</button>
+</nav>
+<div class="result-replay-panel" hidden="" id="result-replay-panel">
+<iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" id="result-replay-frame" loading="lazy" src="about:blank" title="リプレイ"></iframe>
+</div>
+<main class="vote-results-page">
+<section aria-labelledby="race-result-heading" class="result-section">
+<h1 class="result-section-heading" id="race-result-heading">レース結果</h1>
+<div class="result-card result-table-card">
+<table aria-label="レース結果" class="race-result-table">
+<colgroup>
+<col class="finish-col"/>
+<col class="car-col"/>
+<col class="rider-col"/>
+<col class="handicap-col"/>
+<col class="trial-col"/>
+<col class="race-time-col"/>
+<col class="start-col"/>
+<col class="incident-col"/>
+</colgroup>
+<thead>
+<tr><th>着順</th><th>車番</th><th>選手</th><th>H</th><th>試走T</th><th>競走T</th><th>ST</th><th>異</th></tr>
+</thead>
+<tbody id="race-result-body"></tbody>
+</table>
+</div>
+</section>
+<section aria-labelledby="payout-heading" class="result-section">
+<h2 class="result-section-heading" id="payout-heading">払戻金</h2>
+<div class="result-card result-table-card">
+<table aria-label="払戻金" class="payout-table">
+<colgroup><col class="payout-type-col"/><col class="payout-combination-col"/><col class="payout-value-col"/><col class="payout-popularity-col"/></colgroup>
+<thead><tr><th>賭式</th><th>的中組番</th><th>払戻金</th><th>人気</th></tr></thead>
+<tbody id="payout-body"></tbody>
+</table>
+</div>
+</section>
+<section aria-labelledby="race-review-heading" class="result-section race-review-section">
+<h2 class="result-section-heading race-review-heading" id="race-review-heading">レース回顧</h2>
+<div class="race-review-card">
+<p>0mオープンのスタート後、1周目はST0.04の<span class="race-review-rider"><span aria-label="7番車" class="result-entry result-entry-7 race-review-entry">7</span><span class="race-review-name">鈴木 宏和</span></span>が先頭で通過し、<span class="race-review-rider"><span aria-label="3番車" class="result-entry result-entry-3 race-review-entry">3</span><span class="race-review-name">青山 周平</span></span>、<span class="race-review-rider"><span aria-label="1番車" class="result-entry result-entry-1 race-review-entry">1</span><span class="race-review-name">黒川 京介</span></span>が続いた。最内枠の黒川は2周目に首位へ出たが、2番手の青山が2周3コーナーで内を差し、3周目から先頭に立つ。黒川は終盤まで射程圏で追走したものの再逆転には届かず2着。<span class="race-review-rider"><span aria-label="5番車" class="result-entry result-entry-5 race-review-entry">5</span><span class="race-review-name">長田 稚也</span></span>は序盤4番手から3周目に3番手へ上がりSG自己最高の3着、<span class="race-review-rider"><span aria-label="4番車" class="result-entry result-entry-4 race-review-entry">4</span><span class="race-review-name">金子 大輔</span></span>は1周目8番手から4周目に4番手まで挽回した。以後は順位が動かず、青山が競走タイム3.343で優勝。全日本選抜3勝目・大会連覇、SG通算20勝、通算126回目の優勝を記録した。</p>
+</div>
+</section>
+<section aria-labelledby="grand-note-heading" class="result-section grand-note-section">
+<h2 class="result-section-heading" id="grand-note-heading">グランドノート</h2>
+<div class="result-card grand-note-card">
+<div class="grand-note-scroll">
+<table aria-label="グランドノート" class="grand-note-table">
+<thead id="grand-note-head"></thead>
+<tbody id="grand-note-body"></tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</div>
+
+</body>
+</html>

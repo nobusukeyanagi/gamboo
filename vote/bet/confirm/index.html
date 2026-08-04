@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" name="viewport"/>
+<meta content="#c89a32" name="theme-color"/>
+
+
+
+
+<title>投票内容確認 | GambooBET Demo</title>
+<link href="../../../shared/category-menu.css?v=60" rel="stylesheet"/>
+<link href="../../../shared/page-shell.css?v=20" rel="stylesheet"/>
+<link href="../../race-info.css?v=63" rel="stylesheet"/>
+<link href="../../../shared/race-button-style.css?v=6" rel="stylesheet"/>
+<link href="../bet.css?v=44" rel="stylesheet"/>
+<link href="confirm.css?v=23" rel="stylesheet"/>
+<script defer="" src="../../race-info.js?v=65"></script>
+<script defer="" src="../../live-state.js?v=1"></script>
+<script defer="" src="../../../shared/category-menu.js?v=57"></script>
+<script defer="" src="../../../shared/fixed-layout.js?v=23"></script>
+
+<script defer="" src="../../odds-data.js?v=1"></script>
+<script defer="" src="confirm.js?v=24"></script>
+</head>
+<body>
+<gamboo-category-menu active="bet"></gamboo-category-menu>
+<div class="gamboo-content-shell confirm-gold-shell" data-gamboo-pinch-shell="">
+<div class="gamboo-content-sizer" data-gamboo-pinch-sizer="">
+<div class="gamboo-content-stage" data-gamboo-pinch-stage="">
+<section aria-label="デルカ残高" class="delca-bar">
+<div class="delca-default" data-delca-default="">
+<div class="delca-balance"><span>投票用デルカ</span><strong>123,456,789 <small>pt</small></strong></div>
+<div class="delca-actions">
+<button type="button"><span>デルカ</span><span>入金</span></button>
+<button type="button"><span>デルカ</span><span>に交換</span></button>
+</div>
+</div>
+</section>
+<gamboo-race-info race-filter-disabled=""></gamboo-race-info>
+<main aria-label="投票内容確認" class="confirm-page">
+<section aria-label="投票合計と想定払戻金" class="confirm-summary">
+<div class="summary-line"><span>投票合計</span><strong id="grand-total">0pt</strong></div>
+<div class="summary-line"><span>想定払戻金</span><strong id="grand-return">0円</strong></div>
+<div class="summary-line"><span>想定収支</span><strong id="grand-profit">0円</strong></div>
+</section>
+<div aria-live="polite" class="wager-groups" id="wager-groups"></div>
+<a class="confirm-back-link" href="../">投票入力に戻る</a>
+</main>
+</div>
+</div>
+</div>
+<button class="vote-submit-float" id="vote-submit" type="button">
+<span aria-hidden="true" class="vote-submit-shine"></span>
+<span>投票確定</span>
+</button>
+<div class="pin-approval-overlay" hidden="" id="pin-approval-overlay">
+<section aria-labelledby="pin-approval-title" aria-modal="true" class="pin-approval-dialog" role="dialog">
+<button aria-label="暗証番号入力を閉じて投票確認へ戻る" class="pin-approval-back" id="pin-approval-back" type="button">戻る</button>
+<h2 class="pin-approval-title" id="pin-approval-title">暗証番号を入力</h2>
+<div class="pin-approval-body">
+<label class="pin-approval-field">
+<span>暗証番号</span>
+<input autocomplete="off" id="pin-approval-input" inputmode="numeric" maxlength="8" pattern="[0-9]*" type="password"/>
+</label>
+<button class="pin-approval-submit" disabled="" id="pin-approval-submit" type="button">承認して投票</button>
+</div>
+</section>
+</div>
+
+</body>
+</html>

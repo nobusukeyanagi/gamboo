@@ -1,0 +1,59 @@
+:root{
+  --page-content-scale:1;
+  --visual-top:0px;
+  --visual-bottom:0px;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+  overscroll-behavior:none;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  touch-action:none;
+}
+
+.gamboo-content-shell{
+  position:fixed;
+  left:0;
+  right:0;
+  top:calc(var(--visual-top,0px) + var(--header-total-h,58px));
+  bottom:var(--visual-bottom,0px);
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  overflow-anchor:none;
+  overscroll-behavior:none;
+  touch-action:pan-x pan-y;
+  background:inherit;
+}
+
+.gamboo-content-sizer{
+  position:relative;
+  min-width:100%;
+  min-height:100%;
+  overflow-anchor:none;
+}
+
+.gamboo-content-stage{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  min-height:1px;
+  overflow-anchor:none;
+  transform:none;
+  transform-origin:0 0;
+  will-change:auto;
+}
+
+@media print{
+  html,body{height:auto;overflow:visible}
+  .gamboo-content-shell{position:static;overflow:visible}
+  .gamboo-content-sizer{min-height:0!important;width:auto!important;height:auto!important}
+  .gamboo-content-stage{position:static;transform:none!important;width:auto!important}
+}

@@ -1,0 +1,525 @@
+:root{color-scheme:dark;--gold:#f0cc70;--auto-purple:#7545af;--table-grid-frame:#d2d3d7;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+*{box-sizing:border-box}html{background:#030405}body{color:#f6f7f8;background:linear-gradient(180deg,#050607,#020304)}button,input{font:inherit}a{-webkit-tap-highlight-color:transparent}
+.vote-racecard{width:min(100%,760px);margin:0 auto;padding:0 0 34px}
+.section{margin:10px 8px 0;overflow:hidden;border:1px solid #51411D;border-radius:14px;background:#fff;box-shadow:none;outline:0;filter:none}
+.gamboo-content-shell{overflow-x:hidden!important;overflow-y:auto}.gamboo-content-sizer{width:100%!important;max-width:100%;overflow-x:clip}.gamboo-content-stage{width:100%!important;max-width:100%;overflow-x:clip}.table-scroll{position:relative;width:100%;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;background:#fff;-webkit-overflow-scrolling:touch;scrollbar-color:#7545af #eee;overscroll-behavior-x:none;touch-action:pan-x pan-y}
+.race-table{width:1222px;border-collapse:separate;border-spacing:0;table-layout:fixed;background:#fff;color:#15171a}
+.race-table col.col-car{width:38px}.race-table col.col-rider{width:116px}.race-table col.col-photo{width:54px}.race-table col.col-support-rate{width:58px}.race-table col.col-hst{width:58px}.race-table col.col-trial{width:64px}.race-table col.col-good-ten-time{width:92px}.race-table col.col-recent-ten{width:154px}.race-table col.col-win-rate,.race-table col.col-quinella-rate,.race-table col.col-place-rate{width:80px}.race-table col.col-results{width:176px}.race-table col.col-rank{width:64px}.race-table col.col-machine{width:108px}
+.race-table th,.race-table td{padding:2px 5px;border-right:1px solid var(--table-grid-frame);border-bottom:1px solid var(--table-grid-frame);text-align:center;white-space:nowrap}
+.race-table th{height:28px;color:#fff;background:var(--auto-purple);font-size:13px;font-weight:1000;line-height:1.05}
+.race-table td{height:44px;color:#15171a;background:#fff;font-size:13px;font-weight:700;line-height:1}
+.race-table th:first-child,.race-table td:first-child{position:sticky;left:0;z-index:4;padding:0;box-shadow:none}
+.race-table th:first-child{z-index:6;color:#fff;background:var(--auto-purple);border-right:1px solid var(--table-grid-frame)}
+.race-table td:first-child{border-right:1px solid var(--table-grid-frame)}
+.race-table th:last-child,.race-table td:last-child{border-right:0}.race-table tbody tr:last-child td{border-bottom:0}
+.race-table .rider-name{padding:2px 7px;text-align:left;overflow:hidden}
+.rider-name-main{display:block;overflow:hidden;font-size:16px;font-weight:1000;line-height:1.15;text-overflow:ellipsis;white-space:nowrap}
+.rider-profile{display:block;margin-top:3px;overflow:hidden;color:#66707c;font-size:11px;font-weight:850;line-height:1;letter-spacing:-.02em;text-overflow:ellipsis;white-space:nowrap}
+.photo-cell{padding:2px!important;vertical-align:middle!important;background:#fff!important}
+.rider-photo{display:block;width:100%;height:39px;max-height:39px;object-fit:cover;object-position:center top;border-radius:4px;background:#f2f3f5}
+
+.support-rate-cell{padding-inline:5px!important;text-align:center!important}
+.support-rate-main{display:block;width:100%;overflow:hidden;color:#111;font-size:13px;font-weight:700;line-height:1;text-overflow:clip;white-space:nowrap;font-variant-numeric:tabular-nums}
+.support-rate-popularity{display:block;margin-top:3px!important;overflow:hidden;color:#66707c!important;font-size:11px!important;font-weight:850!important;line-height:1!important;letter-spacing:-.02em;text-overflow:ellipsis;white-space:nowrap}
+.female-mark{color:#d51568;font-size:.95em}
+.race-table tbody td:nth-child(n+3){padding-inline:5px;color:#111!important;font-size:13px!important}
+.data-stack{vertical-align:middle;font-variant-numeric:tabular-nums}
+.data-stack>span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#111;font-size:13px;font-weight:700;line-height:1}
+.data-stack>span+span{margin-top:4px;color:#111;font-size:13px;font-weight:700}
+.surface-stat{padding-inline:5px!important}
+.stat-line{display:grid!important;width:100%;grid-template-columns:1.1em 1fr .8em;align-items:center;justify-content:stretch;column-gap:0;overflow:visible!important;text-overflow:clip!important}
+.surface-label{text-align:left}.surface-value{text-align:right}.surface-unit{text-align:left}
+.rank-first{border-radius:0!important;background:#f6de8d!important;box-shadow:none!important}
+.rank-second{border-radius:0!important;background:#d9e6ee!important;box-shadow:none!important}
+.rank-third{border-radius:0!important;background:#e3c6a3!important;box-shadow:none!important}
+.stat-line.rank-first,.stat-line.rank-second,.stat-line.rank-third{font-weight:800}
+.stat-line.rank-first .surface-value,.stat-line.rank-second .surface-value,.stat-line.rank-third .surface-value{font-weight:800}
+.data-stack>span.rank-first,.data-stack>span.rank-second,.data-stack>span.rank-third{font-weight:800}
+.good-ten-time{padding-inline:5px!important}.good-ten-line{display:grid!important;width:100%;grid-template-columns:auto auto;align-items:center;justify-content:center;column-gap:.5em;overflow:visible!important;text-overflow:clip!important}.good-ten-label,.good-ten-value{text-align:left}.good-ten-value{font-variant-numeric:tabular-nums}.good-ten-line.rank-first,.stat-line.rank-first{background:#f6de8d!important}.good-ten-line.rank-second,.stat-line.rank-second{background:#d9e6ee!important}.good-ten-line.rank-third,.stat-line.rank-third{background:#e3c6a3!important}
+.race-results{padding-inline:5px!important;text-align:center!important}
+.result-line{display:grid!important;width:100%;grid-template-columns:1em minmax(2ch,1fr) .7ch minmax(2ch,1fr) .7ch minmax(2ch,1fr) .7ch minmax(2ch,1fr) .7ch minmax(2.2ch,1fr);align-items:center;justify-content:stretch;column-gap:0;overflow:visible!important;text-overflow:clip!important}
+.result-label{text-align:left}.result-number,.result-separator{text-align:center}.result-total{text-align:center}
+.recent-ten{padding-inline:5px!important;text-align:center!important}
+.recent-ten-list{display:grid!important;width:100%;grid-template-columns:repeat(10,13px);align-items:center;justify-content:center;column-gap:1px;overflow:visible!important;text-overflow:clip!important}
+.recent-place{display:inline-flex!important;flex:0 0 13px;height:18px;align-items:center;justify-content:center;overflow:visible!important;color:#111!important;font-size:13px!important;font-weight:700!important;line-height:18px!important;text-align:center}
+.recent-place.finish-1{background:#f6de8d!important}.recent-place.finish-2{background:#d9e6ee!important}.recent-place.finish-3{background:#e3c6a3!important}
+.rank-cell{padding-inline:5px!important}.rank-cell>span{font-weight:700}
+.rank-cell>span+span{color:#66707c!important;font-size:11px!important;font-weight:850!important;line-height:1;letter-spacing:-.02em}
+.race-table .machine-name{padding-inline:5px!important;text-align:left;font-weight:900;overflow:hidden}
+.machine-name>span:first-child,.machine-name>span:last-child{font-size:13px;font-weight:700}
+.car-number{font-size:16px!important;font-weight:1000!important;text-align:center!important;vertical-align:middle!important;font-variant-numeric:tabular-nums}
+.car-number-value{display:block;line-height:1}
+.table-scroll.rider-name-hidden .race-table td.car-number{padding:3px 0!important;vertical-align:middle!important}
+.table-scroll.rider-name-hidden .race-table td.car-number::after{content:attr(data-rider-short);position:static;display:block;max-width:100%;margin-top:4px;padding-left:.4px;overflow:hidden;font-size:10px;font-weight:1000;line-height:1;letter-spacing:.4px;white-space:nowrap;text-align:center;text-overflow:clip}
+.car-1{color:#111!important;background:#f3f4f5!important}.car-2{color:#fff!important;background:#171717!important}.car-3{color:#fff!important;background:#e51125!important}.car-4{color:#fff!important;background:#0877bd!important}.car-5{color:#111!important;background:#f2d819!important}.car-6{color:#fff!important;background:#07914a!important}.car-7{color:#111!important;background:#ee8b10!important}.car-8{color:#fff!important;background:#d9008f!important}
+@media(max-width:430px){.vote-racecard{padding-top:0}.section{margin-inline:8px}.race-table td{height:42px}}
+
+/* v78: force ranked row backgrounds to render after cached revisions */
+.good-ten-time .good-ten-line.rank-first,.surface-stat .stat-line.rank-first{background-color:#f6de8d!important}
+.good-ten-time .good-ten-line.rank-second,.surface-stat .stat-line.rank-second{background-color:#d9e6ee!important}
+.good-ten-time .good-ten-line.rank-third,.surface-stat .stat-line.rank-third{background-color:#e3c6a3!important}
+.good-ten-time .good-ten-line[class*="rank-"],.surface-stat .stat-line[class*="rank-"]{display:grid!important;width:100%!important;border-radius:0!important;box-shadow:none!important}
+
+
+/* v79: harden ranked highlights against cached and competing styles */
+.good-ten-line.rank-highlight,.surface-stat .stat-line.rank-highlight{
+  position:relative!important;
+  display:grid!important;
+  width:100%!important;
+  min-width:100%!important;
+  background-clip:border-box!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  isolation:isolate;
+}
+.good-ten-line.rank-highlight>* ,.surface-stat .stat-line.rank-highlight>*{position:relative;z-index:1}
+.good-ten-line[data-rank="1"],.surface-stat .stat-line[data-rank="1"],
+.good-ten-line[data-rank="1"]>*,.surface-stat .stat-line[data-rank="1"]>*{background-color:#f6de8d!important}
+.good-ten-line[data-rank="2"],.surface-stat .stat-line[data-rank="2"],
+.good-ten-line[data-rank="2"]>*,.surface-stat .stat-line[data-rank="2"]>*{background-color:#d9e6ee!important}
+.good-ten-line[data-rank="3"],.surface-stat .stat-line[data-rank="3"],
+.good-ten-line[data-rank="3"]>*,.surface-stat .stat-line[data-rank="3"]>*{background-color:#e3c6a3!important}
+
+/* v80: one ranking palette for ST, trial time, good-10 time and all rate columns */
+.race-table [data-rank="1"],
+.race-table [data-rank="1"] > * {
+  background-color:#f6de8d!important;
+  background-image:linear-gradient(#f6de8d,#f6de8d)!important;
+}
+.race-table [data-rank="2"],
+.race-table [data-rank="2"] > * {
+  background-color:#d9e6ee!important;
+  background-image:linear-gradient(#d9e6ee,#d9e6ee)!important;
+}
+.race-table [data-rank="3"],
+.race-table [data-rank="3"] > * {
+  background-color:#e3c6a3!important;
+  background-image:linear-gradient(#e3c6a3,#e3c6a3)!important;
+}
+.race-table [data-rank]{border-radius:0!important;box-shadow:none!important;background-clip:border-box!important}
+
+
+/* v83: racecard detail menu and compact support-rate column */
+.racecard-detail-menu{
+  width:min(100%,760px);
+  margin:10px auto 0;
+  padding:0 8px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+}
+.racecard-detail-tab{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  height:38px;
+  padding:0 4px;
+  border:1px solid #51411D;
+  border-right:0;
+  border-radius:0;
+  color:#eef1f5;
+  background:linear-gradient(180deg,#1a1a1b,#090909);
+  font-family:inherit;
+  font-size:13px;
+  font-weight:850;
+  line-height:1;
+  white-space:nowrap;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.racecard-detail-tab:first-child{border-radius:9px 0 0 9px}
+.racecard-detail-tab:last-child{border-right:1px solid #51411D;border-radius:0 9px 9px 0}
+.racecard-detail-tab.active,
+.racecard-detail-tab[aria-current="page"]{
+  color:#171108;
+  border-color:#b68b27;
+  background:#f0cc70;
+  font-weight:950;
+}
+.racecard-detail-tab:focus-visible{position:relative;z-index:1;outline:2px solid #fff0ad;outline-offset:-2px}
+.racecard-detail-toast{
+  position:fixed;
+  left:50%;
+  bottom:16px;
+  z-index:12000;
+  max-width:min(88vw,420px);
+  padding:10px 16px;
+  color:#18130a;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  background:linear-gradient(135deg,#f2da8e,#c28c25);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  font-size:13px;
+  font-weight:850;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,12px);
+  transition:opacity .18s ease,transform .18s ease;
+}
+.racecard-detail-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+@media(max-width:430px){.racecard-detail-tab{font-size:12px}}
+@media(max-width:350px){.racecard-detail-tab{font-size:10.5px;letter-spacing:-.02em;padding-inline:2px}}
+
+.race-table tbody td.photo-cell{padding:2px!important;color:transparent!important;font-size:0!important;line-height:0!important}
+.photo-heading{text-align:center!important}
+
+/* v87: keep basic-information rows equal to the near-10 detail row height after adding photos. */
+.race-table tbody td.photo-cell{height:44px!important}
+@media(max-width:430px){
+  .race-table tbody td.photo-cell{height:42px!important}
+  .rider-photo{height:37px;max-height:37px}
+}
+
+/* v91: match support popularity and previous-rank labels to the table's other second lines. */
+.support-rate-cell .support-rate-popularity,
+.rank-cell > span + span{
+  color:#111!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  letter-spacing:normal!important;
+}
+
+/* v92: use the shared gray secondary-line color for support, rank, and machine details. */
+.support-rate-cell .support-rate-popularity,
+.rank-cell > span + span,
+.machine-name > span + span{
+  color:#66707c!important;
+}
+
+
+/* v93: show popularity first and support rate second; only popularity receives top-three highlighting. */
+.support-rate-cell .support-rate-popularity{
+  display:block;
+  margin-top:0!important;
+  color:#111!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  letter-spacing:normal!important;
+}
+.support-rate-cell .support-rate-main{
+  display:block;
+  width:100%;
+  margin-top:4px;
+  color:#66707c!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  font-variant-numeric:tabular-nums;
+}
+
+/* v94: race outlook below the basic-information table. */
+.race-outlook-section{
+  margin:10px 8px 0;
+}
+.race-outlook-heading{
+  min-height:30px;
+  margin:0;
+  padding:0 4px 6px;
+  display:flex;
+  align-items:center;
+  color:#fff;
+  background:transparent;
+  border:0;
+  font-size:22px;
+  font-weight:1000;
+  line-height:1;
+  letter-spacing:.02em;
+}
+.race-outlook-card{
+  padding:12px 13px;
+  color:#15171a;
+  background:#fff;
+  border:1px solid #51411D;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.62;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+.race-outlook-card p{
+  margin:0;
+  color:inherit;
+  font:inherit;
+  line-height:inherit;
+}
+.race-outlook-focus{
+  font-weight:1000!important;
+}
+.race-outlook-rider{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  margin:0 1px;
+  vertical-align:-.14em;
+  line-height:1;
+  white-space:nowrap;
+}
+.race-outlook-entry{
+  width:1.18em;
+  height:1.18em;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 1.18em;
+  border:1px solid rgba(0,0,0,.30);
+  border-radius:3px;
+  font-size:.82em;
+  font-weight:1000;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 1px 2px rgba(0,0,0,.14);
+}
+.race-outlook-name{font-weight:900;line-height:1}
+.race-outlook-entry-1{color:#111;background:#f3f4f5;border-color:#8f949a}
+.race-outlook-entry-2{color:#fff;background:#171717;border-color:#050505}
+.race-outlook-entry-3{color:#fff;background:#e51125;border-color:#a80a19}
+.race-outlook-entry-4{color:#fff;background:#0877bd;border-color:#07598d}
+.race-outlook-entry-5{color:#111;background:#f2d819;border-color:#bca900}
+.race-outlook-entry-6{color:#fff;background:#07914a;border-color:#056a37}
+.race-outlook-entry-7{color:#111;background:#ee8b10;border-color:#b76500}
+.race-outlook-entry-8{color:#fff;background:#d9008f;border-color:#9e0068}
+@media(max-width:430px){
+  .race-outlook-heading{font-size:22px}
+  .race-outlook-card{padding:11px 12px;font-size:13px;line-height:1.62}
+}
+
+/* v95: add current-year, career, and review-point columns to basic information. */
+.race-table{width:1434px}
+.race-table col.col-year{width:68px}
+.race-table col.col-career{width:68px}
+.race-table col.col-review-points{width:76px}
+.season-record-cell{
+  padding-inline:5px!important;
+  vertical-align:middle!important;
+  text-align:left!important;
+  color:#111!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  font-variant-numeric:tabular-nums;
+}
+.season-record-line{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  align-items:center;
+  column-gap:6px;
+  width:100%;
+  line-height:1;
+  white-space:nowrap;
+}
+.season-record-line + .season-record-line{margin-top:4px}
+.season-record-label,.season-record-value{display:block;text-align:left}
+.review-points-cell{
+  padding-inline:5px!important;
+  vertical-align:middle!important;
+  text-align:center!important;
+  color:#111!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  font-variant-numeric:tabular-nums;
+}
+
+/* v96: keep outlook inline car icons within the body line box and make every text line use one rhythm. */
+.race-outlook-card{line-height:1.62}
+.race-outlook-card p,.race-outlook-card p + p{margin-block:0}
+
+
+/* v97: align race-outlook entry icons to the body text without changing line spacing. */
+.race-outlook-card,
+.race-outlook-card p{
+  line-height:1.62;
+}
+.race-outlook-rider{
+  height:1em;
+  line-height:1;
+  vertical-align:-.08em;
+}
+.race-outlook-entry{
+  width:1em;
+  height:1em;
+  flex:0 0 1em;
+  font-size:.72em;
+}
+.race-outlook-name{line-height:1}
+
+
+/* v98: align rider names with body text and align larger entry-icon bottoms to the text bottom. */
+.race-outlook-rider{
+  display:inline;
+  height:auto;
+  line-height:inherit;
+  vertical-align:baseline;
+  white-space:nowrap;
+}
+.race-outlook-entry{
+  width:1.12em;
+  height:1.12em;
+  flex:0 0 1.12em;
+  margin-right:3px;
+  font-size:.78em;
+  vertical-align:text-bottom;
+}
+.race-outlook-name{
+  display:inline;
+  line-height:inherit;
+  vertical-align:baseline;
+}
+
+
+/* v99: enlarge outlook car icons while keeping their lower edge aligned to the body text. */
+.race-outlook-entry{
+  width:1.24em;
+  height:1.24em;
+  flex-basis:1.24em;
+  font-size:.84em;
+  vertical-align:text-bottom;
+}
+
+/* v100: enlarge outlook car badges again while preserving text-bottom alignment. */
+.race-outlook-entry{
+  width:1.34em;
+  height:1.34em;
+  flex-basis:1.34em;
+  font-size:.88em;
+  vertical-align:text-bottom;
+}
+
+/* v101: racecard column help overlay. */
+.racecard-term-button{
+  width:100%;
+  height:100%;
+  min-width:0;
+  margin:0;
+  padding:0;
+  border:0;
+  color:inherit;
+  background:transparent;
+  font:inherit;
+  font-weight:inherit;
+  line-height:inherit;
+  text-align:center;
+  white-space:nowrap;
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.racecard-term-button:focus-visible{
+  outline:2px solid #fff4b8;
+  outline-offset:-2px;
+  border-radius:3px;
+}
+.racecard-term-button[aria-expanded="true"]{
+  color:#fff7c9;
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+}
+.racecard-term-overlay{
+  position:absolute;
+  z-index:500;
+  margin:0;
+  padding:15px 48px 13px 17px;
+  overflow:hidden;
+  border:2px solid var(--auto-purple);
+  border-left-width:7px;
+  border-radius:14px;
+  color:#17191d;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.racecard-term-overlay[hidden]{display:none}
+.racecard-term-title{
+  margin:0;
+  padding:0 0 7px;
+  color:var(--auto-purple);
+  font-size:20px;
+  font-weight:1000;
+  line-height:1.15;
+  letter-spacing:.01em;
+}
+.racecard-term-description{
+  margin:0;
+  color:#22262b;
+  font-size:13.5px;
+  font-weight:750;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+}
+.racecard-term-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:2;
+  width:31px;
+  height:31px;
+  display:grid;
+  place-items:center;
+  margin:0;
+  padding:0 0 2px;
+  border:1px solid #633895;
+  border-radius:8px;
+  color:#fff;
+  background:linear-gradient(180deg,#8959bd,#693a9c);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32);
+  font-family:inherit;
+  font-size:23px;
+  font-weight:700;
+  line-height:1;
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.racecard-term-close:focus-visible{outline:2px solid #342043;outline-offset:2px}
+@media(max-width:430px){
+  .racecard-term-overlay{padding:13px 43px 12px 14px;border-left-width:6px}
+  .racecard-term-title{padding-bottom:6px;font-size:18px}
+  .racecard-term-description{font-size:12.5px;line-height:1.5}
+  .racecard-term-close{top:8px;right:8px;width:29px;height:29px;font-size:21px}
+}
+
+/* v102: shared term help on detail tables and prepared race-result header links. */
+.racecard-result-link-button{
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:2px;
+}
+.racecard-result-link-button:active{opacity:.78}
+
+/* v103: rewrite term help and keep the text area symmetrically padded. */
+.racecard-term-overlay{
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  padding:15px 17px 13px 12px;
+  overflow:hidden;
+}
+.racecard-term-title{
+  padding-right:42px;
+}
+.racecard-term-description{
+  min-height:0;
+  overflow-y:auto;
+  padding:0;
+  scrollbar-width:thin;
+}
+.racecard-term-heart{
+  color:#d51568;
+  font-weight:1000;
+}
+@media(max-width:430px){
+  .racecard-term-overlay{
+    padding:13px 14px 12px 10px;
+  }
+  .racecard-term-title{
+    padding-right:38px;
+  }
+}
+
+/* v106: keep inner table grid gray and use an opaque shared gold only for the table outer frame. */
+.vote-racecard .section{
+  border-color:#51411D!important;
+}

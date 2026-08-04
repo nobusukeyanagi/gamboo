@@ -1,0 +1,106 @@
+/* 対戦成績：基本情報と同じ車番・選手列、同じ行高 */
+.matchups-table{width:762px}
+.matchups-table col.col-car{width:38px}
+.matchups-table col.col-rider{width:116px}
+.matchups-table col.col-opponent{width:68px}
+.matchups-table col.col-sp{width:64px}
+.matchups-table th,.matchups-table td{height:44px}
+.matchups-table th{height:28px}
+.matchups-table .opponent-heading{font-size:16px;font-weight:1000;text-align:center}
+.matchups-table .opponent-heading.car-1{color:#111!important;background:#f3f4f5!important}
+.matchups-table .opponent-heading.car-2{color:#fff!important;background:#171717!important}
+.matchups-table .opponent-heading.car-3{color:#fff!important;background:#e51125!important}
+.matchups-table .opponent-heading.car-4{color:#fff!important;background:#0877bd!important}
+.matchups-table .opponent-heading.car-5{color:#111!important;background:#f2d819!important}
+.matchups-table .opponent-heading.car-6{color:#fff!important;background:#07914a!important}
+.matchups-table .opponent-heading.car-7{color:#111!important;background:#ee8b10!important}
+.matchups-table .opponent-heading.car-8{color:#fff!important;background:#d9008f!important}
+.matchups-table .matchup-cell{padding:2px 5px!important;vertical-align:middle!important;text-align:center!important;font-variant-numeric:tabular-nums}
+.matchup-main{display:block;overflow:hidden;color:#15171a;font-size:13px;font-weight:700;line-height:1;white-space:nowrap;text-overflow:clip}
+.matchup-sub{display:block;margin-top:4px;overflow:hidden;color:#66707c;font-size:11px;font-weight:850;line-height:1;white-space:nowrap;text-overflow:clip}
+.matchups-table .self-match .matchup-main{font-size:16px;font-weight:700}
+.matchups-table .sp-cell .matchup-main{line-height:1.2}
+@media(max-width:430px){.matchups-table th,.matchups-table td{height:42px}.matchups-table th{height:28px}}
+
+
+/* v2: compact opponent cells, gold >50%, and medal-ranked SP. */
+.matchups-table{width:574px}
+.matchups-table col.col-opponent{width:46px}
+.matchups-table col.col-sp{width:52px}
+.matchup-main.matchup-gold,
+.sp-cell .matchup-main.sp-rank-first,
+.sp-cell .matchup-main.sp-rank-second,
+.sp-cell .matchup-main.sp-rank-third{
+  display:block;
+  width:100%;
+  padding:1px 0;
+  color:#15171a!important;
+  border-radius:0;
+}
+.matchup-main.matchup-gold,
+.sp-cell .matchup-main.sp-rank-first{background:#f6de8d!important}
+.sp-cell .matchup-main.sp-rank-second{background:#d9e6ee!important}
+.sp-cell .matchup-main.sp-rank-third{background:#e3c6a3!important}
+
+
+/* v3: 100% minimum-fit width and explicit no-fill for non-gold matchup rates. */
+.matchups-table .matchup-cell:not(.sp-cell) .matchup-main:not(.matchup-gold){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+
+/* v4: recent head-to-head race history and strict matchup-rate coloring. */
+.matchups-table{width:1652px}
+.matchups-table col.col-history{width:154px}
+.matchups-table .history-heading{padding-inline:5px;font-size:11px;font-weight:850;letter-spacing:-.02em;white-space:nowrap}
+.matchups-table .matchup-history-cell{height:44px!important;padding:2px 5px!important;vertical-align:middle!important;text-align:left!important;overflow:hidden;white-space:nowrap}
+.matchups-table .matchup-history-card{grid-template-columns:32px minmax(0,1fr);height:35px}
+.matchups-table .matchup-history-top{display:flex;align-items:center;gap:0;height:16px;overflow:visible}
+.matchups-table .matchup-history-bottom{display:grid!important;grid-template-columns:42px 32px!important;column-gap:2px!important;align-items:center!important;justify-content:start!important;height:16px}
+.matchups-table .matchup-history-top .recent-race-metric,
+.matchups-table .matchup-history-bottom .recent-race-metric{display:inline-flex!important;width:max-content!important;min-width:0!important;align-items:baseline!important;justify-self:start!important;gap:0!important;margin:0!important;padding:0!important}
+.matchups-table .matchup-history-top .recent-race-metric[data-rank],
+.matchups-table .matchup-history-bottom .recent-race-metric[data-rank]{padding:1px 2px!important}
+.matchups-table .matchup-history-empty{background:#fff!important}
+.matchups-table .matchup-cell:not(.sp-cell) .matchup-main:not(.matchup-gold),
+.matchups-table .matchup-cell:not(.sp-cell) .matchup-main:not(.matchup-gold)[data-rank],
+.matchups-table .matchup-cell:not(.sp-cell) .matchup-main:not(.matchup-gold)[class*="rank-"]{background:transparent!important;background-color:transparent!important;background-image:none!important;box-shadow:none!important}
+@media(max-width:430px){.matchups-table .matchup-history-cell{height:42px!important}}
+
+
+/* v5: compact recent-match headers without target-car annotations. */
+.matchups-table{width:1218px}
+.matchups-table col.col-history{width:92px}
+.matchups-table .history-heading{
+  padding:2px 5px!important;
+  color:#fff!important;
+  font-size:13px!important;
+  font-weight:1000!important;
+  line-height:1.05!important;
+  letter-spacing:normal!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+}
+
+
+/* v6: equal minimum-fit history columns with the full ST and H values visible. */
+.matchups-table{width:1358px}
+.matchups-table col.col-history{width:112px}
+.matchups-table .matchup-history-bottom{
+  grid-template-columns:max-content max-content!important;
+  column-gap:2px!important;
+}
+
+
+/* v7: add a small safety margin so the H value never clips. */
+.matchups-table{width:1372px}
+.matchups-table col.col-history{width:114px}
+
+/* v8: replace diagonal dashes with the same pale-gray unavailable-cell fill used by odds. */
+.matchups-table .self-match{
+  color:transparent!important;
+  background:#e4e6e9!important;
+}
+.matchups-table .self-match::before,
+.matchups-table .self-match::after{content:none!important}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" name="viewport"/>
+<meta content="#090909" name="theme-color"/>
+
+
+
+
+<title>オッズ | GambooBET Demo</title>
+<link href="../../shared/category-menu.css?v=60" rel="stylesheet"/>
+<link href="../../shared/page-shell.css?v=20" rel="stylesheet"/>
+<link href="../race-switch.css?v=69" rel="stylesheet"/>
+<link href="../race-info.css?v=63" rel="stylesheet"/>
+<link href="../../shared/race-button-style.css?v=6" rel="stylesheet"/>
+<link href="odds.css?v=34" rel="stylesheet"/>
+<script src="../../shared/sport-preferences.js?v=2"></script><script defer="" src="../race-info.js?v=65"></script>
+<script defer="" src="../live-state.js?v=1"></script>
+<script defer="" src="../../shared/category-menu.js?v=57"></script>
+<script defer="" src="../../shared/fixed-layout.js?v=23"></script>
+
+<script defer="" src="../race-switch.js?v=71"></script>
+<script defer="" src="../odds-data.js?v=1"></script>
+<script defer="" src="odds.js?v=21"></script>
+</head>
+<body>
+<gamboo-category-menu active="odds"></gamboo-category-menu>
+<div class="gamboo-content-shell" data-gamboo-pinch-shell="">
+<div class="gamboo-content-sizer" data-gamboo-pinch-sizer="">
+<div class="gamboo-content-stage" data-gamboo-pinch-stage="">
+<gamboo-race-switch active-key="浜松-12R-16:45"></gamboo-race-switch>
+<gamboo-race-info></gamboo-race-info>
+<nav aria-label="賭式選択" class="odds-type-menu">
+<button aria-pressed="true" class="odds-type-tab active" data-odds-type="3連単" type="button">3連単</button>
+<button aria-pressed="false" class="odds-type-tab" data-odds-type="3連複" type="button">3連複</button>
+<button aria-pressed="false" class="odds-type-tab" data-odds-type="2連単" type="button">2連単</button>
+<button aria-pressed="false" class="odds-type-tab" data-odds-type="2連複" type="button">2連複</button>
+<button aria-pressed="false" class="odds-type-tab" data-odds-type="ワイド" type="button">ワイド</button>
+<button aria-pressed="false" class="odds-type-tab" data-odds-type="単勝" type="button">単勝</button>
+</nav>
+<main class="odds-page">
+<div aria-hidden="true" class="odds-meta-row">
+<span>人気順</span>
+<span>最終オッズ</span>
+</div>
+<section aria-label="人気順" class="odds-section odds-popular-section">
+<button aria-label="前の人気順を表示" class="odds-popular-nav odds-popular-nav-prev" id="popular-prev" type="button">‹</button>
+<div class="odds-popular-viewport" id="popular-viewport">
+<div aria-live="polite" class="odds-popular-list" id="popular-list"></div>
+</div>
+<button aria-label="次の人気順を表示" class="odds-popular-nav odds-popular-nav-next" id="popular-next" type="button">›</button>
+</section>
+<section aria-label="オッズ表" class="odds-section odds-board-section">
+<div class="odds-anchor" hidden="" id="odds-anchor"></div>
+<div aria-live="polite" class="odds-board" id="odds-board"></div>
+</section>
+</main>
+</div>
+</div>
+</div>
+<button class="odds-confirm-float" hidden="" id="odds-confirm" type="button"><span>選択内容</span><span>セット</span></button>
+
+</body>
+</html>

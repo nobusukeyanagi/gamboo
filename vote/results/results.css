@@ -1,0 +1,475 @@
+:root{
+  --result-gold:#f0cc70;
+  --result-border:#b99138;
+  --result-black:#090a0c;
+  --result-muted:#66707c;
+}
+*{box-sizing:border-box}
+html,body,button,table{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+body{color:#17191d;background:#08090b}
+.vote-results-page{width:min(100%,760px);margin:0 auto;padding:10px 8px 18px}
+.result-section{margin:0 0 12px}
+.result-section-heading{
+  min-height:30px;
+  display:flex;
+  align-items:center;
+  margin:0;
+  padding:0 4px 6px;
+  color:#f6f7f8;
+  background:transparent;
+  border:0;
+  font-size:16px;
+  font-weight:1000;
+  line-height:1;
+  letter-spacing:.02em;
+}
+.result-card{overflow:hidden;border:1px solid var(--result-border);border-radius:10px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.result-table-card{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;border-spacing:0;font-variant-numeric:tabular-nums}
+.race-result-table,.payout-table{width:100%;min-width:580px;table-layout:fixed;background:#fff}
+.race-result-table th,.payout-table thead th,.grand-note-table thead th{
+  height:28px;
+  padding:2px 5px;
+  border-right:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  background:#7545af;
+  font-size:13px;
+  font-weight:1000;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.race-result-table th:last-child,.payout-table thead th:last-child,.grand-note-table thead th:last-child{border-right:0}
+.race-result-table td{
+  height:44px;
+  padding:2px 5px;
+  border-top:1px solid #d2d3d7;
+  border-right:1px solid #d2d3d7;
+  color:#15171a;
+  background:#fff;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  text-align:center;
+  white-space:nowrap;
+}
+.race-result-table td:last-child{border-right:0}
+.race-result-table tr:nth-child(even) td{background:#fafafa}
+.race-result-table .finish-col{width:44px}.race-result-table .car-col{width:43px}.race-result-table .rider-col{width:126px}.race-result-table .handicap-col{width:48px}.race-result-table .trial-col{width:66px}.race-result-table .race-time-col{width:70px}.race-result-table .start-col{width:57px}.race-result-table .incident-col{width:40px}
+.race-result-table .rider-cell{padding:2px 7px;font-size:16px;font-weight:1000;line-height:1.15;text-align:left}
+.race-result-table .finish-cell{font-size:15px;font-weight:1000}
+.race-result-table .finish-cell.finish-rank-1{color:#171108;background:#f6de8d!important}
+.race-result-table .finish-cell.finish-rank-2{color:#172029;background:#d9e6ee!important}
+.race-result-table .finish-cell.finish-rank-3{color:#382719;background:#e3c6a3!important}
+.result-entry{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 26px;border:1px solid rgba(0,0,0,.30);border-radius:6px;font-size:16px;font-weight:1000;line-height:1;vertical-align:middle;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 1px 2px rgba(0,0,0,.16)}
+.result-entry-1{color:#111;background:#f3f4f5;border-color:#8f949a}.result-entry-2{color:#fff;background:#202226;border-color:#050506}.result-entry-3{color:#fff;background:#d4232b;border-color:#9b1118}.result-entry-4{color:#fff;background:#2468c7;border-color:#174c98}.result-entry-5{color:#171108;background:#f0cf24;border-color:#b69b14}.result-entry-6{color:#fff;background:#2e9a4b;border-color:#1e7336}.result-entry-7{color:#171108;background:#ef8a17;border-color:#b86409}.result-entry-8{color:#fff;background:#df168c;border-color:#a90d69}
+.payout-table .payout-type-col{width:92px}.payout-table .payout-combination-col{width:170px}.payout-table .payout-value-col{width:112px}.payout-table .payout-popularity-col{width:82px}
+.payout-table tbody th,.payout-table tbody td{
+  height:44px;
+  padding:2px 8px;
+  border-top:1px solid #d2d3d7;
+  background:#fff;
+  color:#15171a;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+}
+.payout-table tbody tr:nth-child(even) th,.payout-table tbody tr:nth-child(even) td{background:#fafafa}
+.payout-table tbody th{font-weight:900;text-align:center;white-space:nowrap}
+.payout-table .payout-continuation .payout-type{color:transparent}
+.payout-combination{padding-left:10px!important;text-align:left!important;white-space:nowrap}
+.payout-combination .result-entry{width:25px;height:25px;flex-basis:25px;font-size:15px}
+.combination-separator{display:inline-block;min-width:17px;color:#66707c;font-size:14px;font-weight:900;text-align:center}
+.payout-value{color:#17191d;font-size:15px!important;font-weight:950!important;text-align:right!important}
+.payout-popularity{color:var(--result-muted)!important;font-weight:850!important;text-align:right!important}
+.unavailable{color:var(--result-muted)!important;font-weight:850!important;text-align:left!important}
+.grand-note-card{overflow:hidden}.grand-note-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.grand-note-table{width:100%;min-width:440px;table-layout:fixed;background:#fff}.grand-note-table .lap-heading{width:72px}.grand-note-table thead th:not(.lap-heading){width:46px}
+.grand-note-table tbody th,.grand-note-table tbody td{height:44px;padding:2px 5px;border-top:1px solid #d2d3d7;border-right:1px solid #d2d3d7;background:#fff;text-align:center}
+.grand-note-table tbody th{padding-left:9px;color:#15171a;font-size:13px;font-weight:900;line-height:1;text-align:left;white-space:nowrap}.grand-note-table tbody td:last-child{border-right:0}.grand-note-table tbody tr:nth-child(even) th,.grand-note-table tbody tr:nth-child(even) td{background:#fafafa}.grand-note-table .result-entry{width:24px;height:24px;flex-basis:24px;font-size:14px;border-radius:5px}
+@media(max-width:600px){
+  .vote-results-page{padding:8px 5px 14px}.result-section{margin-bottom:9px}.result-section-heading{min-height:28px;padding:0 3px 5px;font-size:15px}
+  .race-result-table,.payout-table{min-width:0}
+  .race-result-table .finish-col{width:38px}.race-result-table .car-col{width:38px}.race-result-table .rider-col{width:105px}.race-result-table .handicap-col{width:38px}.race-result-table .trial-col{width:53px}.race-result-table .race-time-col{width:57px}.race-result-table .start-col{width:48px}.race-result-table .incident-col{width:31px}
+  .race-result-table th,.payout-table thead th,.grand-note-table thead th{height:28px;padding-inline:2px;font-size:12px}
+  .race-result-table td{height:42px;padding-inline:2px;font-size:12px}.race-result-table .rider-cell{padding-left:6px;font-size:16px}.race-result-table .finish-cell{font-size:14px}
+  .result-entry{width:24px;height:24px;flex-basis:24px;font-size:14px;border-radius:5px}
+  .payout-table .payout-type-col{width:72px}.payout-table .payout-combination-col{width:135px}.payout-table .payout-value-col{width:88px}.payout-table .payout-popularity-col{width:65px}
+  .payout-table tbody th,.payout-table tbody td{height:42px;padding:2px 4px;font-size:12px}.payout-table tbody th{text-align:center}.payout-combination{padding-left:7px!important}.payout-value{font-size:14px!important}.payout-combination .result-entry{width:23px;height:23px;flex-basis:23px;font-size:13px}.combination-separator{min-width:13px;font-size:12px}
+  .grand-note-table{min-width:405px}.grand-note-table .lap-heading{width:65px}.grand-note-table thead th:not(.lap-heading){width:42px}.grand-note-table tbody th,.grand-note-table tbody td{height:42px}.grand-note-table tbody th{font-size:12px}.grand-note-table .result-entry{width:22px;height:22px;flex-basis:22px;font-size:13px}
+}
+@media(max-width:360px){.race-result-table .rider-col{width:94px}.race-result-table .trial-col{width:49px}.race-result-table .race-time-col{width:53px}.race-result-table .start-col{width:44px}.race-result-table .rider-cell{font-size:15px}.race-result-table td{font-size:11.5px}}
+
+/* v3: align result-page headings, table headers and data typography with odds/racecard pages. */
+.result-section-heading{
+  font-size:16px;
+}
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th{
+  font-size:13px;
+}
+.race-result-table .finish-col{
+  width:38px;
+}
+.race-result-table tbody td:nth-child(n+4):nth-child(-n+7){
+  font-size:13px!important;
+}
+.payout-table tbody th.payout-type,
+.payout-table td.payout-popularity{
+  font-size:15px!important;
+}
+@media(max-width:430px){
+  .result-section-heading{font-size:15px}
+  .race-result-table th,
+  .payout-table thead th,
+  .grand-note-table thead th{font-size:13px}
+  .payout-table tbody th.payout-type,
+  .payout-table td.payout-popularity{font-size:14px!important}
+}
+
+/* v4: unify payout/grand-note car icons and unavailable payout typography. */
+.payout-combination .result-entry,
+.grand-note-table .result-entry{
+  width:26px;
+  height:26px;
+  flex-basis:26px;
+  border-radius:6px;
+  font-size:16px;
+}
+.unavailable{
+  font-size:15px!important;
+}
+@media(max-width:600px){
+  .payout-combination .result-entry,
+  .grand-note-table .result-entry{
+    width:24px;
+    height:24px;
+    flex-basis:24px;
+    border-radius:5px;
+    font-size:14px;
+  }
+  .unavailable{font-size:14px!important}
+}
+
+/* v5: match all result-table inner grid lines to the racecard table. */
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th{
+  border-right:1px solid #d2d3d7;
+  border-bottom:1px solid #d2d3d7;
+}
+.race-result-table td,
+.payout-table tbody th,
+.payout-table tbody td,
+.grand-note-table tbody th,
+.grand-note-table tbody td{
+  border-top:0;
+  border-right:1px solid #d2d3d7;
+  border-bottom:1px solid #d2d3d7;
+}
+.race-result-table th:last-child,
+.race-result-table td:last-child,
+.payout-table thead th:last-child,
+.payout-table tbody td:last-child,
+.grand-note-table thead th:last-child,
+.grand-note-table tbody td:last-child{
+  border-right:0;
+}
+.race-result-table tbody tr:last-child td,
+.payout-table tbody tr:last-child th,
+.payout-table tbody tr:last-child td,
+.grand-note-table tbody tr:last-child th,
+.grand-note-table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+/* v6: align all result body-row heights with odds popular rows. */
+.race-result-table td,
+.payout-table tbody th,
+.payout-table tbody td,
+.grand-note-table tbody th,
+.grand-note-table tbody td{
+  height:40px;
+}
+@media(max-width:600px){
+  .race-result-table td,
+  .payout-table tbody th,
+  .payout-table tbody td,
+  .grand-note-table tbody th,
+  .grand-note-table tbody td{
+    height:38px;
+  }
+}
+
+/* v7: match black-background section headings to the shared race venue/number typography. */
+.result-section-heading{
+  color:#fff;
+  font-size:22px;
+}
+@media(max-width:600px){
+  .result-section-heading{font-size:22px}
+}
+
+/* v8: highlight the top three trial, race and start metrics behind the text. */
+.result-metric{
+  display:inline-block;
+  min-width:3.2em;
+  padding:2px 3px;
+  line-height:1;
+  text-align:center;
+}
+.result-metric-rank-1{color:#171108;background:#f6de8d}
+.result-metric-rank-2{color:#172029;background:#d9e6ee}
+.result-metric-rank-3{color:#382719;background:#e3c6a3}
+
+
+/* v9: use the same separate 1px grid model as the racecard table. */
+.race-result-table,
+.payout-table,
+.grand-note-table{
+  border-collapse:separate;
+  border-spacing:0;
+}
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th,
+.race-result-table td,
+.payout-table tbody th,
+.payout-table tbody td,
+.grand-note-table tbody th,
+.grand-note-table tbody td{
+  border-top:0;
+  border-left:0;
+  border-right:1px solid #d2d3d7;
+  border-bottom:1px solid #d2d3d7;
+  box-shadow:none;
+}
+.race-result-table th:last-child,
+.race-result-table td:last-child,
+.payout-table thead th:last-child,
+.payout-table tbody td:last-child,
+.grand-note-table thead th:last-child,
+.grand-note-table tbody td:last-child{border-right:0}
+.race-result-table tbody tr:last-child td,
+.payout-table tbody tr:last-child th,
+.payout-table tbody tr:last-child td,
+.grand-note-table tbody tr:last-child th,
+.grand-note-table tbody tr:last-child td{border-bottom:0}
+
+/* v10: add replay actions at the racecard detail-menu position and finalize racecard-thin grids. */
+.result-replay-menu{
+  width:min(100%,760px);
+  margin:10px auto 0;
+  padding:0 8px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+}
+.result-replay-tab{
+  min-width:0;
+  height:38px;
+  padding:0 4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #51411D;
+  border-right:0;
+  border-radius:0;
+  color:#eef1f5;
+  background:linear-gradient(180deg,#1a1a1b,#090909);
+  font-size:13px;
+  font-weight:850;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.result-replay-tab:first-child{border-radius:9px 0 0 9px}
+.result-replay-tab:last-child{border-right:1px solid #51411D;border-radius:0 9px 9px 0}
+.result-replay-tab:focus-visible{position:relative;z-index:1;outline:2px solid #fff0ad;outline-offset:-2px}
+@media(max-width:430px){.result-replay-tab{font-size:12px}}
+
+.race-result-table,
+.payout-table,
+.grand-note-table{
+  border-collapse:separate;
+  border-spacing:0;
+}
+.race-result-table th,
+.payout-table thead th,
+.grand-note-table thead th,
+.race-result-table td,
+.payout-table tbody th,
+.payout-table tbody td,
+.grand-note-table tbody th,
+.grand-note-table tbody td{
+  border-top:0!important;
+  border-left:0!important;
+  border-right:1px solid #d2d3d7!important;
+  border-bottom:1px solid #d2d3d7!important;
+  box-shadow:none!important;
+}
+.race-result-table th:last-child,
+.race-result-table td:last-child,
+.payout-table thead th:last-child,
+.payout-table tbody td:last-child,
+.grand-note-table thead th:last-child,
+.grand-note-table tbody td:last-child{border-right:0!important}
+.race-result-table tbody tr:last-child td,
+.payout-table tbody tr:last-child th,
+.payout-table tbody tr:last-child td,
+.grand-note-table tbody tr:last-child th,
+.grand-note-table tbody tr:last-child td{border-bottom:0!important}
+
+
+/* v11: inline replay viewer, grouped wide label and selected-race goal highlight. */
+.result-replay-tab{
+  font-family:inherit;
+  cursor:pointer;
+}
+.result-replay-tab.active,
+.result-replay-tab[aria-pressed="true"]{
+  color:#171108;
+  border-color:#b68b27;
+  background:#f0cc70;
+  font-weight:950;
+  box-shadow:none;
+}
+.result-replay-panel{
+  width:min(100%,760px);
+  margin:0 auto;
+  padding:8px 8px 0;
+}
+.result-replay-panel[hidden]{display:none}
+.result-replay-panel iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  display:block;
+  border:1px solid #51411D;
+  border-radius:10px;
+  background:#000;
+  box-shadow:0 4px 14px rgba(0,0,0,.28);
+}
+.payout-table .payout-type-wide{
+  vertical-align:middle;
+}
+.grand-note-table tbody .goal-row th,
+.grand-note-table tbody .goal-row td{
+  color:#171108;
+  background:var(--race-button-active,#fff6c8)!important;
+}
+
+/* v13: race-review block below payouts, matching the race-outlook presentation. */
+.race-review-section{margin-bottom:12px}
+.race-review-heading{font-size:22px}
+.race-review-card{
+  padding:12px 13px;
+  color:#15171a;
+  background:#fff;
+  border:1px solid #51411D;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.62;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+.race-review-card p{margin:0;color:inherit;font:inherit;line-height:inherit}
+.race-review-rider{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  margin:0 1px;
+  vertical-align:-.14em;
+  line-height:1;
+  white-space:nowrap;
+}
+.race-review-entry.result-entry{
+  width:1.18em;
+  height:1.18em;
+  flex:0 0 1.18em;
+  border-radius:3px;
+  font-size:.82em;
+  line-height:1;
+}
+.race-review-name{font-weight:900;line-height:1}
+@media(max-width:600px){
+  .race-review-section{margin-bottom:9px}
+  .race-review-heading{font-size:22px}
+  .race-review-card{padding:11px 12px;font-size:13px;line-height:1.62}
+}
+
+
+/* v14: keep the race-review icon height and every line box identical to the outlook copy. */
+.race-review-card,
+.race-review-card p{
+  line-height:1.62;
+}
+.race-review-rider{
+  height:1em;
+  line-height:1;
+  vertical-align:-.08em;
+}
+.race-review-entry.result-entry{
+  width:1em;
+  height:1em;
+  flex:0 0 1em;
+  font-size:.72em;
+}
+.race-review-name{line-height:1}
+
+
+/* v15: align review rider names with body text and align larger entry-icon bottoms to the text bottom. */
+.race-review-rider{
+  display:inline;
+  height:auto;
+  line-height:inherit;
+  vertical-align:baseline;
+  white-space:nowrap;
+}
+.race-review-entry.result-entry{
+  width:1.12em;
+  height:1.12em;
+  flex:0 0 1.12em;
+  margin-right:3px;
+  font-size:.78em;
+  vertical-align:text-bottom;
+}
+.race-review-name{
+  display:inline;
+  line-height:inherit;
+  vertical-align:baseline;
+}
+
+
+/* v16: enlarge review car icons while keeping their lower edge aligned to the body text. */
+.race-review-entry.result-entry{
+  width:1.24em;
+  height:1.24em;
+  flex-basis:1.24em;
+  font-size:.84em;
+  vertical-align:text-bottom;
+}
+
+/* v17: enlarge review car badges again while preserving text-bottom alignment. */
+.race-review-entry.result-entry{
+  width:1.34em;
+  height:1.34em;
+  flex-basis:1.34em;
+  font-size:.88em;
+  vertical-align:text-bottom;
+}
+
+
+/* v18: restore top-three coloring for trial T, race T and ST. */
+.race-result-table .result-metric.result-metric-rank-1{
+  color:#171108!important;
+  background:#f6de8d!important;
+}
+.race-result-table .result-metric.result-metric-rank-2{
+  color:#172029!important;
+  background:#d9e6ee!important;
+}
+.race-result-table .result-metric.result-metric-rank-3{
+  color:#382719!important;
+  background:#e3c6a3!important;
+}

@@ -1,0 +1,928 @@
+:root{color-scheme:dark;--gold:#f0cc70;--gold-dark:#9b721d;--grid:#d2d3d7;--purple:#7545af;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+*{box-sizing:border-box}html{background:#030405}body{margin:0;color:#f7f8fa;background:linear-gradient(180deg,#050607,#020304)}button,input{font:inherit}
+.delca-bar{width:min(100%,760px);height:53px;margin:0 auto;padding:3px 10px 2px;display:flex;align-items:center;justify-content:space-between;gap:8px;overflow:hidden;color:#fff;background:radial-gradient(ellipse at 16% 48%,rgba(40,167,225,.42) 0%,rgba(40,167,225,.18) 34%,rgba(40,167,225,0) 68%),linear-gradient(180deg,#181a1c 0%,#090b0d 100%);border-top:0;border-bottom:1px solid #51411D;box-shadow:0 4px 13px rgba(0,0,0,.20)}
+.delca-balance{min-width:0;display:flex;flex-direction:column;justify-content:center;line-height:1.15}.delca-balance span{color:#c7cbd2;font-size:10px;font-weight:850}.delca-balance strong{margin-top:2px;color:#fff;font-size:15px;font-weight:1000;font-variant-numeric:tabular-nums}.delca-balance small{font-size:10px}
+.delca-actions{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,auto);gap:5px}.delca-actions button{height:40px;padding:0 10px;border:1px solid rgba(40,169,223,.62);border-radius:8px;color:#f5fbff;background:linear-gradient(180deg,#0f6f9d,#07537d);font-size:10px;font-weight:1000;line-height:1.1;white-space:nowrap;box-shadow:0 3px 9px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)}.delca-actions button:active{transform:translateY(1px);filter:brightness(.98)}
+.bet-type-menu{width:min(100%,760px);margin:10px auto 0;padding:0 8px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}.bet-type-tab{height:38px;padding:0 2px;border:1px solid #51411D;border-right:0;color:#eef1f5;background:linear-gradient(180deg,#1a1a1b,#090909);font-size:12px;font-weight:900;white-space:nowrap}.bet-type-tab:first-child{border-radius:8px 0 0 8px}.bet-type-tab:last-child{border-right:1px solid #51411D;border-radius:0 8px 8px 0}.bet-type-tab.active{color:#171108;border-color:#d1a539;background:linear-gradient(180deg,#f8e7a8,#d6aa42)}
+.bet-page{width:min(100%,760px);margin:0 auto;padding:8px 8px 112px}.bet-table-section,.selection-section{overflow:hidden;border:1px solid #51411D;border-radius:10px;background:#fff;color:#15171a}.bet-table-scroll{overflow-x:hidden}.bet-table{width:100%;min-width:0;border-collapse:separate;border-spacing:0;table-layout:fixed;background:#fff;color:#15171a}.bet-table col.col-car{width:40px}.bet-table col.col-rider{width:130px}.bet-table col.col-pick{width:auto}.bet-table th,.bet-table td{height:44px;min-width:0;padding:2px 5px;overflow:hidden;border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);text-align:center;white-space:nowrap}.bet-table th{height:28px;color:#fff;background:var(--purple);font-size:13px;font-weight:1000}.bet-table th:last-child,.bet-table td:last-child{border-right:0}.bet-table tbody tr:last-child td{border-bottom:1px solid var(--grid)}.bet-table .box-divider{border-left:3px double #7e838b}.car-number{padding:0!important;font-size:16px;font-weight:1000}.car-1{color:#111;background:#fff}.car-2{color:#fff;background:#171717}.car-3{color:#fff;background:#e51125}.car-4{color:#fff;background:#0877bd}.car-5{color:#111;background:#f2d819}.car-6{color:#fff;background:#07914a}.car-7{color:#111;background:#ee8b10}.car-8{color:#fff;background:#d9008f}.rider-cell{text-align:left!important;padding-inline:7px!important}.rider-main{display:block;font-size:16px;font-weight:1000;line-height:1.15}.rider-profile{display:block;margin-top:2px;color:#68717c;font-size:10px;font-weight:850}.pick-cell{padding:3px!important;background:#fff}.pick-button{width:100%;height:100%;padding:0;border:0;border-radius:5px;color:#fff;background:#fff;font-size:0;font-weight:1000}.pick-button::before{content:attr(data-car);color:#fff;font-size:16px;text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.72)}.pick-button.selected{border:1px solid rgba(0,0,0,.25);font-size:0}.pick-button.selected::before{color:inherit;text-shadow:none}.pick-button.selected.entry-1{color:#111;background:#fff;border-color:#8f949a}.pick-button.selected.entry-2{color:#fff;background:#171717}.pick-button.selected.entry-3{color:#fff;background:#e51125}.pick-button.selected.entry-4{color:#fff;background:#0877bd}.pick-button.selected.entry-5{color:#111;background:#f2d819}.pick-button.selected.entry-6{color:#fff;background:#07914a}.pick-button.selected.entry-7{color:#111;background:#ee8b10}.pick-button.selected.entry-8{color:#fff;background:#d9008f}
+.bet-table tfoot td{vertical-align:top}.bet-options-cell{padding:4px 7px!important;text-align:left!important}.bet-option{display:inline-flex;align-items:center;gap:4px;margin-right:0;color:#4d5661;font-size:10px;font-weight:900}.bet-option input{width:17px;height:17px;margin:0;accent-color:#d6aa42}.column-actions{height:58px!important;padding:3px!important}.column-actions button{display:block;width:100%;height:24px;margin:0 0 3px;border:1px solid #c6cad0;border-radius:7px;color:#fff;background:#20242a;font-size:12px;font-weight:1000}.column-actions button:last-child{margin-bottom:0;color:#626b76;background:#fff}
+.selection-section{margin-top:9px}.selection-heading{height:32px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:var(--purple);font-size:13px;font-weight:1000}.selection-list{background:#fff}.selection-row{min-height:42px;padding:4px 6px;display:grid;grid-template-columns:68px minmax(0,1fr) 55px 72px 34px;align-items:center;gap:4px;border-bottom:1px solid var(--grid);font-size:11px}.selection-row:last-child{border-bottom:0}.selection-type{font-weight:1000}.selection-combo{display:flex;align-items:center;gap:2px}.selection-car{width:21px;height:21px;display:grid;place-items:center;border-radius:4px;font-size:12px;font-weight:1000}.selection-odds,.selection-amount{text-align:right;font-variant-numeric:tabular-nums;font-weight:900}.selection-amount input{width:62px;height:28px;padding:0 4px;border:1px solid #c8ccd2;border-radius:5px;text-align:right}.selection-remove{height:27px;border:1px solid #b7bcc4;border-radius:6px;color:#59616c;background:#fff;font-size:11px;font-weight:1000}.selection-empty{padding:20px;color:#69727d;text-align:center;font-size:12px;font-weight:850}
+.bet-confirm-float{position:fixed;z-index:1000;left:50%;bottom:calc(58px + env(safe-area-inset-bottom));width:min(calc(100% - 24px),736px);height:46px;transform:translateX(-50%);border:1px solid #ffe89c;border-radius:11px;color:#171108;background:linear-gradient(180deg,#ffeaa7,#d3a438);font-size:14px;font-weight:1000;box-shadow:0 4px 18px rgba(0,0,0,.45);animation:betPulse 1.15s ease-in-out infinite}.bet-confirm-float[hidden]{display:none}@keyframes betPulse{0%,100%{filter:brightness(.86);box-shadow:0 4px 14px rgba(0,0,0,.45)}50%{filter:brightness(1.16);box-shadow:0 0 22px rgba(240,204,112,.75)}}
+@media(max-width:430px){.delca-bar{height:53px}.delca-balance strong{font-size:14px}.delca-actions button{height:38px;padding-inline:7px;font-size:9.5px}.bet-type-tab{height:36px;font-size:11px}.bet-page{padding-inline:8px}.bet-table col.col-car{width:34px}.bet-table col.col-rider{width:104px}.bet-table col.col-pick{width:auto}.bet-table th{padding-inline:1px;font-size:11px}.bet-table th.box-divider{font-size:9px}.bet-table td{height:42px;padding-inline:2px}.pick-cell{padding:3px!important}.rider-cell{padding-inline:5px!important}.rider-main{font-size:15px}}
+
+/* v3: larger Delca controls, racecard column widths, compact action row, detached selection meta, and vote-nav-aligned confirmation. */
+.delca-balance span{font-size:12px}
+.delca-balance strong{font-size:18px;line-height:1.05}
+.delca-balance small{font-size:11px}
+.delca-actions{grid-template-columns:repeat(2,clamp(68px,20vw,82px));gap:5px}
+.delca-actions button{
+  width:100%;
+  height:42px;
+  padding:2px 4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  line-height:1.02;
+}
+.delca-actions button span{display:block}
+.bet-table col.col-car{width:38px}
+.bet-table col.col-rider{width:116px}
+.bet-table th,.bet-table td{height:44px}
+.bet-table tfoot td{height:44px;vertical-align:middle}
+.bet-options-cell{height:44px!important;padding:2px 5px!important}
+.bet-option{height:100%;gap:6px;font-size:11px}
+.bet-option input{flex:0 0 34px;width:34px;height:34px}
+.column-actions{
+  height:44px!important;
+  padding:2px!important;
+  display:grid;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:2px;
+}
+.column-actions button{
+  width:100%;
+  height:auto;
+  min-height:0;
+  margin:0;
+  border-radius:5px;
+  font-size:11px;
+  line-height:1;
+}
+.column-actions button:last-child{margin:0}
+.selection-meta-row{
+  margin:10px 10px -2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#d8dce2;
+  font-size:12px;
+  font-weight:900;
+  line-height:1;
+}
+.selection-section{margin-top:8px}
+.selection-heading{display:none}
+.bet-confirm-float{
+  z-index:8999;
+  left:50%;
+  bottom:3px;
+  width:clamp(96px,calc(20vw - 8px),144px);
+  height:44px;
+  border-radius:10px;
+  font-size:12px;
+}
+@media(max-width:430px){
+  .delca-balance span{font-size:11px}
+  .delca-balance strong{font-size:16px}
+  .delca-balance small{font-size:10px}
+  .delca-actions button{height:40px;padding:2px;font-size:12px}
+  .bet-table col.col-car{width:38px}
+  .bet-table col.col-rider{width:116px}
+  .bet-table td{height:44px}
+  .bet-option input{width:34px;height:34px}
+}
+@media(max-width:350px){
+  .delca-bar{padding-inline:7px;gap:5px}
+  .delca-balance strong{font-size:15px}
+  .delca-actions{grid-template-columns:repeat(2,66px);gap:4px}
+  .delca-actions button{font-size:11.5px}
+}
+
+
+/* v4: result-list visual parity, linked box selection, and two-line confirmation label. */
+.selection-row{
+  height:40px;
+  min-height:40px;
+  padding:5px 4px;
+  border-top:1px solid #e1e3e6;
+  border-bottom:0;
+  background:#fff;
+  font-size:14px;
+  font-weight:750;
+  line-height:1.1;
+  font-variant-numeric:tabular-nums;
+}
+.selection-row:first-child{border-top:0}
+.selection-row:nth-child(even){background:#fafafa}
+.selection-type{font-size:14px;font-weight:950}
+.selection-combo{gap:2px;white-space:nowrap}
+.selection-car{
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
+  margin:0 1px;
+  border:1px solid rgba(0,0,0,.30);
+  border-radius:5px;
+  font-size:15px;
+  font-weight:1000;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 1px 2px rgba(0,0,0,.14);
+}
+.selection-car.car-1{color:#111;background:#fff;border-color:#8f949a}
+.selection-car.car-2{color:#fff;background:#202226;border-color:#050506}
+.selection-car.car-3{color:#fff;background:#d4232b;border-color:#9b1118}
+.selection-car.car-4{color:#fff;background:#2468c7;border-color:#174c98}
+.selection-car.car-5{color:#171108;background:#f0cf24;border-color:#b69b14}
+.selection-car.car-6{color:#fff;background:#2e9a4b;border-color:#1e7135}
+.selection-car.car-7{color:#fff;background:#e47b22;border-color:#aa5514}
+.selection-car.car-8{color:#fff;background:#e85b9e;border-color:#aa3970}
+.selection-odds,.selection-amount{font-size:14px;font-weight:850}
+.selection-amount input{font-size:13px;font-weight:750}
+.bet-confirm-float{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  line-height:1.05;
+}
+.bet-confirm-float[hidden]{display:none}
+.bet-confirm-float span{display:block}
+@media(max-width:430px){
+  .selection-row{height:38px;min-height:38px;padding:5px 3px;font-size:13px}
+  .selection-type{font-size:13px}
+  .selection-car{width:21px;height:21px;flex-basis:21px;font-size:14px}
+  .selection-odds,.selection-amount{font-size:13px}
+  .selection-amount input{font-size:12px}
+}
+
+
+/* v5: keep footer controls in their own table columns and restore the female rider mark color. */
+.column-actions{
+  display:table-cell!important;
+  height:44px!important;
+  padding:2px!important;
+  vertical-align:middle!important;
+}
+.column-actions button{
+  display:block;
+  width:100%;
+  height:19px;
+  min-height:19px;
+  margin:0 0 2px;
+  line-height:1;
+}
+.column-actions button:last-child{margin-bottom:0}
+.female-mark{color:#d51568;font-size:.95em}
+
+/* v6: match each footer action button to the selected car-button height and refine selection labels. */
+.bet-table tfoot td,
+.bet-options-cell,
+.column-actions{
+  height:82px!important;
+}
+.column-actions{
+  padding:2px!important;
+}
+.column-actions button{
+  height:38px;
+  min-height:38px;
+  margin:0 0 2px;
+}
+.column-actions button:last-child{margin-bottom:0}
+.selection-meta-row{
+  font-size:16px;
+  font-weight:1000;
+}
+.selection-row{
+  grid-template-columns:68px minmax(0,1fr) 55px 72px 46px;
+}
+.selection-remove{
+  width:100%;
+  min-width:44px;
+}
+@media(max-width:430px){
+  .selection-meta-row{font-size:15px}
+  .selection-row{grid-template-columns:64px minmax(0,1fr) 48px 66px 44px}
+}
+
+/* v7: replace the featured Vote nav frame exactly with the selection-set action. */
+.bet-confirm-float{
+  z-index:9001;
+  left:50%;
+  bottom:calc(var(--visual-bottom,0px) + env(safe-area-inset-bottom,0px) + 3px);
+  width:calc((100vw - 8px) / 5 + 8px);
+  height:53px;
+  transform:translateX(-50%);
+  border:1px solid rgba(242,216,137,.62);
+  border-radius:17px;
+  color:var(--gold);
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.075),transparent 34%,rgba(213,171,67,.08)),
+    linear-gradient(180deg,rgba(48,43,29,.98),rgba(13,12,9,.99));
+  font-size:12px;
+  font-weight:1000;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.48),
+    0 4px 13px rgba(0,0,0,.32);
+  animation:betNavPulse 1.15s ease-in-out infinite;
+  touch-action:manipulation;
+}
+@keyframes betNavPulse{
+  0%,100%{filter:brightness(.92);box-shadow:inset 0 1px 0 rgba(255,255,255,.10),inset 0 -1px 0 rgba(0,0,0,.48),0 4px 13px rgba(0,0,0,.32)}
+  50%{filter:brightness(1.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(0,0,0,.45),0 0 17px rgba(240,204,112,.42)}
+}
+@media(max-width:380px){
+  .bet-confirm-float{width:calc((100vw - 8px) / 5 + 4px)}
+}
+@media(display-mode:standalone){
+  .bet-confirm-float{height:49px}
+}
+
+/* v8: larger Delca balance, racecard-height header, unified controls, and gold selection-set action. */
+.delca-balance span{
+  font-size:14px;
+  line-height:1;
+}
+.delca-balance strong{
+  margin-top:3px;
+  font-size:22px;
+  line-height:1;
+}
+.delca-balance small{font-size:13px}
+.bet-table th{
+  height:28px;
+  padding-block:2px;
+  font-size:13px;
+  font-weight:1000;
+  line-height:1.05;
+}
+.pick-button::before,
+.column-actions button{
+  font-size:18px;
+  font-weight:1000;
+}
+.bet-option{
+  font-size:16px;
+  font-weight:1000;
+}
+.bet-confirm-float{
+  color:#171108;
+  border-color:#d1a539;
+  background:linear-gradient(180deg,#f8e7a8,#d6aa42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.58),
+    inset 0 -1px 0 rgba(111,75,9,.20),
+    0 4px 13px rgba(0,0,0,.34);
+}
+@keyframes betNavPulse{
+  0%,100%{
+    filter:brightness(.94);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.56),inset 0 -1px 0 rgba(111,75,9,.20),0 4px 13px rgba(0,0,0,.34)
+  }
+  50%{
+    filter:brightness(1.10);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.68),inset 0 -1px 0 rgba(111,75,9,.16),0 0 18px rgba(240,204,112,.66)
+  }
+}
+@media(max-width:430px){
+  .delca-balance span{font-size:13px}
+  .delca-balance strong{font-size:20px}
+  .delca-balance small{font-size:12px}
+  .bet-table th{height:28px;font-size:13px}
+  .pick-button::before,
+  .column-actions button{font-size:18px}
+  .bet-option{font-size:15px}
+}
+@media(max-width:350px){
+  .delca-balance span{font-size:12px}
+  .delca-balance strong{font-size:18px}
+  .delca-balance small{font-size:11px}
+}
+
+/* v9: align the selection amount and remove controls with the upper pick/action columns. */
+.selection-row{
+  padding-left:0;
+  padding-right:0;
+  gap:0;
+  grid-template-columns:68px minmax(0,1fr) 55px repeat(2,calc((100% - 154px) / 4));
+}
+.selection-type{padding-left:4px}
+.selection-odds{padding-right:4px}
+.selection-amount{
+  width:100%;
+  padding:0 2px;
+}
+.selection-amount input{
+  width:100%;
+  max-width:none;
+}
+.selection-remove{
+  width:calc(100% - 4px);
+  min-width:0;
+  margin:0 2px;
+}
+@media(max-width:430px){
+  .selection-row{
+    grid-template-columns:64px minmax(0,1fr) 48px repeat(2,calc((100% - 154px) / 4));
+  }
+}
+
+/* v10: replace stake input with the official odds-page popularity rank. */
+.selection-popularity{
+  width:100%;
+  padding:0 2px;
+  color:#7b838e;
+  text-align:right;
+  font-size:12px;
+  font-weight:850;
+  line-height:1.1;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+@media(max-width:430px){
+  .selection-popularity{font-size:11px}
+}
+
+
+/* v11: compact popularity labels, full wide-odds ranges, larger set action, and wager-type grouping. */
+.bet-confirm-float{
+  font-size:15px;
+  line-height:1.02;
+}
+.selection-list{
+  padding:6px;
+  background:#eef0f3;
+}
+.selection-group{
+  overflow:hidden;
+  border:1px solid rgba(167,126,35,.58);
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+}
+.selection-group + .selection-group{margin-top:7px}
+.selection-group .selection-row:last-child{border-bottom:0}
+.selection-empty{
+  border-radius:7px;
+  background:#fff;
+}
+@media(max-width:430px){
+  .bet-confirm-float{font-size:14px}
+  .selection-list{padding:5px}
+  .selection-group + .selection-group{margin-top:6px}
+}
+
+/* v12: use the wager-type frame as the outer card instead of nesting gold frames. */
+.selection-section{
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+.selection-list{
+  padding:0;
+  background:transparent;
+}
+.selection-group{
+  border:1px solid #51411D;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:none;
+}
+.selection-empty{
+  border:1px solid #51411D;
+  border-radius:10px;
+  background:#fff;
+}
+@media(max-width:430px){
+  .selection-list{padding:0}
+}
+
+/* v13: keep wide odds on one line and match remove-button text to the odds text. */
+.selection-odds{white-space:nowrap}
+.selection-remove{font-size:14px}
+@media(max-width:430px){
+  .selection-remove{font-size:13px}
+}
+
+
+/* v14: larger wager-type labels shared with the odds page. */
+.bet-type-tab{font-size:14px}
+@media(max-width:430px){.bet-type-tab{font-size:13px}}
+@media(max-width:350px){.bet-type-tab{font-size:12px}}
+
+
+/* v15: align selection remove controls with the boxed all-clear column and match car 1 to the racecard. */
+.car-number.car-1,
+.pick-button.selected.entry-1{
+  color:#111!important;
+  background:#f3f4f5!important;
+  border-color:#8f949a;
+}
+.selection-remove{
+  width:calc(100% - 7px);
+  margin-left:5px;
+  margin-right:2px;
+  justify-self:stretch;
+}
+
+
+/* v16: add popularity and support rate as the rider cell's third line. */
+.rider-cell{vertical-align:middle!important}
+.rider-main{line-height:1.05}
+.rider-profile{margin-top:1px;line-height:1}
+.rider-support{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  min-width:0;
+  margin-top:1px;
+  overflow:hidden;
+  color:#68717c;
+  font-size:10px;
+  font-weight:850;
+  line-height:1;
+  white-space:nowrap;
+}
+.rider-popularity{
+  display:inline-block;
+  flex:0 0 auto;
+  padding:0 1px;
+  color:#68717c;
+}
+.rider-support-rate{
+  min-width:0;
+  overflow:hidden;
+  color:#68717c;
+  text-overflow:ellipsis;
+}
+.rider-popularity.support-rank-1{color:#111;background:#f6de8d}
+.rider-popularity.support-rank-2{color:#111;background:#d9e6ee}
+.rider-popularity.support-rank-3{color:#111;background:#e3c6a3}
+
+
+/* v18: slightly enlarge rider rows without shrinking either secondary line; let pick buttons grow with the cells. */
+.rider-profile,
+.rider-support{
+  font-size:10px;
+}
+.bet-table tbody td{
+  height:48px;
+}
+.bet-table tbody td.pick-cell{
+  height:48px;
+  padding:3px!important;
+}
+.bet-table tbody td.pick-cell .pick-button{
+  display:block;
+  width:100%;
+  height:42px;
+}
+@media(max-width:430px){
+  .bet-table tbody td,
+  .bet-table tbody td.pick-cell{
+    height:48px;
+  }
+  .bet-table tbody td.pick-cell .pick-button{
+    height:42px;
+  }
+}
+
+/* v19: keep car/rider columns fixed, narrow the box column to about 80% of its former width, and distribute the freed width evenly across 1st-3rd. */
+.bet-table col.col-car{width:38px}
+.bet-table col.col-rider{width:116px}
+.bet-table col.col-pick{width:calc(26.666667% - 41.066667px)}
+.bet-table col.col-box{width:calc(20% - 30.8px)}
+.selection-row{
+  grid-template-columns:68px minmax(0,1fr) 55px calc(26.666667% - 41.066667px) calc(20% - 30.8px);
+}
+@media(max-width:430px){
+  .bet-table col.col-car{width:38px}
+  .bet-table col.col-rider{width:116px}
+  .selection-row{
+    grid-template-columns:64px minmax(0,1fr) 48px calc(26.666667% - 41.066667px) calc(20% - 30.8px);
+  }
+}
+
+/* v20: match the racecard spacing between the rider name and the second line. */
+.rider-main{
+  line-height:1.15;
+}
+.rider-profile{
+  margin-top:3px;
+}
+
+/* v21: match both rider secondary lines to the racecard typography while preserving the v20 spacing. */
+.rider-profile,
+.rider-support{
+  color:#66707c;
+  font-size:11px;
+  font-weight:850;
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.rider-profile{
+  margin-top:3px;
+}
+.rider-support{
+  margin-top:1px;
+}
+.rider-popularity,
+.rider-support-rate{
+  font:inherit;
+  letter-spacing:inherit;
+}
+
+/* v22: match the racecard secondary-line typography and add only the minimum row height needed for three readable lines. */
+.bet-table tbody td,
+.bet-table tbody td.pick-cell{
+  height:50px;
+}
+.bet-table tbody td.pick-cell .pick-button{
+  height:44px;
+}
+@media(max-width:430px){
+  .bet-table tbody td,
+  .bet-table tbody td.pick-cell{
+    height:50px;
+  }
+  .bet-table tbody td.pick-cell .pick-button{
+    height:44px;
+  }
+}
+
+/* v23: align selection controls with the upper table columns. */
+.selection-odds{
+  width:100%;
+  padding-left:4px;
+  padding-right:0;
+  text-align:left;
+  justify-self:stretch;
+}
+.selection-remove{
+  width:auto;
+  margin:0 2px 0 5px;
+  justify-self:stretch;
+  box-sizing:border-box;
+}
+
+/* v24: match the selection-list heading and point count to the shared race venue/number typography. */
+.selection-meta-row,
+.selection-meta-row > span{
+  color:#fff;
+  font-size:22px;
+}
+@media(max-width:430px){
+  .selection-meta-row,
+  .selection-meta-row > span{font-size:22px}
+}
+
+/* v25: show wager-appropriate separators between car badges in the selection list. */
+.selection-combination-separator{
+  display:inline-block;
+  flex:0 0 17px;
+  min-width:17px;
+  color:#66707c;
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:430px){
+  .selection-combination-separator{flex-basis:13px;min-width:13px;font-size:12px}
+}
+
+/* v27: tighten wager separators so the car badges read as one compact combination. */
+.selection-combo{gap:0}
+.selection-combination-separator{
+  flex-basis:7px;
+  min-width:7px;
+  font-size:12px;
+  letter-spacing:-.08em;
+}
+@media(max-width:430px){
+  .selection-combination-separator{flex-basis:6px;min-width:6px;font-size:11px}
+}
+
+/* v28: use exactly 1px of horizontal spacing on each side of combination separators. */
+.selection-combo{gap:0}
+.selection-combination-separator{
+  flex:0 0 auto;
+  min-width:0;
+  margin:0 1px;
+  font-size:12px;
+  letter-spacing:0;
+}
+@media(max-width:430px){
+  .selection-combination-separator{flex-basis:auto;min-width:0;margin:0 1px;font-size:11px}
+}
+
+
+/* v29: equalize all four pick columns, align selection actions, use fixed separator slots, and simplify the Delca field. */
+.delca-bar{
+  background:#0a2a38;
+}
+.bet-table col.col-car{width:38px}
+.bet-table col.col-rider{width:116px}
+.bet-table col.col-pick,
+.bet-table col.col-box{width:auto}
+.selection-row{
+  grid-template-columns:68px minmax(0,1fr) 55px calc(25% - 35.5px) calc(25% - 35.5px);
+}
+.selection-odds{
+  padding-left:0;
+  padding-right:4px;
+  text-align:right;
+}
+.selection-remove{
+  width:calc(100% - 6px);
+  margin:0 3px;
+}
+.selection-combination-separator{
+  box-sizing:content-box;
+  flex:0 0 7px;
+  width:7px;
+  min-width:7px;
+  margin:0 1px;
+  text-align:center;
+}
+@media(max-width:430px){
+  .bet-table col.col-car{width:38px}
+  .bet-table col.col-rider{width:116px}
+  .bet-table col.col-pick,
+  .bet-table col.col-box{width:auto}
+  .selection-row{
+    grid-template-columns:64px minmax(0,1fr) 48px calc(25% - 37px) calc(25% - 37px);
+  }
+  .selection-combination-separator{
+    flex-basis:7px;
+    width:7px;
+    min-width:7px;
+    margin:0 1px;
+  }
+}
+
+/* v30: finalize equal pick columns, compact aligned separators and the dark Delca field. */
+.delca-bar{
+  background-color:#0a2a38;
+  background-image:none;
+}
+.bet-table col.col-car{width:38px}
+.bet-table col.col-rider{width:116px}
+.bet-table col.col-pick,
+.bet-table col.col-box{width:auto}
+.selection-odds{
+  padding-left:0;
+  padding-right:4px;
+  text-align:right;
+  justify-self:stretch;
+}
+.selection-remove{
+  width:calc(100% - 9px);
+  margin:0 3px 0 6px;
+  justify-self:stretch;
+  box-sizing:border-box;
+}
+.selection-combo{gap:0}
+.selection-combination-separator{
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 9px;
+  width:9px;
+  min-width:9px;
+  margin:0;
+  padding:0 1px;
+  line-height:1;
+  text-align:center;
+}
+@media(max-width:430px){
+  .bet-table col.col-car{width:38px}
+  .bet-table col.col-rider{width:116px}
+  .bet-table col.col-pick,
+  .bet-table col.col-box{width:auto}
+  .selection-combination-separator{flex-basis:9px;width:9px;min-width:9px;margin:0;padding-inline:1px}
+}
+
+
+/* v31: keep complete wide-odds ranges visible and match the static confirmation-button finish. */
+.selection-odds.is-wide{
+  font-size:12px;
+  letter-spacing:-.03em;
+  text-align:right;
+  white-space:nowrap;
+}
+.bet-confirm-float{
+  overflow:hidden;
+  border:1px solid #8c671f;
+  border-radius:17px;
+  color:#241b0d;
+  background:linear-gradient(180deg,#f8e8b8 0%,#e2c477 30%,#c59b43 68%,#a97825 100%);
+  font-size:15px;
+  font-weight:1000;
+  line-height:.98;
+  letter-spacing:.03em;
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.94),
+    inset 0 -1px 0 rgba(90,56,8,.30),
+    0 4px 13px rgba(64,39,4,.42),
+    0 0 0 1px rgba(255,239,191,.46),
+    0 0 15px rgba(255,218,117,.56),
+    0 0 30px rgba(218,166,55,.30);
+  animation:none!important;
+  filter:none!important;
+}
+.bet-confirm-float span{line-height:.98}
+.bet-confirm-float:active{
+  transform:translateX(-50%) translateY(1px);
+  filter:brightness(.97)!important;
+}
+@media(max-width:430px){
+  .selection-odds.is-wide{font-size:11px;letter-spacing:-.04em}
+  .bet-confirm-float{font-size:14px}
+}
+
+
+/* v32: keep wide odds at the same size as every other wager in the selection list. */
+.selection-odds.is-wide{
+  font-size:14px;
+  letter-spacing:0;
+}
+@media(max-width:430px){
+  .selection-odds.is-wide{font-size:13px;letter-spacing:0}
+}
+
+
+/* v33: use the shared gold accent for the multi/reverse checkbox. */
+.bet-option input{accent-color:#d6aa42}
+
+
+/* v34: show the Hamamatsu race list in the Delca bar when the current race is tapped. */
+.delca-default{
+  min-width:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.delca-bar.is-race-list-open{padding:0}
+.delca-bar.is-race-list-open .delca-default{display:none}
+.bet-race-list[hidden]{display:none!important}
+.bet-race-list{
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  width:100%;
+  height:52px;
+  gap:6px;
+  padding:3px 10px 2px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-padding-inline:10px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x;
+}
+.bet-race-list::-webkit-scrollbar{display:none}
+.bet-race-tab{
+  box-sizing:border-box;
+  flex:0 0 80px;
+  height:47px;
+  min-height:47px;
+  padding:4px 5px;
+  border:1px solid #d8dbe0;
+  border-radius:8px;
+  color:#101114;
+  background:#f7f7f7;
+  font-family:inherit;
+  text-align:center;
+  box-shadow:0 3px 8px rgba(0,0,0,.22);
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.bet-race-tab strong{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5em;
+  font-size:14px;
+  font-weight:950;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.bet-race-tab-icon{
+  position:relative;
+  flex:0 0 16px;
+  width:16px;
+  height:16px;
+  border-radius:4px;
+  background:#7545af;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28);
+}
+.bet-race-tab-icon::before{
+  content:"";
+  position:absolute;
+  inset:3px;
+  background:#fff;
+  -webkit-mask:url("../../assets/sport-icons/auto.png") center/contain no-repeat;
+  mask:url("../../assets/sport-icons/auto.png") center/contain no-repeat;
+}
+.bet-race-tab>span{
+  display:block;
+  margin-top:3px;
+  padding-top:3px;
+  border-top:3px solid #7545af;
+  font-size:13px;
+  font-weight:900;
+  line-height:1;
+  white-space:nowrap;
+}
+.bet-race-tab.active{
+  color:#171108;
+  border-color:#8f6a18;
+  background:#fff6c8;
+  box-shadow:0 4px 11px rgba(0,0,0,.26);
+}
+.bet-race-list-toast{
+  position:fixed;
+  left:50%;
+  bottom:16px;
+  z-index:12000;
+  max-width:min(88vw,420px);
+  padding:10px 16px;
+  color:#18130a;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  background:linear-gradient(135deg,#f2da8e,#c28c25);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  font-size:13px;
+  font-weight:850;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,12px);
+  transition:opacity .18s ease,transform .18s ease;
+}
+.bet-race-list-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+@media(max-width:430px){
+  .delca-default{gap:5px}
+  .bet-race-tab{flex-basis:78px}
+}
+
+/* v37: remove only the frame surrounding the complete wager selection list. */
+.selection-section,
+.selection-list{
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+
+/* v38: color selection-list odds by threshold. */
+.selection-odds .bet-odds-low{color:#d70018!important}
+.selection-odds .bet-odds-high{color:#0068b7!important}
+.selection-odds-range{color:inherit}
+
+/* v39: match the filtered Hamamatsu race list to the latest shared race-switch design. */
+.delca-bar.is-race-list-open{
+  background-color:#090909;
+  background-image:linear-gradient(180deg,#181818 0%,#090909 100%);
+}
+.bet-race-list{
+  height:52px;
+  gap:6px;
+  padding:3px 10px 2px;
+  scroll-padding-inline:10px;
+  background:transparent;
+}
+.bet-race-list .race-tab{
+  flex:0 0 80px;
+  height:47px;
+  min-height:47px;
+}
+.bet-table th:first-child,
+.bet-table td.car-number{
+  border-right:1px solid var(--grid)!important;
+}
+@media(max-width:430px){
+  .bet-race-list .race-tab{flex-basis:78px}
+}
+
+
+/* v41: align every selection-list odds value to one right edge and color only the wide minimum red below 10. */
+.selection-odds{
+  min-width:0;
+  width:100%;
+  padding-left:0;
+  padding-right:4px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:0;
+  overflow:visible;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.selection-odds.is-wide{justify-content:flex-end}
+.selection-odds-range{flex:0 0 auto;color:#66707c}
+.selection-odds > span{flex:0 0 auto}
