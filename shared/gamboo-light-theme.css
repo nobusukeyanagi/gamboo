@@ -334,15 +334,20 @@ gamboo-race-info,
     margin-right:0!important;
   }
   gamboo-race-switch,
-  .delca-bar,
-  .racecard-detail-menu,
-  .odds-type-menu,
-  .bet-type-menu,
-  .result-replay-menu{
+  .delca-bar{
     width:100%!important;
     max-width:none!important;
     margin-left:0!important;
     margin-right:0!important;
+  }
+  .racecard-detail-menu,
+  .odds-type-menu,
+  .bet-type-menu,
+  .result-replay-menu{
+    width:min(100%,var(--gamboo-layout-width))!important;
+    max-width:var(--gamboo-layout-width)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
   }
   .race-switch,
   .delca-default,

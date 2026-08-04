@@ -10,7 +10,7 @@ index.html	347
 shared/category-menu.css	1244
 shared/category-menu.js	3194
 shared/fixed-layout.js	5753
-shared/gamboo-light-theme.css	11069
+shared/gamboo-light-theme.css	11248
 shared/page-shell.css	1174
 shared/race-button-style.css	4322
 shared/sport-preferences.js	5114
