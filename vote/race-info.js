@@ -151,8 +151,8 @@
       const button = this.querySelector('.race-live-button');
       const video = this.querySelector('.race-info-video');
       const frame = this.querySelector('[data-video-frame]');
-      const desktopMedia = window.matchMedia('(min-width:900px)');
-      let mobileVideoOpen = false;
+      const panel = this.querySelector('.shared-race-info');
+      let videoOpen = false;
 
       const ensureLiveFrame = () => {
         if (!frame || frame.firstElementChild) return;
@@ -168,26 +168,17 @@
 
       const syncLiveLayout = () => {
         if (!button || !video) return;
-        if (desktopMedia.matches) {
-          video.hidden = false;
-          ensureLiveFrame();
-          button.setAttribute('aria-expanded', 'false');
-          button.classList.remove('active');
-          return;
-        }
-        video.hidden = !mobileVideoOpen;
-        button.setAttribute('aria-expanded', String(mobileVideoOpen));
-        button.classList.toggle('active', mobileVideoOpen);
+        video.hidden = !videoOpen;
+        button.setAttribute('aria-expanded', String(videoOpen));
+        button.classList.toggle('active', videoOpen);
+        panel?.classList.toggle('is-live-open', videoOpen);
       };
 
       button?.addEventListener('click', () => {
-        if (desktopMedia.matches) return;
-        mobileVideoOpen = !mobileVideoOpen;
-        if (mobileVideoOpen) ensureLiveFrame();
+        videoOpen = !videoOpen;
+        if (videoOpen) ensureLiveFrame();
         syncLiveLayout();
       });
-      if (desktopMedia.addEventListener) desktopMedia.addEventListener('change', syncLiveLayout);
-      else desktopMedia.addListener(syncLiveLayout);
       syncLiveLayout();
     }
   }

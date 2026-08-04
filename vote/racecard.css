@@ -496,3 +496,9 @@
 .vote-racecard .section{
   border-color:#51411D!important;
 }
+
+/* v111: keep car/rider emphasis, but use normal weight for all other racecard data. */
+.vote-racecard:not(.prediction-page) .race-table tbody td:not(.car-number):not(.rider-name),
+.vote-racecard:not(.prediction-page) .race-table tbody td:not(.car-number):not(.rider-name) *{
+  font-weight:400!important;
+}

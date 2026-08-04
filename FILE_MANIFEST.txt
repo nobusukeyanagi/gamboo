@@ -26,7 +26,7 @@ vote/index.html	49087
 vote/introduction/index.html	2642
 vote/introduction/inquiry.css	14003
 vote/introduction/inquiry.js	9020
-vote/live-state.js	2418
+vote/live-state.js	2057
 vote/matchups/index.html	28686
 vote/matchups/matchups.css	5767
 vote/odds-data.js	20802
@@ -44,11 +44,11 @@ vote/photos/suzuki_keiichiro.jpg	4771
 vote/prediction/index.html	17231
 vote/prediction/prediction.css	16611
 vote/prediction/prediction.js	5680
-vote/race-info.css	8685
-vote/race-info.js	9851
+vote/race-info.css	8630
+vote/race-info.js	9443
 vote/race-switch.css	2796
 vote/race-switch.js	31369
-vote/racecard.css	20527
+vote/racecard.css	20835
 vote/racecard.js	18294
 vote/recent10/index.html	102532
 vote/recent10/recent10.css	9143

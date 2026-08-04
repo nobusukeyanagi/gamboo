@@ -2,7 +2,6 @@
   "use strict";
 
   const LIVE_STATE_KEY = "gamboo:vote:live-video-visible";
-  const desktopMedia = window.matchMedia("(min-width:900px)");
   let observer = null;
 
   const readLiveState = () => {
@@ -33,7 +32,6 @@
   };
 
   const syncLiveState = () => {
-    if (desktopMedia.matches) return true;
     const elements = getLiveElements();
     if (!elements) return false;
 
@@ -45,11 +43,6 @@
   };
 
   const bindLiveState = () => {
-    if (desktopMedia.matches) {
-      observer?.disconnect();
-      observer = null;
-      return true;
-    }
     const elements = getLiveElements();
     if (!elements) return false;
 
@@ -85,6 +78,4 @@
   window.addEventListener("pageshow", () => {
     bindLiveState();
   });
-  if (desktopMedia.addEventListener) desktopMedia.addEventListener("change", waitForRaceInfo);
-  else desktopMedia.addListener(waitForRaceInfo);
 })();
