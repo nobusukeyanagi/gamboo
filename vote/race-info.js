@@ -2,7 +2,7 @@
   "use strict";
 
   const RACE_SELECTION_KEY = "gamboo:vote-race-selection:v1";
-  const DEFAULT_RACE_KEY = "浜松-12R-16:45";
+  const DEFAULT_RACE_KEY = "浜松-12R-16:43";
 
   function readRaceSelection() {
     try {

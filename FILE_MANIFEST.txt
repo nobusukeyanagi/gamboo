@@ -8,9 +8,9 @@ assets/sport-icons/keirin.png	11531
 assets/sport-icons/nar.png	9863
 index.html	347
 shared/category-menu.css	1244
-shared/category-menu.js	3148
+shared/category-menu.js	3177
 shared/fixed-layout.js	5753
-shared/gamboo-light-theme.css	10050
+shared/gamboo-light-theme.css	10544
 shared/page-shell.css	1174
 shared/race-button-style.css	4322
 shared/sport-preferences.js	5114
@@ -22,7 +22,7 @@ vote/bet/confirm/index.html	3407
 vote/bet/index.html	4218
 vote/comments/comments.css	1308
 vote/comments/index.html	8945
-vote/index.html	55055
+vote/index.html	50440
 vote/introduction/index.html	2642
 vote/introduction/inquiry.css	14003
 vote/introduction/inquiry.js	9020
@@ -47,11 +47,11 @@ vote/prediction/prediction.js	5680
 vote/race-info.css	8532
 vote/race-info.js	9074
 vote/race-switch.css	3733
-vote/race-switch.js	30858
+vote/race-switch.js	31438
 vote/racecard.css	21816
 vote/racecard.js	19124
 vote/recent10/index.html	102532
 vote/recent10/recent10.css	9143
-vote/results/index.html	5767
+vote/results/index.html	4000
 vote/results/results.css	17323
 vote/results/results.js	7440

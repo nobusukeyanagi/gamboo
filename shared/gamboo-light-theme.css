@@ -1,5 +1,7 @@
 :root{
   color-scheme:light;
+  --gamboo-font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Verdana,"メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+  --gamboo-layout-width:1200px;
   --gamboo-page:#fff;
   --gamboo-page-soft:#fffaf0;
   --gamboo-surface:#fff;
@@ -24,8 +26,34 @@
 
 html,
 body{
+  font-family:var(--gamboo-font-family)!important;
   color:var(--gamboo-ink)!important;
   background:var(--gamboo-page)!important;
+}
+body{
+  width:min(100%,var(--gamboo-layout-width))!important;
+  max-width:var(--gamboo-layout-width)!important;
+  margin:0 auto!important;
+}
+button,
+input,
+select,
+textarea,
+table,
+gamboo-race-switch,
+gamboo-race-info{
+  font-family:var(--gamboo-font-family)!important;
+}
+
+/* Keep the fixed application canvas aligned with the 1200px desktop body. */
+gamboo-category-menu,
+.gamboo-content-shell{
+  left:0!important;
+  right:0!important;
+  width:min(100%,var(--gamboo-layout-width))!important;
+  max-width:var(--gamboo-layout-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
 
 .gamboo-content-shell,
@@ -40,7 +68,7 @@ body{
     linear-gradient(180deg,#fff 0%,#fffdf8 52%,#fff 100%)!important;
 }
 
-/* The desktop canvas is intentionally fluid: no centered 760px column. */
+/* Desktop content fills the centered 1200px canvas; narrow screens stay fluid. */
 gamboo-race-switch,
 gamboo-race-info,
 .delca-bar,
@@ -56,9 +84,9 @@ gamboo-race-info,
 .inquiry-page,
 .vote-results-page{
   width:100%!important;
-  max-width:none!important;
-  margin-left:0!important;
-  margin-right:0!important;
+  max-width:var(--gamboo-layout-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
 
 /* Race selector */
@@ -153,23 +181,6 @@ gamboo-race-info,
   box-shadow:inset 0 1px 0 rgba(255,255,255,.72)!important;
 }
 
-/* Delca balance */
-.delca-bar,
-.delca-bar.is-race-list-open{
-  color:var(--gamboo-ink)!important;
-  background:linear-gradient(180deg,#fffef8 0%,#ffefbd 100%)!important;
-  border-bottom-color:var(--gamboo-gold)!important;
-  box-shadow:0 4px 12px rgba(104,76,16,.13)!important;
-}
-.delca-balance span{color:#74684d!important}
-.delca-balance strong{color:var(--gamboo-ink)!important}
-.delca-actions button{
-  color:#261b08!important;
-  border-color:#aa7c1d!important;
-  background:linear-gradient(180deg,#ffeeba 0%,#d7ab40 100%)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 2px 6px rgba(91,62,8,.15)!important;
-}
-
 /* Cards, frames and page-level labels */
 .section,
 .odds-section,
@@ -200,7 +211,7 @@ gamboo-race-info,
 .odds-meta-row,
 .selection-meta-row{padding-inline:2px}
 
-/* Auto-race headers use the requested sport color with dark accessible text. */
+/* Table item rows use the auto-race color with white labels. */
 .race-table th,
 .race-table th:first-child,
 .bet-table th,
@@ -210,8 +221,9 @@ gamboo-race-info,
 .race-result-table th,
 .payout-table thead th,
 .grand-note-table thead th{
-  color:var(--gamboo-auto-ink)!important;
+  color:#fff!important;
   background:var(--gamboo-auto)!important;
+  text-shadow:0 1px 1px rgba(91,19,22,.34)!important;
 }
 .race-table th,
 .bet-table th,
@@ -344,4 +356,17 @@ gamboo-race-info,
   .race-outlook-heading,
   .result-section-heading,
   .race-review-heading{color:#3f300f!important}
+}
+
+@media print{
+  body,
+  .gamboo-content-shell{
+    width:100%!important;
+    max-width:none!important;
+  }
+  .gamboo-content-shell{
+    left:auto!important;
+    right:auto!important;
+    transform:none!important;
+  }
 }
