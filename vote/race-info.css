@@ -42,6 +42,7 @@ gamboo-race-info button{-webkit-appearance:none;appearance:none;font-family:inhe
 @media(min-width:900px){
   .shared-race-info.is-live-open{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,420px);align-items:center;gap:18px}
   .race-info-content{min-width:0}
+  .race-live-button{margin-left:0}
   .race-info-video{margin:0!important;padding:0!important;overflow:hidden;border:1px solid rgba(197,154,50,.5);border-radius:10px;background:#000}
   .race-info-video-frame{border-radius:9px}
 }

@@ -90,8 +90,8 @@ button,select{font:inherit}
 .odds-popular-row:nth-child(n+6){border-left:1px solid var(--odds-grid)}
 .odds-popular-row:nth-child(5),.odds-popular-row:nth-child(10){border-bottom:0}
 @media(min-width:900px){
-  .odds-popular-list{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,40px)}
-  .odds-popular-row:nth-child(15){border-bottom:0}
+  .odds-popular-list{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(5,40px)}
+  .odds-popular-row:nth-child(15),.odds-popular-row:nth-child(20){border-bottom:0}
 }
 .odds-popular-rank{
   display:flex;
@@ -1062,4 +1062,14 @@ button,select{font:inherit}
 /* v34: keep the minimum value red in wide popularity rows when it is below 10. */
 .odds-popular-value.odds-wide-cell .odds-wide-popular .odds-wide-popular-lower.odds-under-ten{
   color:#d70018!important;
+}
+
+/* v37: match every desktop board-odds value to the popular-order odds size. */
+@media(min-width:900px){
+  .odds-matrix-cell.odds-value-cell,
+  .odds-trifecta-value,
+  .odds-single-odds{
+    font-size:14px;
+  }
+  .odds-wide-value small{font-size:.78em}
 }

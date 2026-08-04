@@ -95,12 +95,38 @@
       requestAnimationFrame(() => {
         if (!active) {
           track.scrollLeft = 0;
+          this.syncNavigation();
           return;
         }
         const leftPadding = Number.parseFloat(getComputedStyle(track).paddingLeft) || 0;
         const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
         track.scrollLeft = Math.min(maxScroll, Math.max(0, active.offsetLeft - leftPadding));
+        this.syncNavigation();
       });
+    }
+
+    syncNavigation() {
+      const track = this.querySelector('.race-switch');
+      const previous = this.querySelector('.race-switch-nav-prev');
+      const next = this.querySelector('.race-switch-nav-next');
+      if (!track || !previous || !next) return;
+
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      const currentScroll = Math.min(maxScroll, Math.max(0, track.scrollLeft));
+      const hasOverflow = maxScroll > 1;
+      previous.disabled = !hasOverflow || currentScroll <= 1;
+      next.disabled = !hasOverflow || currentScroll >= maxScroll - 1;
+      previous.setAttribute('aria-disabled', String(previous.disabled));
+      next.setAttribute('aria-disabled', String(next.disabled));
+    }
+
+    moveRaceTrack(direction) {
+      const track = this.querySelector('.race-switch');
+      if (!track) return;
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      const step = Math.max(86, track.clientWidth - 86);
+      const target = Math.min(maxScroll, Math.max(0, track.scrollLeft + direction * step));
+      track.scrollTo({ left: target, behavior: 'smooth' });
     }
 
     setVenueFilter(venue, enabled) {
@@ -139,10 +165,17 @@
         const featured = isFeaturedRace(race);
         return `<a class="race-tab sport-${race.sport}${featured ? " featured-race" : ""}${active ? " active" : ""}" href="#" data-race-key="${key}" data-race-time="${race.time}" data-race-venue="${race.venue}"${active ? ' aria-current="true"' : ""}><strong><span class="race-tab-name">${race.venue}${race.race}</span></strong><span>${race.time}</span></a>`;
       }).join("");
-      this.innerHTML = `<section class="race-switch-wrap" aria-label="レース切り替え"><div class="race-switch">${tabs}</div></section>`;
+      this.innerHTML = `<section class="race-switch-wrap" aria-label="レース切り替え"><div class="race-switch-shell"><button class="race-switch-nav race-switch-nav-prev" type="button" aria-label="前のレースを表示">‹</button><div class="race-switch">${tabs}</div><button class="race-switch-nav race-switch-nav-next" type="button" aria-label="次のレースを表示">›</button></div></section>`;
 
       const track = this.querySelector(".race-switch");
+      const previous = this.querySelector('.race-switch-nav-prev');
+      const next = this.querySelector('.race-switch-nav-next');
       const alignActive = () => this.alignActiveRace();
+
+      previous?.addEventListener('click', () => this.moveRaceTrack(-1));
+      next?.addEventListener('click', () => this.moveRaceTrack(1));
+      this._trackScrollHandler = () => this.syncNavigation();
+      track?.addEventListener('scroll', this._trackScrollHandler, { passive: true });
 
       this.querySelectorAll(".race-tab").forEach((tab) => {
         tab.addEventListener("click", (event) => {
@@ -179,6 +212,7 @@
       };
       requestAnimationFrame(() => requestAnimationFrame(restoreSelection));
       setTimeout(restoreSelection, 120);
+      requestAnimationFrame(() => this.syncNavigation());
       this._pageShowHandler = restorePage;
       window.addEventListener("pageshow", this._pageShowHandler);
       if ('ResizeObserver' in window) {
@@ -192,6 +226,8 @@
         document.removeEventListener('gamboo:race-venue-filter', this._venueFilterHandler);
       }
       if (this._pageShowHandler) window.removeEventListener("pageshow", this._pageShowHandler);
+      const track = this.querySelector('.race-switch');
+      if (track && this._trackScrollHandler) track.removeEventListener('scroll', this._trackScrollHandler);
       this._resizeObserver?.disconnect();
     }
   }

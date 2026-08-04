@@ -210,7 +210,7 @@
   }
 
   function popularPageSize() {
-    return desktopPopularMedia.matches ? 15 : 10;
+    return desktopPopularMedia.matches ? 20 : 10;
   }
 
   function popularPageCount(records) {

@@ -502,3 +502,9 @@
 .vote-racecard:not(.prediction-page) .race-table tbody td:not(.car-number):not(.rider-name) *{
   font-weight:400!important;
 }
+
+/* v112: keep finishing-position badges bold in recent-race detail tables. */
+.vote-racecard.recent10-page .race-table .recent-detail-result .recent-race-card .recent-finish-badge,
+.vote-racecard.matchups-page .race-table .matchup-history-cell .recent-race-card .recent-finish-badge{
+  font-weight:1000!important;
+}
