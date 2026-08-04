@@ -110,11 +110,6 @@ gamboo-race-info,
   background:linear-gradient(180deg,#fff9dc 0%,#f4dda0 100%)!important;
   box-shadow:0 3px 9px rgba(112,78,12,.18)!important;
 }
-.race-tab-icon,
-.race-tab-icon.auto,
-.bet-race-tab-icon{
-  background:var(--gamboo-auto)!important;
-}
 .race-tab>span,
 .bet-race-tab>span{
   border-top-color:var(--gamboo-auto)!important;
@@ -156,7 +151,6 @@ gamboo-race-info,
   background:linear-gradient(180deg,#f8e7a8,#d6aa42)!important;
 }
 .race-live-button.active span{color:#211706!important}
-.race-info-icon.auto{background:var(--gamboo-auto)!important}
 
 /* Gold-and-white navigation below race information */
 .racecard-detail-tab,
@@ -210,6 +204,7 @@ gamboo-race-info,
 }
 .odds-meta-row,
 .selection-meta-row{padding-inline:2px}
+.selection-meta-row>span{color:#3f300f!important}
 
 /* Table item rows use the auto-race color with white labels. */
 .race-table th,
@@ -323,7 +318,7 @@ gamboo-race-info,
 /* Wide tables grow with desktop viewports; mobile keeps horizontal scrolling. */
 .race-table{
   width:100%!important;
-  min-width:1434px;
+  min-width:1376px;
 }
 .prediction-table{min-width:1246px!important}
 .recent-detail-table{min-width:2734px!important}
@@ -331,6 +326,32 @@ gamboo-race-info,
 .comment-table{min-width:0!important}
 
 @media(min-width:900px){
+  gamboo-category-menu,
+  .gamboo-content-shell{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  gamboo-race-switch,
+  .delca-bar,
+  .racecard-detail-menu,
+  .odds-type-menu,
+  .bet-type-menu,
+  .result-replay-menu{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  .race-switch,
+  .delca-default,
+  .bet-race-list{
+    width:min(100%,var(--gamboo-layout-width))!important;
+    max-width:var(--gamboo-layout-width)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
   .race-switch{padding-inline:12px}
   .race-switch .race-tab{flex:1 0 80px;max-width:120px}
   .shared-race-info{margin-inline:12px;padding:15px 18px 14px}

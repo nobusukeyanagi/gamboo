@@ -89,6 +89,10 @@ button,select{font:inherit}
 }
 .odds-popular-row:nth-child(n+6){border-left:1px solid var(--odds-grid)}
 .odds-popular-row:nth-child(5),.odds-popular-row:nth-child(10){border-bottom:0}
+@media(min-width:900px){
+  .odds-popular-list{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,40px)}
+  .odds-popular-row:nth-child(15){border-bottom:0}
+}
 .odds-popular-rank{
   display:flex;
   align-items:center;

@@ -7,13 +7,7 @@ gamboo-race-switch *,gamboo-race-switch *::before,gamboo-race-switch *::after{bo
 .race-tab.sport-keirin{--sport-color:#d8661d}
 .race-tab.sport-boat{--sport-color:#1876c9}
 .race-tab.sport-nar{--sport-color:#8b5a2b}
-.race-tab strong{display:flex;align-items:center;justify-content:center;gap:.5em;font-size:14px;line-height:1.05;font-weight:950;white-space:nowrap}
-.race-tab-icon{flex:0 0 16px;width:16px;height:16px;border-radius:4px;position:relative;background:var(--sport-color);box-shadow:inset 0 1px 0 rgba(255,255,255,.28)}
-.race-tab-icon::before{content:"";position:absolute;inset:3px;background:#fff;-webkit-mask-position:center;-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat;mask-position:center;mask-size:contain;mask-repeat:no-repeat}
-.race-tab-icon.auto::before{-webkit-mask-image:url("../assets/sport-icons/auto.png");mask-image:url("../assets/sport-icons/auto.png")}
-.race-tab-icon.keirin::before{-webkit-mask-image:url("../assets/sport-icons/keirin.png");mask-image:url("../assets/sport-icons/keirin.png")}
-.race-tab-icon.boat::before{-webkit-mask-image:url("../assets/sport-icons/boat.png");mask-image:url("../assets/sport-icons/boat.png")}
-.race-tab-icon.nar::before{-webkit-mask-image:url("../assets/sport-icons/nar.png");mask-image:url("../assets/sport-icons/nar.png")}
+.race-tab strong{display:flex;align-items:center;justify-content:center;gap:0;font-size:14px;line-height:1.05;font-weight:950;white-space:nowrap}
 .race-tab-name{display:inline-block;min-width:0;white-space:nowrap}
 .race-tab>span{display:block;margin-top:3px;padding-top:3px;border-top:3px solid var(--sport-color);font-size:13px;font-weight:900;line-height:1;white-space:nowrap}
 .race-tab.active,.race-tab[aria-current="true"]{color:#171108;border-color:#8f6a18;background:#fff6c8;box-shadow:0 4px 11px rgba(0,0,0,.26)}

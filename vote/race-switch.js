@@ -137,7 +137,7 @@
         const key = keyOf(race);
         const active = key === activeKey;
         const featured = isFeaturedRace(race);
-        return `<a class="race-tab sport-${race.sport}${featured ? " featured-race" : ""}${active ? " active" : ""}" href="#" data-race-key="${key}" data-race-time="${race.time}" data-race-venue="${race.venue}"${active ? ' aria-current="true"' : ""}><strong><span class="race-tab-name">${race.venue}</span><span class="race-tab-icon ${race.sport}" aria-hidden="true"></span></strong><span>${race.race} ${race.time}</span></a>`;
+        return `<a class="race-tab sport-${race.sport}${featured ? " featured-race" : ""}${active ? " active" : ""}" href="#" data-race-key="${key}" data-race-time="${race.time}" data-race-venue="${race.venue}"${active ? ' aria-current="true"' : ""}><strong><span class="race-tab-name">${race.venue}${race.race}</span></strong><span>${race.time}</span></a>`;
       }).join("");
       this.innerHTML = `<section class="race-switch-wrap" aria-label="レース切り替え"><div class="race-switch">${tabs}</div></section>`;
 

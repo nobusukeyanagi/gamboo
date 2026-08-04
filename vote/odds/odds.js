@@ -20,6 +20,7 @@
     trifectaCar:1,
     anchors:{"3連複":1}
   };
+  const desktopPopularMedia = window.matchMedia("(min-width:900px)");
 
   const tabs = Array.from(document.querySelectorAll(".odds-type-tab"));
   const popularList = document.getElementById("popular-list");
@@ -208,8 +209,12 @@
     return formatOdds(item.odds);
   }
 
+  function popularPageSize() {
+    return desktopPopularMedia.matches ? 15 : 10;
+  }
+
   function popularPageCount(records) {
-    return Math.max(1, Math.ceil(records.length / 10));
+    return Math.max(1, Math.ceil(records.length / popularPageSize()));
   }
 
   function normalizePopularPage(records) {
@@ -220,8 +225,9 @@
 
   function renderPopular() {
     const records = ODDS_DATA[state.type] || [];
+    const pageSize = popularPageSize();
     const hasRecords = records.length > 0;
-    const hasMultiplePages = records.length > 10;
+    const hasMultiplePages = records.length > pageSize;
     const navUnavailable = !hasRecords || !hasMultiplePages;
     popularPrev.disabled = navUnavailable;
     popularNext.disabled = navUnavailable;
@@ -242,9 +248,9 @@
     }
 
     const pageCount = normalizePopularPage(records);
-    const start = state.popularPage * 10;
-    const pageRecords = records.slice(start, start + 10);
-    const pageSlots = Array.from({length:10}, (_, index) => pageRecords[index] || null);
+    const start = state.popularPage * pageSize;
+    const pageRecords = records.slice(start, start + pageSize);
+    const pageSlots = Array.from({length:pageSize}, (_, index) => pageRecords[index] || null);
     popularList.innerHTML = pageSlots.map(item => item ? `
       <div class="odds-popular-row odds-selectable${selectedBets.has(selectionKey(state.type,item.cars)) ? " is-selected" : ""}"${selectionAttributes(state.type,item.cars)}>
         <span class="odds-popular-rank${popularRankClass(state.type,item.rank)}">${item.rank}</span>
@@ -256,7 +262,7 @@
         <span class="odds-popular-combination"></span>
         <strong class="odds-popular-value"></strong>
       </div>`).join("");
-    popularList.setAttribute("aria-label", `${start + 1}位から${Math.min(start + 10, records.length)}位、全${records.length}件中`);
+    popularList.setAttribute("aria-label", `${start + 1}位から${Math.min(start + pageSize, records.length)}位、全${records.length}件中`);
     popularPrev.setAttribute("aria-label", `前の人気順を表示（${state.popularPage + 1}/${pageCount}）`);
     popularNext.setAttribute("aria-label", `次の人気順を表示（${state.popularPage + 1}/${pageCount}）`);
     syncSelectionVisuals();
@@ -604,6 +610,12 @@
   }, {passive:true});
 
   tabs.forEach(tab => tab.addEventListener("click", () => setType(tab.dataset.oddsType)));
+  const resetPopularForBreakpoint = () => {
+    state.popularPage = 0;
+    renderPopular();
+  };
+  if (desktopPopularMedia.addEventListener) desktopPopularMedia.addEventListener("change", resetPopularForBreakpoint);
+  else desktopPopularMedia.addListener(resetPopularForBreakpoint);
   restoreSelections();
   let initial = "3連単";
   try { initial = sessionStorage.getItem(TYPE_STORAGE_KEY) || initial; } catch (_) {}

@@ -520,7 +520,7 @@
     if (!bar || !raceList) return;
     raceList.innerHTML = HAMAMATSU_RACES.map(([race, time]) => {
       const isCurrent = race === "12R";
-      return `<button class="race-tab sport-auto${isCurrent ? " featured-race active" : ""}" type="button" data-race="${race}" data-race-venue="浜松"${isCurrent ? ' aria-current="true"' : ""}><strong><span class="race-tab-name">浜松</span><span class="race-tab-icon auto" aria-hidden="true"></span></strong><span>${race} ${time}</span></button>`;
+      return `<button class="race-tab sport-auto${isCurrent ? " featured-race active" : ""}" type="button" data-race="${race}" data-race-venue="浜松"${isCurrent ? ' aria-current="true"' : ""}><strong><span class="race-tab-name">浜松${race}</span></strong><span>${time}</span></button>`;
     }).join("");
     raceList.querySelectorAll(".race-tab").forEach((tab) => tab.addEventListener("click", () => {
       if (tab.dataset.race !== "12R") showRaceListToast();

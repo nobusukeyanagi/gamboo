@@ -75,8 +75,8 @@
     [...(element?.children || [])].filter((child) => child.matches(selector));
 
   const applyAllRaceRanks = () => {
-    const supportCell = document.querySelector(".race-table .support-rate-cell");
-    const basicTable = supportCell?.closest(".race-table");
+    const photoCell = document.querySelector(".race-table .photo-cell");
+    const basicTable = photoCell?.closest(".race-table");
     if (!basicTable) return;
 
     const rows = [...basicTable.querySelectorAll("tbody tr")];
@@ -84,37 +84,29 @@
 
     const cells = rows.map((row) => [...row.children].filter((child) => child.matches("td")));
 
-    // Support rate: rank by the numeric rate, but highlight the popularity line.
-    applyDenseRanks(cells.map((tds) => {
-      const cell = tds[3];
-      const element = cell?.querySelector(".support-rate-popularity");
-      const valueElement = cell?.querySelector(".support-rate-main");
-      return { element, value: parseNumber(valueElement?.textContent) };
-    }), { higherIsBetter: true });
-
     // ST: smaller is better.
     applyDenseRanks(cells.map((tds) => {
-      const element = directChildren(tds[5])[0];
+      const element = directChildren(tds[3])[0];
       return { element, value: parseNumber(element?.textContent) };
     }));
 
     // Trial time: smaller is better.
     applyDenseRanks(cells.map((tds) => {
-      const element = directChildren(tds[5])[0];
+      const element = directChildren(tds[4])[0];
       return { element, value: parseNumber(element?.textContent) };
     }));
 
-    // Good-track last-10 average and best times: smaller is better, ranked separately.
+    // Competition-time averages and bests: smaller is better, ranked separately.
     [0, 1].forEach((lineIndex) => {
       applyDenseRanks(cells.map((tds) => {
-        const element = tds[6]?.querySelectorAll(".good-ten-line")[lineIndex];
+        const element = tds[5]?.querySelectorAll(".good-ten-line")[lineIndex];
         const valueElement = element?.querySelector(".good-ten-value");
         return { element, value: parseNumber(valueElement?.textContent) };
       }));
     });
 
     // Win, exacta-place and trifecta-place rates: good/wet ranked separately; larger is better.
-    [8, 9, 10].forEach((cellIndex) => {
+    [7, 8, 9].forEach((cellIndex) => {
       [0, 1].forEach((lineIndex) => {
         applyDenseRanks(cells.map((tds) => {
           const element = tds[cellIndex]?.querySelectorAll(".stat-line")[lineIndex];
@@ -239,10 +231,6 @@
     photo: {
       title: "写真",
       description: "出走選手の顔写真です。選手名や所属情報と合わせて、出走する選手を確認できます。",
-    },
-    support: {
-      title: "支持率",
-      description: "ZEN RACE独自指標です。3連単の全投票のうち、その車番を含む買い目が占める割合（％）と人気順位を表示します。1票に3車が含まれるため、全選手の支持率の合計は基本的に300％となります。表示値の四捨五入により、わずかに前後する場合があります。",
     },
     "st-h": {
       title: "ST・H",
