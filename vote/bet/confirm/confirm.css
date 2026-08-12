@@ -866,3 +866,58 @@ body.pin-approval-open{
 /* v23: match the PIN-dialog back label size to the approval action. */
 .pin-approval-back{font-size:16px}
 @media(max-width:430px){.pin-approval-back{font-size:15px}}
+
+/* v24: keep the desktop confirmation action beside the payment summary. */
+@media(min-width:900px){
+  .confirm-page{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(300px,340px);
+    grid-template-rows:auto auto;
+    column-gap:16px;
+    align-items:start;
+    padding-bottom:32px;
+  }
+  .confirm-action-panel{
+    position:sticky;
+    top:12px;
+    grid-column:2;
+    grid-row:1 / 3;
+  }
+  .wager-groups{
+    grid-column:1;
+    grid-row:1;
+    margin-top:0;
+  }
+  .confirm-back-link{
+    grid-column:1;
+    grid-row:2;
+  }
+  .vote-submit-float{
+    position:static;
+    left:auto;
+    bottom:auto;
+    width:100%;
+    height:56px;
+    margin-top:12px;
+    transform:none;
+    border:2px solid #d6aa42;
+    border-radius:12px;
+    color:#fff;
+    background:#0a2a38;
+    font-size:18px;
+    letter-spacing:.04em;
+    text-shadow:none;
+    box-shadow:0 5px 14px rgba(10,42,56,.24),inset 0 1px 0 rgba(255,255,255,.12);
+    animation:none;
+  }
+  .vote-submit-float:hover{background:#103d50}
+  .vote-submit-float:focus-visible{
+    outline:3px solid rgba(214,170,66,.48);
+    outline-offset:3px;
+  }
+  .vote-submit-float:active{
+    transform:translateY(1px);
+    filter:brightness(.96);
+  }
+  .vote-submit-shine{display:none}
+}

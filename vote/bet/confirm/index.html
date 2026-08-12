@@ -15,7 +15,7 @@
 <link href="../../race-info.css?v=67" rel="stylesheet"/>
 <link href="../../../shared/race-button-style.css?v=7" rel="stylesheet"/>
 <link href="../bet.css?v=46" rel="stylesheet"/>
-<link href="confirm.css?v=23" rel="stylesheet"/>
+<link href="confirm.css?v=24" rel="stylesheet"/>
 <link href="../../../shared/gamboo-light-theme.css?v=4" rel="stylesheet"/>
 <script defer="" src="../../race-info.js?v=68"></script>
 <script defer="" src="../../live-state.js?v=3"></script>
@@ -41,21 +41,23 @@
 </section>
 <gamboo-race-info race-filter-disabled=""></gamboo-race-info>
 <main aria-label="投票内容確認" class="confirm-page">
+<div class="confirm-action-panel">
 <section aria-label="投票合計と想定払戻金" class="confirm-summary">
 <div class="summary-line"><span>投票合計</span><strong id="grand-total">0pt</strong></div>
 <div class="summary-line"><span>想定払戻金</span><strong id="grand-return">0円</strong></div>
 <div class="summary-line"><span>想定収支</span><strong id="grand-profit">0円</strong></div>
 </section>
+<button class="vote-submit-float" id="vote-submit" type="button">
+<span aria-hidden="true" class="vote-submit-shine"></span>
+<span>投票確定</span>
+</button>
+</div>
 <div aria-live="polite" class="wager-groups" id="wager-groups"></div>
 <a class="confirm-back-link" href="../">投票入力に戻る</a>
 </main>
 </div>
 </div>
 </div>
-<button class="vote-submit-float" id="vote-submit" type="button">
-<span aria-hidden="true" class="vote-submit-shine"></span>
-<span>投票確定</span>
-</button>
 <div class="pin-approval-overlay" hidden="" id="pin-approval-overlay">
 <section aria-labelledby="pin-approval-title" aria-modal="true" class="pin-approval-dialog" role="dialog">
 <button aria-label="暗証番号入力を閉じて投票確認へ戻る" class="pin-approval-back" id="pin-approval-back" type="button">戻る</button>
