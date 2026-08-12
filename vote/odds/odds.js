@@ -307,6 +307,11 @@
     return "";
   }
 
+  function rankText(rank, content) {
+    const tone = rankClass(rank).trim();
+    return tone ? `<span class="odds-rank-text ${tone}">${content}</span>` : content;
+  }
+
   function popularRankClass(type, rank) {
     const value = Number(rank);
     if (!Number.isFinite(value)) return "";
@@ -410,9 +415,9 @@
         const key = trifectaKey(columnCar,rowCar);
         const value = rowCar === columnCar ? null : lookup.get(key);
         const unavailable = rowCar === columnCar || value === null || value === undefined;
-        const className = unavailable ? " is-invalid" : `${rankClass(rankLookup.get(key))}${oddsClass(value)}`;
+        const className = unavailable ? " is-invalid" : oddsClass(value);
         const cars = key.split("-").map(Number);
-        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("3連単",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("3連単",cars)}>${unavailable ? "" : formatOdds(value)}</div>`;
+        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("3連単",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("3連単",cars)}>${unavailable ? "" : rankText(rankLookup.get(key), formatOdds(value))}</div>`;
       });
     });
 
@@ -444,13 +449,12 @@
       candidates.forEach((colCar,colIndex) => {
         const key = [fixed,rowCar,colCar].sort((a,b)=>a-b).join("-");
         const value = lookup.get(key);
-        const rankTone = rankClass(rankLookup.get(key));
         const redTone = oddsClass(value);
         const unavailable = colCar === rowCar || value === null || value === undefined;
         const duplicateTone = colIndex > rowIndex ? " odds-upper-duplicate" : "";
-        const className = unavailable ? " is-invalid" : `${rankTone}${redTone}${duplicateTone}`;
+        const className = unavailable ? " is-invalid" : `${redTone}${duplicateTone}`;
         const cars = key.split("-").map(Number);
-        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("3連複",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("3連複",cars)}>${unavailable ? "" : formatOdds(value)}</div>`;
+        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("3連複",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("3連複",cars)}>${unavailable ? "" : rankText(rankLookup.get(key), formatOdds(value))}</div>`;
       });
     });
     html += "</div>";
@@ -474,9 +478,9 @@
         const key = `${first}-${second}`;
         const value = lookup.get(key);
         const unavailable = first === second || value === null || value === undefined;
-        const className = unavailable ? " is-invalid" : `${rankClass(rankLookup.get(key))}${oddsClass(value)}`;
+        const className = unavailable ? " is-invalid" : oddsClass(value);
         const cars = [first,second];
-        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("2連単",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("2連単",cars)}>${unavailable ? "" : formatOdds(value)}</div>`;
+        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey("2連単",cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes("2連単",cars)}>${unavailable ? "" : rankText(rankLookup.get(key), formatOdds(value))}</div>`;
       });
     });
     html += "</div>";
@@ -495,13 +499,12 @@
       CARS.forEach((colCar,colIndex) => {
         const key = [rowCar,colCar].sort((a,b)=>a-b).join("-");
         const value = lookup.get(key);
-        const rankTone = rankClass(rankLookup.get(key));
         const redTone = type === "ワイド" ? "" : oddsClass(value);
         const unavailable = colCar === rowCar || value === null || value === undefined;
         const duplicateTone = colIndex > rowIndex ? " odds-upper-duplicate" : "";
         const className = unavailable
           ? " is-invalid"
-          : `${rankTone}${type === "ワイド" ? " odds-wide-cell" : redTone}${duplicateTone}`;
+          : `${type === "ワイド" ? " odds-wide-cell" : redTone}${duplicateTone}`;
         let content = "";
         if (!unavailable && type === "ワイド" && Array.isArray(value)) {
           const [min, max] = normalizedWideOdds(value);
@@ -510,7 +513,7 @@
           content = formatOdds(value);
         }
         const cars = [rowCar,colCar].sort((a,b)=>a-b);
-        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey(type,cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes(type,cars)}>${content}</div>`;
+        html += `<div class="odds-trifecta-cell odds-trifecta-value${className}${!unavailable && selectedBets.has(selectionKey(type,cars)) ? " is-selected" : ""}" style="grid-column:${colIndex + 2};grid-row:${gridRow};"${unavailable ? "" : selectionAttributes(type,cars)}>${unavailable ? "" : rankText(rankLookup.get(key), content)}</div>`;
       });
     });
     html += "</div>";

@@ -473,3 +473,19 @@ table{border-collapse:collapse;border-spacing:0;font-variant-numeric:tabular-num
   color:#382719!important;
   background:#e3c6a3!important;
 }
+
+/* v23: desktop two-column result summary and shared race-info replay viewport. */
+@media(min-width:900px){
+  .vote-results-page{
+    width:min(100%,1200px);
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    align-items:start;
+    gap:0 12px;
+  }
+  .vote-results-page>.result-section:nth-child(1){grid-column:1}
+  .vote-results-page>.result-section:nth-child(2){grid-column:2}
+  .vote-results-page>.result-section:nth-child(n+3){grid-column:1 / -1}
+  .race-result-table,.payout-table{min-width:0}
+  .result-replay-panel{display:none!important}
+}

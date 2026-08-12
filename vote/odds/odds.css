@@ -667,6 +667,17 @@ button,select{font:inherit}
 .odds-rank-gold{background:#f6de8d!important}
 .odds-rank-silver{background:#d9e6ee!important}
 .odds-rank-bronze{background:#e3c6a3!important}
+.odds-rank-text{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:3.1em;
+  min-height:1.45em;
+  padding:1px 3px;
+  border-radius:3px;
+  line-height:1;
+}
+.odds-rank-text .odds-wide-value{background:transparent!important}
 .odds-under-ten{color:#d70018!important}
 .odds-under-ten .odds-wide-value,
 .odds-under-ten .odds-wide-value small{color:#d70018!important}

@@ -48,7 +48,8 @@
     return new Map(
       RACE_RESULTS
         .map((row, index) => ({ index, rank: rankedValues.indexOf(valueGetter(row)) + 1 }))
-        .filter((item) => item.rank >= 1),
+        .filter((item) => item.rank >= 1)
+        .map((item) => [item.index, item.rank]),
     );
   };
 
@@ -117,29 +118,87 @@
     const tabs = [...document.querySelectorAll("[data-replay-url]")];
     if (!panel || !frame || !tabs.length) return;
 
+    const desktopQuery = window.matchMedia("(min-width:900px)");
+    const raceInfo = document.querySelector("gamboo-race-info");
+    const liveButton = raceInfo?.querySelector(".race-live-button");
+    const sharedPanel = raceInfo?.querySelector(".shared-race-info");
+    const sharedVideo = raceInfo?.querySelector(".race-info-video");
+    const sharedFrame = raceInfo?.querySelector("[data-video-frame]");
+
+    const selectedTab = () => tabs.find((tab) => tab.getAttribute("aria-pressed") === "true");
+    const clearTabs = () => tabs.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
+    const closeDesktopReplay = () => {
+      if (!sharedVideo || !sharedFrame || sharedVideo.dataset.replayOpen !== "true") return;
+      sharedFrame.replaceChildren();
+      sharedVideo.dataset.replayOpen = "false";
+      sharedVideo.hidden = true;
+      sharedPanel?.classList.remove("is-live-open");
+    };
+    const closeReplay = () => {
+      clearTabs();
+      frame.setAttribute("src", "about:blank");
+      frame.title = "リプレイ";
+      panel.hidden = true;
+      closeDesktopReplay();
+    };
+    const openDesktopReplay = (tab, url) => {
+      if (!sharedVideo || !sharedFrame) return false;
+      if (liveButton?.getAttribute("aria-expanded") === "true") {
+        liveButton.click();
+        queueMicrotask(() => {
+          try { sessionStorage.setItem("gamboo:vote:live-video-visible", "false"); } catch (_error) {}
+        });
+      }
+      const replayFrame = document.createElement("iframe");
+      replayFrame.src = url;
+      replayFrame.title = tab.dataset.replayTitle || "リプレイ";
+      replayFrame.loading = "lazy";
+      replayFrame.allow = "autoplay; fullscreen; picture-in-picture";
+      replayFrame.allowFullscreen = true;
+      sharedFrame.replaceChildren(replayFrame);
+      sharedVideo.dataset.replayOpen = "true";
+      sharedVideo.hidden = false;
+      sharedPanel?.classList.add("is-live-open");
+      panel.hidden = true;
+      return true;
+    };
+
+    liveButton?.addEventListener("click", () => {
+      if (desktopQuery.matches && sharedVideo?.dataset.replayOpen === "true") closeReplay();
+    }, { capture: true });
+
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         const isActive = tab.getAttribute("aria-pressed") === "true";
         if (isActive) {
-          tab.classList.remove("active");
-          tab.setAttribute("aria-pressed", "false");
-          frame.setAttribute("src", "about:blank");
-          frame.title = "リプレイ";
-          panel.hidden = true;
+          closeReplay();
           return;
         }
 
         const url = tab.dataset.replayUrl;
         if (!url) return;
-        frame.title = tab.dataset.replayTitle || "リプレイ";
-        if (frame.getAttribute("src") !== url) frame.setAttribute("src", url);
-        panel.hidden = false;
+        if (desktopQuery.matches) openDesktopReplay(tab, url);
+        else {
+          closeDesktopReplay();
+          frame.title = tab.dataset.replayTitle || "リプレイ";
+          if (frame.getAttribute("src") !== url) frame.setAttribute("src", url);
+          panel.hidden = false;
+        }
         tabs.forEach((item) => {
           const active = item === tab;
           item.classList.toggle("active", active);
           item.setAttribute("aria-pressed", String(active));
         });
       });
+    });
+
+    desktopQuery.addEventListener?.("change", () => {
+      const tab = selectedTab();
+      if (!tab) return;
+      closeReplay();
     });
   };
 

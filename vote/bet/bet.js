@@ -2,14 +2,14 @@
   "use strict";
   const ODDS_DATA = window.GAMBOO_ODDS_DATA || {};
   const riders = [
-    {car:1,name:"黒川 京介",profile:"川口 33期 27歳",photo:"kurokawa.jpg",st:"10",handicap:"0",trial:"3.28",trialDeviation:".078",stRank:2,trialRank:2},
-    {car:2,name:"鈴木 圭一郎",profile:"浜松 32期 31歳",photo:"suzuki_keiichiro.jpg",st:"13",handicap:"0",trial:"3.31",trialDeviation:".095"},
-    {car:3,name:"青山 周平",profile:"伊勢崎 31期 41歳",photo:"aoyama.jpg",st:"10",handicap:"0",trial:"3.28",trialDeviation:".086",stRank:2,trialRank:2},
-    {car:4,name:"金子 大輔",profile:"浜松 29期 45歳",photo:"kaneko.jpg",st:"10",handicap:"0",trial:"3.27",trialDeviation:".074",stRank:2,trialRank:1},
-    {car:5,name:"長田 稚也",profile:"飯塚 34期 25歳",photo:"osada.jpg",st:"13",handicap:"0",trial:"3.27",trialDeviation:".084",trialRank:1},
-    {car:6,name:"佐藤 励",profile:"川口 35期 25歳",photo:"sato_rei.jpg",st:"11",handicap:"0",trial:"3.28",trialDeviation:".094",stRank:3,trialRank:2},
-    {car:7,name:"鈴木 宏和",profile:"浜松 32期 39歳",photo:"suzuki_hirokazu.jpg",st:"08",handicap:"0",trial:"3.29",trialDeviation:".094",stRank:1,trialRank:3},
-    {car:8,name:"佐藤 摩弥",profile:"川口 31期 33歳 <span aria-label=\"女子選手\" class=\"female-mark\">♥</span>",photo:"sato_maya.jpg",st:"13",handicap:"0",trial:"3.31",trialDeviation:".078"}
+    {car:1,name:"黒川 京介",profile:"川口 33期 27歳",photo:"kurokawa.jpg",st:"10",handicap:"0",trial:"3.28",trialDeviation:".078",stRank:2,trialRank:2,good10Average:"3.348",good10Best:"3.322",good10AverageRank:1,good10BestRank:1},
+    {car:2,name:"鈴木 圭一郎",profile:"浜松 32期 31歳",photo:"suzuki_keiichiro.jpg",st:"13",handicap:"0",trial:"3.31",trialDeviation:".095",good10Average:"3.375",good10Best:"3.354"},
+    {car:3,name:"青山 周平",profile:"伊勢崎 31期 41歳",photo:"aoyama.jpg",st:"10",handicap:"0",trial:"3.28",trialDeviation:".086",stRank:2,trialRank:2,good10Average:"3.366",good10Best:"3.324",good10AverageRank:3,good10BestRank:2},
+    {car:4,name:"金子 大輔",profile:"浜松 29期 45歳",photo:"kaneko.jpg",st:"10",handicap:"0",trial:"3.27",trialDeviation:".074",stRank:2,trialRank:1,good10Average:"3.384",good10Best:"3.368"},
+    {car:5,name:"長田 稚也",profile:"飯塚 34期 25歳",photo:"osada.jpg",st:"13",handicap:"0",trial:"3.27",trialDeviation:".084",trialRank:1,good10Average:"3.374",good10Best:"3.331"},
+    {car:6,name:"佐藤 励",profile:"川口 35期 25歳",photo:"sato_rei.jpg",st:"11",handicap:"0",trial:"3.28",trialDeviation:".094",stRank:3,trialRank:2,good10Average:"3.364",good10Best:"3.326",good10AverageRank:2,good10BestRank:3},
+    {car:7,name:"鈴木 宏和",profile:"浜松 32期 39歳",photo:"suzuki_hirokazu.jpg",st:"08",handicap:"0",trial:"3.29",trialDeviation:".094",stRank:1,trialRank:3,good10Average:"3.384",good10Best:"3.361"},
+    {car:8,name:"佐藤 摩弥",profile:"川口 31期 33歳 <span aria-label=\"女子選手\" class=\"female-mark\">♥</span>",photo:"sato_maya.jpg",st:"13",handicap:"0",trial:"3.31",trialDeviation:".078",good10Average:"3.388",good10Best:"3.359"}
   ];
   const columns = ["first","second","third","box"];
   const selected = Object.fromEntries(columns.map(key => [key,new Set()]));
@@ -25,7 +25,7 @@
   const desktopDetailQuery = window.matchMedia("(min-width:900px)");
 
   function syncOptionColumnSpan(){
-    optionCell.colSpan = desktopDetailQuery.matches ? 5 : 2;
+    optionCell.colSpan = desktopDetailQuery.matches ? 6 : 2;
   }
   syncOptionColumnSpan();
   if(desktopDetailQuery.addEventListener) desktopDetailQuery.addEventListener("change",syncOptionColumnSpan);
@@ -35,7 +35,7 @@
     return Number.isInteger(rank) ? ` bet-detail-rank-${rank}` : "";
   }
   function rowHtml(rider){
-    return `<tr><td class="car-number car-${rider.car}">${rider.car}</td><td class="rider-cell"><span class="rider-main">${rider.name}</span><span class="rider-profile">${rider.profile}</span></td><td class="bet-photo-cell bet-desktop-detail"><img class="bet-rider-photo" src="../photos/${rider.photo}" alt="${rider.name} 選手写真" loading="lazy" decoding="async"></td><td class="bet-detail-cell bet-desktop-detail"><span class="${rankClass(rider.stRank)}">ST${rider.st}</span><span>H${rider.handicap}</span></td><td class="bet-detail-cell bet-desktop-detail"><span class="${rankClass(rider.trialRank)}">${rider.trial}</span><span>偏 ${rider.trialDeviation}</span></td>${columns.map((key,index)=>`<td class="pick-cell${index===3?" box-divider":""}"><button class="pick-button entry-${rider.car}" type="button" data-column="${key}" data-car="${rider.car}" aria-pressed="false">${rider.car}</button></td>`).join("")}</tr>`;
+    return `<tr><td class="car-number car-${rider.car}">${rider.car}</td><td class="rider-cell"><span class="rider-main">${rider.name}</span><span class="rider-profile">${rider.profile}</span></td><td class="bet-photo-cell bet-desktop-detail"><img class="bet-rider-photo" src="../photos/${rider.photo}" alt="${rider.name} 選手写真" loading="lazy" decoding="async"></td><td class="bet-detail-cell bet-desktop-detail"><span class="${rankClass(rider.stRank)}">ST${rider.st}</span><span>H${rider.handicap}</span></td><td class="bet-detail-cell bet-desktop-detail"><span class="${rankClass(rider.trialRank)}">${rider.trial}</span><span>偏 ${rider.trialDeviation}</span></td><td class="bet-detail-cell bet-good-ten-cell bet-desktop-detail"><span class="${rankClass(rider.good10AverageRank)}"><small>平均</small>${rider.good10Average}</span><span class="${rankClass(rider.good10BestRank)}"><small>最高</small>${rider.good10Best}</span></td>${columns.map((key,index)=>`<td class="pick-cell${index===3?" box-divider":""}"><button class="pick-button entry-${rider.car}" type="button" data-column="${key}" data-car="${rider.car}" aria-pressed="false">${rider.car}</button></td>`).join("")}</tr>`;
   }
   body.innerHTML = riders.map(rowHtml).join("");
 

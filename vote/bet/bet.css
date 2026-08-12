@@ -961,6 +961,7 @@
   .bet-table col.col-photo{width:54px}
   .bet-table col.col-hst{width:58px}
   .bet-table col.col-trial{width:64px}
+  .bet-table col.col-good-ten{width:88px}
   .bet-photo-cell{
     height:44px!important;
     padding:2px!important;
@@ -1004,6 +1005,17 @@
   .bet-detail-cell .bet-detail-rank-1{background:#f6de8d}
   .bet-detail-cell .bet-detail-rank-2{background:#d9e6ee}
   .bet-detail-cell .bet-detail-rank-3{background:#e3c6a3}
+  .bet-good-ten-cell>span{
+    display:grid;
+    grid-template-columns:2.25em 1fr;
+    align-items:center;
+  }
+  .bet-good-ten-cell>span+span{margin-top:2px}
+  .bet-good-ten-cell small{
+    color:#5e6570;
+    font-size:9px;
+    font-weight:400;
+  }
 }
 
 /* v48: place the desktop review action beside its selection list. */
