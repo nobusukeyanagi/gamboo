@@ -15,7 +15,7 @@
 <link href="../race-info.css?v=67" rel="stylesheet"/>
 <link href="../race-switch.css?v=72" rel="stylesheet"/>
 <link href="../../shared/race-button-style.css?v=7" rel="stylesheet"/>
-<link href="bet.css?v=46" rel="stylesheet"/>
+<link href="bet.css?v=47" rel="stylesheet"/>
 <link href="../../shared/gamboo-light-theme.css?v=4" rel="stylesheet"/>
 <script defer="" src="../race-info.js?v=68"></script>
 <script defer="" src="../live-state.js?v=3"></script>
@@ -23,7 +23,7 @@
 <script defer="" src="../../shared/fixed-layout.js?v=23"></script>
 
 <script defer="" src="../odds-data.js?v=1"></script>
-<script defer="" src="bet.js?v=26"></script>
+<script defer="" src="bet.js?v=27"></script>
 </head>
 <body>
 <gamboo-category-menu active="bet"></gamboo-category-menu>
@@ -54,9 +54,10 @@
 <table class="bet-table">
 <colgroup>
 <col class="col-car"/><col class="col-rider"/>
+<col class="col-photo bet-desktop-detail"/><col class="col-hst bet-desktop-detail"/><col class="col-trial bet-desktop-detail"/>
 <col class="col-pick"/><col class="col-pick"/><col class="col-pick"/><col class="col-pick col-box"/>
 </colgroup>
-<thead><tr><th>車番</th><th>選手</th><th>1着</th><th>2着</th><th>3着</th><th class="box-divider">ボックス</th></tr></thead>
+<thead><tr><th>車番</th><th>選手</th><th class="bet-desktop-detail">写真</th><th class="bet-desktop-detail">ST･H</th><th class="bet-desktop-detail">試走T</th><th>1着</th><th>2着</th><th>3着</th><th class="box-divider">ボックス</th></tr></thead>
 <tbody id="bet-table-body"></tbody>
 <tfoot>
 <tr>

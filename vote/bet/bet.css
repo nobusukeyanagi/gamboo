@@ -886,3 +886,57 @@
   .selection-meta-row{grid-column:2;grid-row:1;margin:0 2px 7px}
   .selection-section{grid-column:2;grid-row:2;margin-top:0}
 }
+
+/* v47: add racecard photo, ST/H and trial-time data to the desktop input table only. */
+.bet-table .bet-desktop-detail{display:none}
+@media(min-width:900px){
+  .bet-table col.bet-desktop-detail{display:table-column}
+  .bet-table th.bet-desktop-detail,
+  .bet-table td.bet-desktop-detail{display:table-cell}
+  .bet-table col.col-photo{width:54px}
+  .bet-table col.col-hst{width:58px}
+  .bet-table col.col-trial{width:64px}
+  .bet-photo-cell{
+    height:50px!important;
+    padding:2px!important;
+    vertical-align:middle!important;
+    background:#fff!important;
+    font-size:0;
+    line-height:0;
+  }
+  .bet-rider-photo{
+    display:block;
+    width:100%;
+    height:45px;
+    max-height:45px;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:4px;
+    background:#f2f3f5;
+  }
+  .bet-detail-cell{
+    padding:2px 5px!important;
+    vertical-align:middle!important;
+    color:#111;
+    background:#fff;
+    font-size:13px;
+    font-weight:400;
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+  .bet-detail-cell>span{
+    display:block;
+    width:100%;
+    overflow:hidden;
+    color:#111;
+    font-size:13px;
+    font-weight:400;
+    line-height:1;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .bet-detail-cell>span+span{margin-top:4px}
+  .bet-detail-cell .bet-detail-rank-1{background:#f6de8d}
+  .bet-detail-cell .bet-detail-rank-2{background:#d9e6ee}
+  .bet-detail-cell .bet-detail-rank-3{background:#e3c6a3}
+}
