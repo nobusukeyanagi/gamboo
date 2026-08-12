@@ -40,7 +40,7 @@
           nav a.active::after{opacity:1;transform:scaleX(1)}
           a:focus-visible{outline:2px solid #8c6415;outline-offset:-2px}
           @media(hover:hover){nav a:hover{color:#8c6415;background:rgba(255,255,255,.34)}.brand:hover{filter:brightness(1.08)}}
-          @media(max-width:430px){.category-bar{grid-template-columns:1fr;grid-template-rows:30px 40px;padding:0 2px}.brand{padding:0}.brand img{width:132px;height:30px}nav a{font-size:12px;padding-inline:2px}}
+          @media(max-width:899px){.category-bar{grid-template-columns:1fr;grid-template-rows:32px 40px;padding:0 2px}.brand{padding:0;border-bottom:1px solid rgba(213,171,67,.34)}.brand img{width:132px;height:30px}nav{grid-row:2}nav a{font-size:12px;padding-inline:2px}}
           @media(max-width:350px){.brand img{width:120px}nav a{font-size:10.5px;letter-spacing:-.02em}}
         </style>
         <div class="category-bar">
