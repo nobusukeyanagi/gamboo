@@ -19,6 +19,10 @@ gamboo-race-switch *,gamboo-race-switch *::before,gamboo-race-switch *::after{bo
 @media(min-width:900px){
   .race-switch-shell{width:min(100%,var(--gamboo-layout-width,1200px));margin:0 auto;display:grid;grid-template-columns:38px minmax(0,1fr) 38px;align-items:stretch}
   gamboo-race-switch .race-switch-shell .race-switch{width:100%!important;max-width:none!important;margin:0!important;padding:3px 8px 2px!important;scroll-padding-inline:8px}
+  gamboo-race-switch .race-switch .race-tab{flex:0 0 80px;max-width:80px}
+  .race-switch-shell.all-races-fit{grid-template-columns:minmax(0,1fr)}
+  .race-switch-shell.all-races-fit .race-switch{justify-content:center}
+  .race-switch-shell.all-races-fit .race-switch-nav{display:none}
   .race-switch-nav{display:grid;place-items:center;min-width:0;padding:0;border:0;color:#f0cc70;background:linear-gradient(180deg,#202020,#080808);font-family:inherit;font-size:30px;font-weight:700;line-height:1;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .race-switch-nav-prev{border-right:1px solid #51411D}
   .race-switch-nav-next{border-left:1px solid #51411D}

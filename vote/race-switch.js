@@ -93,6 +93,7 @@
       const active = this.querySelector('.race-tab.active:not(.is-filtered-out)');
       if (!track) return;
       requestAnimationFrame(() => {
+        this.syncNavigation();
         if (!active) {
           track.scrollLeft = 0;
           this.syncNavigation();
@@ -107,13 +108,32 @@
 
     syncNavigation() {
       const track = this.querySelector('.race-switch');
+      const shell = this.querySelector('.race-switch-shell');
       const previous = this.querySelector('.race-switch-nav-prev');
       const next = this.querySelector('.race-switch-nav-next');
-      if (!track || !previous || !next) return;
+      if (!track || !shell || !previous || !next) return;
+
+      const visibleTabs = [...track.querySelectorAll('.race-tab:not(.is-filtered-out)')];
+      const trackStyle = getComputedStyle(track);
+      const gap = Number.parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
+      const padding = (Number.parseFloat(trackStyle.paddingLeft) || 0)
+        + (Number.parseFloat(trackStyle.paddingRight) || 0);
+      const tabsWidth = visibleTabs.reduce((total, tab) => total + tab.offsetWidth, 0);
+      const contentWidth = tabsWidth + Math.max(0, visibleTabs.length - 1) * gap + padding;
+      const allRacesFit = window.matchMedia('(min-width: 900px)').matches
+        && visibleTabs.length > 0
+        && contentWidth <= shell.clientWidth + 1;
+
+      shell.classList.toggle('all-races-fit', allRacesFit);
+      previous.setAttribute('aria-hidden', String(allRacesFit));
+      next.setAttribute('aria-hidden', String(allRacesFit));
+      previous.tabIndex = allRacesFit ? -1 : 0;
+      next.tabIndex = allRacesFit ? -1 : 0;
+      if (allRacesFit) track.scrollLeft = 0;
 
       const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
       const currentScroll = Math.min(maxScroll, Math.max(0, track.scrollLeft));
-      const hasOverflow = maxScroll > 1;
+      const hasOverflow = !allRacesFit && maxScroll > 1;
       previous.disabled = !hasOverflow || currentScroll <= 1;
       next.disabled = !hasOverflow || currentScroll >= maxScroll - 1;
       previous.setAttribute('aria-disabled', String(previous.disabled));
