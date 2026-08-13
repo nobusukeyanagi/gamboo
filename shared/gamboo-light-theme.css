@@ -415,3 +415,10 @@ gamboo-race-info,
     transform:none!important;
   }
 }
+
+/* v8: make the racecard header/body divider visible on smartphone layouts. */
+@media(max-width:899px){
+  .race-table thead th{
+    border-bottom:1px solid var(--table-grid-frame,#d2d3d7)!important;
+  }
+}
