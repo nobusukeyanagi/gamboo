@@ -1,14 +1,17 @@
 (() => {
   "use strict";
 
-  const LIVE_STATE_KEY = "gamboo:vote:live-video-visible";
+  const LIVE_STATE_KEY = "gamboo:vote:live-video-visible:v2";
   let observer = null;
 
   const readLiveState = () => {
     try {
-      return window.sessionStorage.getItem(LIVE_STATE_KEY) === "true";
+      const stored = window.sessionStorage.getItem(LIVE_STATE_KEY);
+      if (stored === "true") return true;
+      if (stored === "false") return false;
+      return window.matchMedia("(min-width: 900px)").matches;
     } catch (_error) {
-      return false;
+      return window.matchMedia("(min-width: 900px)").matches;
     }
   };
 

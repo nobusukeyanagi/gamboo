@@ -149,7 +149,7 @@
       if (liveButton?.getAttribute("aria-expanded") === "true") {
         liveButton.click();
         queueMicrotask(() => {
-          try { sessionStorage.setItem("gamboo:vote:live-video-visible", "false"); } catch (_error) {}
+          try { sessionStorage.setItem("gamboo:vote:live-video-visible:v2", "false"); } catch (_error) {}
         });
       }
       const replayFrame = document.createElement("iframe");
