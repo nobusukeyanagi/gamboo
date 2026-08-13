@@ -9,7 +9,7 @@ gamboo-race-switch *,gamboo-race-switch *::before,gamboo-race-switch *::after{bo
 .race-tab.sport-keirin{--sport-color:#d8661d}
 .race-tab.sport-boat{--sport-color:#1876c9}
 .race-tab.sport-nar{--sport-color:#8b5a2b}
-.race-tab strong{display:flex;align-items:center;justify-content:center;gap:0;font-size:14px;line-height:1.05;font-weight:950;white-space:nowrap}
+.race-tab strong{display:flex;align-items:center;justify-content:center;gap:0;font-size:13px;line-height:1.05;font-weight:950;white-space:nowrap}
 .race-tab-name{display:inline-block;min-width:0;white-space:nowrap}
 .race-tab>span{display:block;margin-top:3px;padding-top:3px;border-top:3px solid var(--sport-color);font-size:13px;font-weight:900;line-height:1;white-space:nowrap}
 .race-tab.active,.race-tab[aria-current="true"]{color:#171108;border-color:#8f6a18;background:#fff6c8;box-shadow:0 4px 11px rgba(0,0,0,.26)}
