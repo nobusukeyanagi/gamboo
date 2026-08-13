@@ -1018,19 +1018,19 @@
   }
 }
 
-/* v48: place the desktop review action beside its selection list. */
+/* v55: place the desktop selection action above the selection-count heading. */
 .bet-confirm-label-desktop{display:none!important}
 @media(min-width:900px){
   .bet-page{
     grid-template-rows:auto auto 1fr;
   }
   .bet-table-section{grid-row:1 / 4}
-  .selection-meta-row{grid-row:1}
   .selection-action-row{
     grid-column:2;
-    grid-row:2;
+    grid-row:1;
     margin:0 0 10px;
   }
+  .selection-meta-row{grid-row:2}
   .selection-section{grid-row:3}
   .bet-confirm-float{
     position:static;
