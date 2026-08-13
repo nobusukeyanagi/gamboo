@@ -23,7 +23,7 @@ gamboo-category-menu{
   touch-action:none;
   overscroll-behavior:none;
 }
-@media(max-width:899px){:root{--category-menu-h:72px}}
+@media(max-width:899px){:root{--category-menu-h:76px}}
 @media print{gamboo-category-menu{display:none!important}}
 
 
