@@ -23,13 +23,18 @@
   const confirm = document.getElementById("bet-confirm");
   const optionCell = document.querySelector(".bet-options-cell");
   const desktopDetailQuery = window.matchMedia("(min-width:900px)");
+  const compactDesktopQuery = window.matchMedia("(min-width:900px) and (max-width:1021px)");
 
   function syncOptionColumnSpan(){
-    optionCell.colSpan = desktopDetailQuery.matches ? 6 : 2;
+    optionCell.colSpan = desktopDetailQuery.matches
+      ? (compactDesktopQuery.matches ? 5 : 6)
+      : 2;
   }
   syncOptionColumnSpan();
   if(desktopDetailQuery.addEventListener) desktopDetailQuery.addEventListener("change",syncOptionColumnSpan);
   else desktopDetailQuery.addListener(syncOptionColumnSpan);
+  if(compactDesktopQuery.addEventListener) compactDesktopQuery.addEventListener("change",syncOptionColumnSpan);
+  else compactDesktopQuery.addListener(syncOptionColumnSpan);
 
   function rankClass(rank){
     return Number.isInteger(rank) ? ` bet-detail-rank-${rank}` : "";

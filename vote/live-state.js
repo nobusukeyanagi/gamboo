@@ -5,6 +5,7 @@
   let observer = null;
 
   const readLiveState = () => {
+    if (window.matchMedia("(min-width: 900px)").matches) return true;
     try {
       const stored = window.sessionStorage.getItem(LIVE_STATE_KEY);
       if (stored === "true") return true;
@@ -53,7 +54,9 @@
     if (button.dataset.liveStateBound !== "true") {
       button.dataset.liveStateBound = "true";
       button.addEventListener("click", () => {
-        queueMicrotask(() => writeLiveState(!video.hidden));
+        if (!window.matchMedia("(min-width: 900px)").matches) {
+          queueMicrotask(() => writeLiveState(!video.hidden));
+        }
       });
     }
 

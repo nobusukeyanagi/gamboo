@@ -134,8 +134,12 @@
       if (!sharedVideo || !sharedFrame || sharedVideo.dataset.replayOpen !== "true") return;
       sharedFrame.replaceChildren();
       sharedVideo.dataset.replayOpen = "false";
-      sharedVideo.hidden = true;
-      sharedPanel?.classList.remove("is-live-open");
+      if (desktopQuery.matches && typeof raceInfo?.showLiveVideo === "function") {
+        raceInfo.showLiveVideo();
+      } else {
+        sharedVideo.hidden = true;
+        sharedPanel?.classList.remove("is-live-open");
+      }
     };
     const closeReplay = () => {
       clearTabs();
@@ -146,12 +150,6 @@
     };
     const openDesktopReplay = (tab, url) => {
       if (!sharedVideo || !sharedFrame) return false;
-      if (liveButton?.getAttribute("aria-expanded") === "true") {
-        liveButton.click();
-        queueMicrotask(() => {
-          try { sessionStorage.setItem("gamboo:vote:live-video-visible:v2", "false"); } catch (_error) {}
-        });
-      }
       const replayFrame = document.createElement("iframe");
       replayFrame.src = url;
       replayFrame.title = tab.dataset.replayTitle || "リプレイ";

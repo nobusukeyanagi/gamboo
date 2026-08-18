@@ -152,7 +152,8 @@
       const video = this.querySelector('.race-info-video');
       const frame = this.querySelector('[data-video-frame]');
       const panel = this.querySelector('.shared-race-info');
-      let videoOpen = false;
+      const desktopQuery = window.matchMedia('(min-width:900px)');
+      let videoOpen = desktopQuery.matches;
 
       const ensureLiveFrame = () => {
         if (!frame || frame.firstElementChild) return;
@@ -174,12 +175,25 @@
         panel?.classList.toggle('is-live-open', videoOpen);
       };
 
+      const showLiveVideo = () => {
+        if (video?.dataset.replayOpen === 'true') frame?.replaceChildren();
+        if (video) video.dataset.replayOpen = 'false';
+        videoOpen = true;
+        ensureLiveFrame();
+        syncLiveLayout();
+      };
+      this.showLiveVideo = showLiveVideo;
+
       button?.addEventListener('click', () => {
         videoOpen = !videoOpen;
         if (videoOpen) ensureLiveFrame();
         syncLiveLayout();
       });
+      if (videoOpen) ensureLiveFrame();
       syncLiveLayout();
+      desktopQuery.addEventListener?.('change', (event) => {
+        if (event.matches && video?.dataset.replayOpen !== 'true') showLiveVideo();
+      });
     }
   }
 

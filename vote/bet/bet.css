@@ -894,6 +894,7 @@
   .delca-balance-row strong{font-size:17px}
   .delca-balance-row small{font-size:11px}
 }
+
 @media(max-width:430px){
   .delca-bar{padding-inline:7px;gap:5px}
   .delca-default{gap:5px}
@@ -1103,4 +1104,190 @@
     transform:translateX(-50%) translateY(1px);
     filter:brightness(.94)!important;
   }
+}
+
+/* v57: make the selection-set action read clearly as a gold next-step button on desktop and mobile. */
+.bet-confirm-float{
+  min-width:0;
+  padding:0 16px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  gap:11px;
+  color:#241b0d;
+  border:2px solid #8c671f;
+  background:linear-gradient(180deg,#f8e8b8 0%,#e2c477 34%,#c59b43 70%,#a97825 100%);
+  text-align:left;
+  text-shadow:none;
+  box-shadow:0 6px 18px rgba(64,39,4,.42),inset 0 1px 0 rgba(255,255,255,.72),inset 0 -1px 0 rgba(90,56,8,.28);
+  animation:none!important;
+  filter:none!important;
+}
+.bet-confirm-icon{
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  display:grid!important;
+  place-items:center;
+  border-radius:999px;
+  color:#2b200d;
+  border:1px solid rgba(92,61,11,.30);
+  background:rgba(255,255,255,.56);
+  font-size:18px;
+  font-weight:1000;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.72),0 2px 6px rgba(0,0,0,.25);
+}
+.bet-confirm-copy{
+  min-width:0;
+  flex:1 1 auto;
+  display:flex!important;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  gap:3px;
+  line-height:1;
+}
+.bet-confirm-main{
+  color:#241b0d;
+  font-size:17px;
+  font-weight:1000;
+  line-height:1;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.bet-confirm-sub{
+  color:#4d3511;
+  font-size:11px;
+  font-weight:850;
+  line-height:1;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.bet-confirm-arrow{
+  flex:0 0 auto;
+  color:#2d210d;
+  font-size:30px;
+  font-weight:700;
+  line-height:1;
+}
+.bet-confirm-float:focus-visible{
+  outline:3px solid rgba(214,170,66,.55);
+  outline-offset:3px;
+}
+.bet-confirm-float:active{filter:brightness(.94)!important}
+@media(hover:hover){
+  .bet-confirm-float:hover{background:linear-gradient(180deg,#fff0c3 0%,#ead080 34%,#cea34c 70%,#b7832d 100%)}
+}
+@media(min-width:900px){
+  .bet-confirm-float{height:62px;padding-inline:18px}
+  .bet-confirm-main{font-size:18px}
+  .bet-confirm-sub{font-size:12px}
+}
+@media(max-width:899px){
+  .bet-confirm-float{height:60px;padding-inline:15px}
+}
+@media(max-width:350px){
+  .bet-confirm-float{gap:8px;padding-inline:12px}
+  .bet-confirm-icon{width:30px;height:30px;flex-basis:30px}
+  .bet-confirm-main{font-size:15px}
+  .bet-confirm-sub{font-size:10px}
+  .bet-confirm-arrow{font-size:27px}
+}
+
+/* v60: keep the desktop entry table fixed through the 900px breakpoint; only the selection panel narrows. */
+@media(min-width:900px){
+  .bet-page{
+    grid-template-columns:700px minmax(0,1fr);
+  }
+}
+/* v62: narrow the four desktop pick columns and give the freed width to the selection panel. */
+@media(min-width:900px){
+  .bet-page{grid-template-columns:682px minmax(0,1fr)}
+  .bet-table col.col-rider{width:116px}
+  .bet-table col.col-pick,
+  .bet-table col.col-box{width:66px}
+}
+
+/* v66: odds values and ranges always stay on a single line. */
+.selection-odds,
+.selection-odds>span{
+  white-space:nowrap;
+}
+.selection-odds{flex-wrap:nowrap}
+
+/* v84: show unselected picks as neutral text only on both desktop and mobile. */
+.pick-button:not(.selected){background:transparent}
+.pick-button:not(.selected)::before{
+  color:#6b737d;
+  text-shadow:none;
+}
+
+/* v72: fixed desktop wager/odds/action columns, flexible car column, and staged table-detail removal. */
+@media(min-width:900px){
+  .gamboo-content-shell{scrollbar-gutter:stable}
+  .bet-page{grid-template-columns:639px minmax(0,1fr)}
+  .bet-table col.col-pick,
+  .bet-table col.col-box{width:55px}
+  .bet-table col.col-trial{display:table-column}
+  .bet-table col.col-good-ten{display:table-column}
+  .bet-table thead th:nth-child(5),
+  .bet-table thead th:nth-child(6),
+  .bet-table tbody td:nth-child(5),
+  .bet-table tbody td:nth-child(6){display:table-cell}
+  .bet-table .box-divider{border-left:0}
+  .bet-table th:last-child,
+  .bet-table td:last-child{border-right:1px solid var(--grid)}
+  .bet-table thead th:nth-child(9),
+  .bet-table tbody td:nth-child(9),
+  .bet-table tfoot .column-actions:nth-last-child(2){
+    border-right:1px solid #7e838b;
+    box-shadow:inset -1px 0 #7e838b;
+  }
+  .bet-table thead th.box-divider{
+    padding-inline:1px;
+    font-size:12px;
+    letter-spacing:-.08em;
+  }
+
+  .selection-row,
+  .selection-group[data-selection-type="ワイド"] .selection-row{
+    height:40px;
+    min-height:40px;
+    grid-template-columns:68px minmax(92px,1fr) 88px 46px;
+    grid-template-areas:"type combo odds remove";
+  }
+  .selection-type{grid-area:type;width:68px;padding-left:4px;white-space:nowrap}
+  .selection-combo,
+  .selection-group[data-selection-type="ワイド"] .selection-combo{
+    grid-area:combo;
+    grid-column:2;
+    min-width:0;
+    overflow:visible;
+  }
+  .selection-odds,
+  .selection-group[data-selection-type="ワイド"] .selection-odds{
+    grid-area:odds;
+    grid-column:3;
+    width:88px;
+    min-width:88px;
+    margin-left:0;
+    padding:0 4px 0 0;
+    justify-content:flex-end;
+    text-align:right;
+  }
+  .selection-remove,
+  .selection-group[data-selection-type="ワイド"] .selection-remove{
+    grid-area:remove;
+    grid-column:4;
+    height:27px;
+    font-size:14px;
+  }
+}
+@media(min-width:900px) and (max-width:1021px){
+  .bet-page{grid-template-columns:551px minmax(0,1fr)}
+  .bet-table col.col-good-ten{display:none}
+  .bet-table thead th:nth-child(6),
+  .bet-table tbody td:nth-child(6){display:none}
 }

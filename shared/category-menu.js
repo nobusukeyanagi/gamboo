@@ -8,10 +8,10 @@
   const logoUrl = new URL("assets/logo_gamboobet.png", appRoot);
   const homeUrl = new URL("https://gamboo.jp/");
   const ITEMS = [
+    { id: "bet", label: "投票", path: "vote/bet/" },
     { id: "racecard", label: "出走表", path: "vote/" },
     { id: "odds", label: "オッズ", path: "vote/odds/" },
     { id: "prediction", label: "予想", path: "vote/prediction/" },
-    { id: "bet", label: "投票", path: "vote/bet/" },
     { id: "inquiry", label: "照会", path: "vote/introduction/" },
     { id: "results", label: "結果", path: "vote/results/" },
   ];

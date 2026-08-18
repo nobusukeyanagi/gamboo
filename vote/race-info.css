@@ -43,7 +43,7 @@ gamboo-race-info button{-webkit-appearance:none;appearance:none;font-family:inhe
   .shared-race-info{height:145px}
   .shared-race-info.is-live-open{display:block;padding-right:272px}
   .race-info-content{min-width:0}
-  .race-live-button{margin-left:0}
+  .race-live-button{display:none}
   .race-info-video{position:absolute;top:0;right:0;bottom:0;width:254px;height:auto;margin:0!important;padding:0!important;display:block;overflow:hidden;border:1px solid var(--gamboo-gold,#c59a32)!important;border-radius:14px;background:#000;box-shadow:0 7px 20px rgba(92,65,11,.14)!important}
   .race-info-video-frame{width:100%;height:100%;max-width:none;aspect-ratio:auto;border-radius:13px}
 }
